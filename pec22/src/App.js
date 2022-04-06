@@ -3,7 +3,7 @@ function App() {
     <div className="container mx-auto">
       <header>
         <h1 className="text-6xl">Hey</h1>
-        <button class="btn">Button</button>
+        <button className="btn">Button</button>
       </header>
     </div>
   );
