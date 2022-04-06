@@ -16,7 +16,7 @@ class Room {
 
     - roomCode:Integer
     - roundNumber:Integer
-    + Room(firstPlayer:String)
+    + Room(roomCode: Integer, firstPlayer:String)
 
     + addPlayer(name:String):String
     + removePlayer(id:String)
