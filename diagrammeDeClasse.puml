@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam roundcorner 10
+hide enum methods
+
+@enduml
