@@ -18,7 +18,7 @@ class Room {
     - roundNumber:Integer
     + Room(roomCode: Integer, firstPlayer:String)
 
-    + addPlayer(name:String):String
+    + addPlayer(name:String):Integer
     + removePlayer(id:String)
 
     + getRoomCode():Integer
@@ -42,6 +42,7 @@ class Baker {
     + {static}INITIAL_MONEY:double
     + {static}FIXED_COST:double
     
+    - id:Integer
     - name:String
     + price:HistoryValue<double>
     + sales:HistoryValue<Integer>
@@ -49,7 +50,8 @@ class Baker {
     + money:HistoryValue<double>
 
     + Baker(name:String, id:String)
-    
+    + getId():Integer
+
     + newDay(price:double, volume:double, cakeSold:Integer)
 
 }
