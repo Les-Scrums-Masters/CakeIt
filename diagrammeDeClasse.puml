@@ -19,7 +19,7 @@ class Room {
     + Room(roomCode: Integer, firstPlayer:String)
 
     + addPlayer(name:String):Integer
-    + removePlayer(id:String)
+    + removePlayer(id:Integer)
 
     + getRoomCode():Integer
     + getIngredients():Ingredient{}
@@ -49,7 +49,7 @@ class Baker {
     + volume:HistoryValue<Integer>
     + money:HistoryValue<double>
 
-    + Baker(name:String, id:String)
+    + Baker(id:Integer, name:String)
     + getId():Integer
 
     + newDay(price:double, volume:double, cakeSold:Integer)
