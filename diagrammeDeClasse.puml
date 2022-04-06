@@ -14,6 +14,7 @@ class Room {
     + {static}SALE_DURATION:Integer
     + {static}DECISION_DURATION:Integer
 
+    - creatorId:Integer
     - roomCode:Integer
     - roundNumber:Integer
     + Room(roomCode: Integer, firstPlayer:String)
