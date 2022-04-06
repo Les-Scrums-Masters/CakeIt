@@ -1,8 +1,8 @@
 function App() {
   return (
-    <div>
+    <div className="container mx-auto">
       <header>
-        <h1>hey</h1>
+        <h1 className="text-6xl">Hey</h1>
         <button class="btn">Button</button>
       </header>
     </div>
