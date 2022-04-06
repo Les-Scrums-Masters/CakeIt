@@ -7,4 +7,94 @@ skinparam classFontStyle Bold
 skinparam roundcorner 10
 hide enum methods
 
+class Room {
+
+    + {static}MAX_PLAYERS:Integer
+    + {static}NEWS_SPAWN_PROBABILITY:double
+    + {static}SALE_DURATION:Integer
+    + {static}DECISION_DURATION:Integer
+
+    - roomCode:Integer
+    - roundNumber:Integer
+    + Room(firstPlayer:String)
+
+    + addPlayer(name:String):String
+    + removePlayer(id:String)
+
+    + getRoomCode():Integer
+    + getIngredients():Ingredient{}
+    + getPlayer(id:String):Baker
+    + getRound():Integer
+
+    + startGame()
+    + nextDay()
+
+}
+
+Room *--> "-players \n2...MAX_PLAYERS" Baker
+Room *--> "-ingredients \n5" Ingredient
+Room *--> "-news \n 0...X" News
+
+class Baker {
+
+    + {static}INITIAL_PRICE:double
+    + {static}INITIAL_VOLUME:Integer
+    + {static}INITIAL_MONEY:double
+    + {static}FIXED_COST:double
+    
+    - name:String
+    + price:HistoryValue<double>
+    + sales:HistoryValue<Integer>
+    + volume:HistoryValue<Integer>
+    + money:HistoryValue<double>
+
+    + Baker(name:String, id:String)
+    
+    + newDay(price:double, volume:double, cakeSold:Integer)
+
+}
+
+class Ingredient {
+
+    - name:String
+    + price:HistoryValue<double>
+
+    + Ingredient(name:String, price:double)
+
+    + getName():String
+}
+
+class News {
+
+    + {static}NEWS_LIST:News[]
+    + {static}getRandomNews():News
+
+    - name:String
+    - description:String
+    - multipliers:double{}
+
+    - News(name:String, description:String, multipliers:double{})
+    
+    + getName():String
+    + getDescription():String
+    + getMultipliers():double[]
+
+}
+
+class HistoryValue<T> {
+
+    - value:<T>[]
+
+    + HistoryValue(value:<T>)
+
+    + get():<T>
+    + getHistory():<T>[]
+    + getAtIndex(index:Integer):<T>[]
+
+    + getEvolution():double
+
+    + set(newValue:<T>)
+
+}
+
 @enduml
