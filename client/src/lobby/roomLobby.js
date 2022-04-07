@@ -6,6 +6,7 @@ export default function RoomLobby(props) {
 
   useEffect(() => {
     props.socket.on("room_joined", (room) => {
+      console.log("Nouveau joueur !!!!!!!!");
       setNewPlayer(true);
     });
     setNewPlayer(false);

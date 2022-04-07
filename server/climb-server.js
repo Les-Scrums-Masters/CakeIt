@@ -35,7 +35,7 @@ climbServer.joinRoom = (roomId, playerSocket, playerName) => {
   room.addPlayer(playerSocket, playerName);
 };
 
-climbServer.joinRoom = (roomId, playerId) => {
+climbServer.leftRoom = (roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
   room.removePlayer(playerId);
 };
@@ -52,15 +52,17 @@ climbServer.startGame = (roomId) => {
 climbServer.codeExist = (code) => {
   for (let i = 0; i < climbServer.rooms.length; i++) {
     if (climbServer.rooms[i].getId() === code) {
-      return true
+      return true;
     }
   }
-  return false
-}
+  return false;
+};
 
 climbServer.getRandomCode = () => {
   code = 1000 + Math.floor(Math.random() * 8999);
-  while(this.codeExist(code)) {code=this.getRandomCode()}
+  while (climbServer.codeExist(code)) {
+    code = climbServer.getRandomCode();
+  }
   return code;
 };
 
