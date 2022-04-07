@@ -6,10 +6,6 @@ export default function CompetitorsList(props) {
     <Panel title="Concurrents" color="error">
       <div className="flex flex-col gap-3 divide-y-2 divide-error">
         {props.players.map((item, index) => {
-          console.log(
-            "item competitor : " + item.id + " player " + props.player.id
-          );
-
           if (item.id !== props.player.id) {
             let price = 0;
             let money = 0;

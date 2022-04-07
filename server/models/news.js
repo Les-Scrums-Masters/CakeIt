@@ -1,22 +1,18 @@
-class News {
-  name;
-  description;
-  multipliers = {};
-  date;
+const myJson = require("./news.json");
 
-  constructor(jsonNew) {
-    this.name = jsonNew.name;
-    this.description = jsonNew.description;
-    this.multipliers = jsonNew.multipliers;
+class News {
+  constructor(name, description, multipliers) {
+    this.name = name;
+    this.description = description;
+    this.multipliers = multipliers;
+    this.date = "NO VALUE";
   }
 
-  static loadNews(jsonNews) {
+  static loadNews() {
     let list = [];
-
-    for (item in jsonNews) {
-      list.push(new News(element));
-    }
-
+    myJson.forEach((news) => {
+      list.push(new News(news.name, news.descriptions, news.multipliers));
+    });
     return list;
   }
 
@@ -32,3 +28,5 @@ class News {
     return this.multipliers;
   }
 }
+
+module.exports = News;
