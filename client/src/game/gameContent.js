@@ -47,6 +47,20 @@ export default function GameContent(props) {
   if (volumes.length > 0) lastVolume = volumes[volumes.length - 1];
 
   let content;
+  let values = [];
+
+  values.push(
+    <ValueDisplay value={lastVolume} legend="gateaux initialement produits" />
+  );
+
+  values.push(
+    <ValueDisplay
+      value={lastPrice}
+      legend="prix de vente d'un gateau"
+      suffix=" €"
+    />
+  );
+
   if (isReport) {
     content = (
       <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
@@ -98,6 +112,26 @@ export default function GameContent(props) {
         </div>
       </div>
     );
+
+    let sales = props.player.sales.values;
+    let profit = props.player.profit.values;
+
+    let lastSales = 0,
+      lastProfit = 0;
+    if (sales.length > 0) lastSales = sales[sales.length - 1];
+    if (profit.length > 0) lastProfit = profit[profit.length - 1];
+
+    values.push(
+      <div className="rounded-xl bg-success p-3">
+        <ValueDisplay value={lastSales} legend="gateaux vendus" suffix=" €" />
+      </div>
+    );
+
+    values.push(
+      <div className="rounded-xl bg-success p-3">
+        <ValueDisplay value={lastProfit} legend="profit" suffix=" €" />
+      </div>
+    );
   } else {
     content = "Vente ...";
   }
@@ -108,14 +142,7 @@ export default function GameContent(props) {
         {isReport ? "Bilan" : "Vente en cours ..."}
       </h1>
 
-      <div className="flex flex-row text-success">
-        <ValueDisplay value={lastVolume} legend="gateaux en rayon" />
-        <ValueDisplay
-          value={lastPrice}
-          legend="prix de vente du gateau"
-          suffix=" €"
-        />
-      </div>
+      <div className="flex flex-row text-success">{values}</div>
 
       {content}
     </div>
