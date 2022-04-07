@@ -25,8 +25,9 @@ io.on("connection", (socket) => {
 
   socket.on("create_room", (hostParticipant) => {
     const room = climbServer.createGame(io, hostParticipant);
+    socket.join(room.getId());
     socket.emit("room_joined", room);
-    console.log(`User (${hostParticipant.id}) created room : ${room.getId()}`);
+    console.log(`User (${socket.id}) created room : ${room.getId()}`);
   });
 
   socket.on("join_room", (roomId) => {
@@ -41,7 +42,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("end_day", (data) => {
-    //Si tout les joueurs sont prêt alors : (condition à faire)
+    //Condition à faire : Si tout les joueurs sont prêt alors :
     socket.to(data.room.getId()).emit("next_day", data);
   });
 
