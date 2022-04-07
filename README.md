@@ -13,12 +13,21 @@ Prenez la peau d'un boulanger et gérer au mieux votre production afin de maximi
 
 (Ajout screen)
 
-# Procédure d'installation
+# ℹ Informations
 
-# Prérequis
+[Cliquez ici pour accéder au cahier des charges](./CDD.md)
+
+# 💻 Site en ligne
+
+Nous avons mis le jeu en ligne à cette adresse :
+
+(image)
+
+# 🛠️ Procédure d'installation
+
+## Prérequis
 
 - Installer [Node.js](https://nodejs.org/en/download/)
-
 - Installer [git](https://git-scm.com/downloads) pour pouvoir cloner le projet
 
 ## Clôner le projet
@@ -52,7 +61,7 @@ npm install
 
 ## Démarrer le serveur Node.js
 
-Au sein du dossier /pec22-t4-a, exécuter la commande
+Au sein du dossier `/pec22-t4-a/client`, exécuter la commande
 
 ```
 npm run start
