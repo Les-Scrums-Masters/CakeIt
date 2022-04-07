@@ -17,10 +17,20 @@ climbServer.createGame = (io, hostParticipant) => {
   return newRoom;
 };
 
-climbServer.findGame = (roomId) => {
+climbServer.findRoom = (roomId) => {
+  console.log(climbServer.rooms);
   for (let i = 0; i < climbServer.rooms.length; i++) {
-    if (climbServer.rooms[i].getId() === roomId) {
-      return climbServer.rooms[index];
+    if (climbServer.rooms[i].getId() == roomId) {
+      return climbServer.rooms[i];
+    }
+  }
+};
+
+climbServer.joinRoom = (roomId, playerName) => {
+  for (let i = 0; i < climbServer.rooms.length; i++) {
+    if (climbServer.rooms[i].getId() == roomId) {
+      climbServer.rooms[i].addPlayer(climbServer.getRandomCode(), playerName);
+      console.log(climbServer.rooms[i]);
     }
   }
 };

@@ -30,14 +30,16 @@ io.on("connection", (socket) => {
     console.log(`User (${socket.id}) created room : ${room.getId()}`);
   });
 
-  socket.on("join_room", (roomId) => {
-    const room = climbServer.find(roomId);
-    if (room === null) {
+  socket.on("join_room", (roomId, playerName) => {
+    const room = climbServer.findRoom(roomId);
+    console.log(room);
+    if (room === undefined) {
       socket.emit("not_find_room");
     } else {
       socket.join(roomId);
-      socket.emit("room_joined", climbServer.find(roomId));
-      console.log(`User (${socket.id}) joined room : ${room.id}`);
+      climbServer.joinRoom(roomId, playerName);
+      socket.emit("room_joined", room);
+      console.log(`User (${socket.id}) joined room : ${roomId}`);
     }
   });
 
