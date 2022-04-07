@@ -2,10 +2,8 @@ const Baker = require("./baker.js");
 const Ingredient = require("./ingredient.js");
 
 class Room {
-  constructor(hostname, roomCode) {
-    this.players = [
-      new Baker(1000 + Math.floor(Math.random() * 8999), hostname),
-    ];
+  constructor(hostSocket, hostName, roomCode) {
+    this.players = [new Baker(hostSocket, hostName)];
     this.roomCode = roomCode;
     this.roundNumber = 0;
     this.ingredients = {
@@ -27,7 +25,7 @@ class Room {
 
   removePlayer(id) {
     this.players.forEach((player, index) => {
-      if (player.getId() === id) {
+      if (player.getId() == id) {
         this.player.splice(index, 1);
       }
     });
