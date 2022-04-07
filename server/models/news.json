@@ -1,35 +1,62 @@
 [
   {
-    "name": "Contrôle de relance du gouvernement",
-    "descriptions": "Suite à la fin du covid, le gouvernement à décider de relancer l'économie en donnant une aide exceptionnelle de 100€ !",
+    "name": "Un plan de relance économique est en marche.",
+    "descriptions": "En effet, suite à de nombreux évènements,le gouvernement a décidé d'injecter, pour relancer l'économie du pays, 100 milliards d'euros dans de nombreux domaines tel que l'écologie, la compétitivité et la cohésion.",
     "multipliers": {
-      "egg": 0.9,
-      "chocolate": 0.9,
-      "butter": 0.9,
-      "sugar": 0.85,
-      "flour": 0.8
+      "egg": 1.0,
+      "chocolate": 1.0,
+      "butter": 1.0,
+      "sugar": 1.0,
+      "flour": 1.1,
+      "demande": 1.1
     }
   },
   {
-    "name": "Pandémies : COVID !",
-    "descriptions": "Le covid est de retour !!!",
+    "name": "La banque centrale lance le Quantitative Easing !",
+    "descriptions": "Suite aux nombreuses crises qu'a subi le pays, la banque centrale décida d'acheter massivement des actifs financiers. En effet, ce procédé peu commun nommé \"assoplissement quantitatif\" ou encore \"quantitative easing\" pourrait permettre de relancer l'activité et l'inflation.",
+    "multipliers": {
+      "egg": 1.1,
+      "chocolate": 1.05,
+      "butter": 1.05,
+      "sugar": 1.05,
+      "flour": 1.05,
+      "demande": 1.1
+    }
+  },
+  {
+    "name": "France : pénurie d'oeufs dans tout le pays.",
+    "descriptions": "En effet, une épidémie de peste aviaire a frappé l'entièreté du pays. L'état pense à une intoxication mené par un opposant politique dénommé Maurice. Une dizaine de millions de poules auraient succombés.",
+    "multipliers": {
+      "egg": 1.4,
+      "chocolate": 1.0,
+      "butter": 1.0,
+      "sugar": 1.0,
+      "flour": 1.0,
+      "demande": 1.1
+    }
+  },
+  {
+    "name": "France : la Covid reprend du terrain !",
+    "descriptions": "600 000 cas de la Covid 19 ont été recensé aujourd'hui en France, c'est un reccord international. Le président va-t-il prendre la décision de reconfiner au péril de l'économie Française ?",
     "multipliers": {
       "egg": 1.2,
-      "chocolate": 1.3,
-      "butter": 1.3,
+      "chocolate": 1.2,
+      "butter": 1.2,
       "sugar": 1.1,
-      "flour": 1.1
+      "flour": 1.1,
+      "demande": 0.8
     }
   },
   {
     "name": "Un nouveau moyen de faire du chocolat ?!",
-    "descriptions": "Un énorme filon de chocolat a été trouvé en France !",
+    "descriptions": "Un énorme gisement de chocolat a été trouvé dans le sud de la France! C'est une première dans le monde !",
     "multipliers": {
       "egg": 1,
-      "chocolate": 0.8,
+      "chocolate": 0.7,
       "butter": 1.0,
       "sugar": 1.0,
-      "flour": 1.0
+      "flour": 1.0,
+      "demande": 1.1
     }
   },
   {
@@ -40,7 +67,8 @@
       "chocolate": 1.2,
       "butter": 1.2,
       "sugar": 1.1,
-      "flour": 1.3
+      "flour": 1.3,
+      "demande": 1.1
     }
   }
 ]

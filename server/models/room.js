@@ -1,5 +1,6 @@
 const Baker = require("./baker.js");
 const Ingredient = require("./ingredient.js");
+const News = require("./news.js");
 
 class Room {
   constructor(hostSocket, hostName, roomCode) {
@@ -17,6 +18,7 @@ class Room {
       flour: new Ingredient("flour", Ingredient.INITIAL_PRICE_FLOUR),
     };
     this.news = [];
+    this.remainingNews = News.loadNews();
   }
 
   addPlayer(id, name) {
@@ -46,6 +48,18 @@ class Room {
       }
     });
     return null;
+  }
+
+  getNews(number) {
+    let newList = [];
+    this.remainingNews.forEach((news, index) => {
+      if (index != number) {
+        newList.push(news);
+      }
+    });
+    let news = this.remainingNews[number % this.remainingNews.length];
+    this.remainingNews = newList;
+    return news;
   }
 
   getRound() {

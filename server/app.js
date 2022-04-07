@@ -25,9 +25,9 @@ const io = new Server(server, {
 const emitRoom = (roomId, event, params) => {
   const room = climbServer.findRoom(roomId);
 
-  console.log("EMIT EVENT " + event);
+  console.log("EMIT EVENT " + event + " to room " + roomId);
 
-  room.players.forEach((player) => {
+  room?.players.forEach((player) => {
     io.to(player.id).emit(event, ...params);
   });
 };
@@ -47,6 +47,12 @@ const sendPlayersInfo = (roomId) => {
 
 const updateIngredients = (roomId) => {
   const room = climbServer.findRoom(roomId);
+
+  // Calcul de l'évolution des ingrédients
+  Object.values(room.ingredients).forEach((ingredient) =>
+    ingredient.getEvolution()
+  );
+
   emitRoom(roomId, "update_ingredients", [room.ingredients]);
 };
 
@@ -84,8 +90,13 @@ io.on("connection", (socket) => {
   socket.on("start_game", (roomId) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
+    climbServer.pickNews(roomId);
+    const room = climbServer.findRoom(roomId);
+
     console.log("Launch game : " + roomId);
     emitRoom(roomId, "game_started", [roomId]);
+    emitRoom(roomId, "new_news", [room.news]);
+    updateIngredients(roomId);
     refreshPlayers(roomId);
     sendPlayersInfo(roomId);
   });
@@ -101,6 +112,7 @@ io.on("connection", (socket) => {
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
       emitRoom(roomId, "next_day", [room.roundNumber]);
+      updateIngredients(roomId);
       refreshPlayers(roomId);
       sendPlayersInfo(roomId);
     }

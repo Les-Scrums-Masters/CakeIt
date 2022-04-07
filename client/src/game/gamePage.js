@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CompetitorsList from "./competitorsList";
 import NewsList from "./newsList";
 import GameContent from "./gameContent";
+import IngredientList from "./ingredientList";
 
 /* PROPS : 
         socket={socket}
@@ -15,6 +16,9 @@ export default function GamePage(props) {
   const [round, setRound] = useState(1);
   const [player, setPlayer] = useState(null);
   const [players, setPlayers] = useState(null);
+
+  const [ingredients, setIngredients] = useState({});
+  const [news, setNews] = useState({});
 
   const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
     year: "numeric",
@@ -30,6 +34,12 @@ export default function GamePage(props) {
     props.socket.on("send_player_info", (player) => {
       setPlayer(player);
     });
+    props.socket.on("update_ingredients", (data) => {
+      setIngredients(data);
+    });
+    props.socket.on("new_news", (newsList) => {
+      setNews(newsList);
+    });
   }, [props.socket, props.playerId]);
 
   const getDate = () => {
@@ -37,12 +47,14 @@ export default function GamePage(props) {
   };
 
   const makeDate = (round) => {
-    let initialDate = Date.now();
-    let result = new Date(initialDate);
-    result.setDate(result.getDate() + round);
+    let increment = round ?? 0;
 
+    let initialDate = Date.now();
+    //let result = new Date(initialDate);
+    //result.setDate(result.getDate() + increment);
+    console.log(initialDate);
     // FORMATTAGE
-    return dateFormatter.format(result);
+    return dateFormatter.format(initialDate);
   };
 
   if (player === undefined || player == null || players == null) {
@@ -53,24 +65,26 @@ export default function GamePage(props) {
         <NewsList
           socket={props.socket}
           makeDate={makeDate}
-          showNews={props.showNews}
+          showModal={props.showModal}
+          news={news}
         />
 
         <div className="flex grow flex-col gap-5">
           <BakerInfo date={getDate()} player={player} />
 
           <GameContent
+            ingredients={ingredients}
             socket={props.socket}
             player={player}
             roomCode={props.room.roomCode}
           />
         </div>
 
-        <CompetitorsList
-          socket={props.socket}
-          players={players}
-          player={player}
-        />
+        <div className="grid grid-rows-2 gap-3">
+          <CompetitorsList players={players} player={player} />
+
+          <IngredientList ingredients={ingredients} />
+        </div>
       </div>
     );
   }

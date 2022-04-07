@@ -22,7 +22,6 @@ export default function RoomLobby(props) {
     if (props.room.players.length >= 1) {
       console.log("starting : " + props.room.roomCode);
       props.socket.emit("start_game", props.room.roomCode);
-      props.setDisplay("GamePage");
     } else {
       //avert : pas assez de joueur
     }

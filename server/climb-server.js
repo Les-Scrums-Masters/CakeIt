@@ -69,7 +69,7 @@ climbServer.startGame = (roomId) => {
 climbServer.leaveRoom = (roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
   console.log("Searching " + roomId);
-  room.removePlayer(playerId);
+  room?.removePlayer(playerId);
 };
 
 climbServer.codeExist = (code) => {
@@ -79,6 +79,18 @@ climbServer.codeExist = (code) => {
     }
   }
   return false;
+};
+
+climbServer.pickNews = (roomId) => {
+  let prob = Math.floor(Math.random() * 100);
+  console.log(prob);
+  if (prob > 1) {
+    let room = climbServer.findRoom(roomId);
+    let number = Math.floor(Math.random() * room.remainingNews.length);
+    let news = room.getNews(number);
+    room.news.push(news);
+    console.log(room);
+  }
 };
 
 climbServer.getRandomCode = () => {
@@ -122,6 +134,6 @@ module.exports = climbServer;
 
 climbServer.getPlayers = (roomId) => {
   let room = climbServer.findRoom(roomId);
-  room.players.forEach((player) => player.generateEvolution());
-  return room.players;
+  room?.players.forEach((player) => player.generateEvolution());
+  return room?.players;
 };
