@@ -12,11 +12,12 @@ export default function GamePage(props) {
   useEffect(() => {
     props.socket.on("next_day", (round) => setRound(round));
     props.socket.on("refresh_players", (players) => {
-      console.log("refresh");
+      console.log("REFRESH :");
       console.log(players);
       setPlayers(players);
     });
     props.socket.on("send_player_info", (player) => {
+      console.log("MY PLAYER :");
       console.log(player);
       setPlayer(player);
     });

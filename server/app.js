@@ -40,8 +40,6 @@ const refreshPlayers = (roomId) => {
 const sendPlayersInfo = (roomId) => {
   //io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
   climbServer.getPlayers(roomId).forEach((player) => {
-    console.log("EMIT EVENT PLAYER_INFO");
-
     io.to(player.id).emit("send_player_info", player);
   });
 };
