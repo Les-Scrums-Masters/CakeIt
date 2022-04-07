@@ -5,6 +5,12 @@ import RoomLobby from "./lobby/roomLobby";
 import GamePage from "./game/gamePage";
 import Modal from "./components/modal";
 
+//musique
+import MusicSound from "./components/musicSound";
+// Sons
+import useSound from "use-sound";
+import musicSound from "./sounds/lofi.ogg";
+
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
 
@@ -20,6 +26,27 @@ function App() {
   const [modalContent, setModalContent] = useState(null);
   const [buttons, setButtons] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  // ------- Musique -------
+
+  const [initializedSound, setInitializedSound] = useState(false);
+  const [, { sound }] = useSound(musicSound, {
+    volume: 0.05,
+    interrupt: false,
+  });
+
+  //Si l'utilisateur est connecté ou pas
+  const [isLogged, setLogged] = useState(false);
+  useEffect(() => {
+    // LANCER LA MUSIQUE LORSQU'ELLE EST ACTUALISEE
+    if (sound !== null && !initializedSound) {
+      // LANCER LA MUSIQUE
+      setInitializedSound(true);
+      sound.loop(true);
+      sound.fade(0, 0.1, 1000);
+      sound.play();
+    }
+  }, [sound, initializedSound]);
 
   const closeModal = () => setModalOpen(false);
 
@@ -88,6 +115,12 @@ function App() {
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
       {logo}
+
+      {sound !== null ? (
+        <MusicSound sound={sound} additionnalStyle="absolute right-10 top-8" />
+      ) : (
+        ""
+      )}
 
       <Modal
         open={modalOpen}
