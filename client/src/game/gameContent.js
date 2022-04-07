@@ -37,7 +37,11 @@ export default function GameContent(props) {
 
       <div className="flex flex-row text-success">
         <ValueDisplay value={lastVolume} legend="gateaux en rayon" />
-        <ValueDisplay value={lastPrice} legend="prix de vente" />
+        <ValueDisplay
+          value={lastPrice}
+          legend="prix de vente du gateau"
+          suffix=" €"
+        />
       </div>
 
       <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
