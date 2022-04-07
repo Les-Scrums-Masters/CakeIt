@@ -18,6 +18,7 @@ export default function GamePage(props) {
   const [players, setPlayers] = useState(null);
 
   const [ingredients, setIngredients] = useState({});
+  const [news, setNews] = useState({});
 
   const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
     year: "numeric",
@@ -36,6 +37,9 @@ export default function GamePage(props) {
     props.socket.on("update_ingredients", (data) => {
       setIngredients(data);
     });
+    props.socket.on("new_news", (newsList) => {
+      setNews(newsList);
+    });
   }, [props.socket, props.playerId]);
 
   const getDate = () => {
@@ -43,12 +47,14 @@ export default function GamePage(props) {
   };
 
   const makeDate = (round) => {
-    let initialDate = Date.now();
-    let result = new Date(initialDate);
-    result.setDate(result.getDate() + round);
+    let increment = round ?? 0;
 
+    let initialDate = Date.now();
+    //let result = new Date(initialDate);
+    //result.setDate(result.getDate() + increment);
+    console.log(initialDate);
     // FORMATTAGE
-    return dateFormatter.format(result);
+    return dateFormatter.format(initialDate);
   };
 
   if (player === undefined || player == null || players == null) {
@@ -60,6 +66,7 @@ export default function GamePage(props) {
           socket={props.socket}
           makeDate={makeDate}
           showModal={props.showModal}
+          news={news}
         />
 
         <div className="flex grow flex-col gap-5">
