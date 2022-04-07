@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import HomePage from "./home/homePage";
 import RoomLobby from "./lobby/roomLobby";
 import GamePage from "./game/gamePage";
@@ -26,7 +26,7 @@ function App() {
       //Il a rejoint une room
       setDisplay("GamePage");
     });
-  }, [socket]);
+  });
 
   if (display === "RoomLobby") {
     return (
@@ -38,7 +38,7 @@ function App() {
       />
     );
   } else if (display === "GamePage") {
-    return <GamePage socket={socket} />;
+    return <GamePage socket={socket} room={room} playerId={playerId}/>;
   } else {
     return <HomePage socket={socket} />;
   }

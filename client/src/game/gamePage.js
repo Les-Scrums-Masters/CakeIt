@@ -1,40 +1,48 @@
 import BakerInfo from "./bakerInfo";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CompetitorsList from "./competitorsList";
 import NewsList from "./newsList";
-import ValueDisplay from "./valueDisplay";
-import Chart from "./../charts/chart";
+import GameContent from "./gameContent";
 
 export default function GamePage(props) {
-  let myRoundData = [];
-  useEffect(() => {
-    props.socket.on("next_day", (roundData) => {
-      myRoundData = roundData;
+
+  const findPlayer = (playerId, players) => {
+    players.forEach((p) => {
+      if (p.id === playerId) {
+        return p;
+      }
     });
-  }, [props.socket]);
+    return null;
+  }
+
+  const [player, setPlayer] = useState(findPlayer(props.playerId, props.room.players));
+  const [round, setRound] = useState(0);
+
+  useEffect(() => {
+    props.socket.on("next_day", (round) => setRound(round));
+    props.socket.on("refresh_players", (players) => setPlayer(findPlayer(props.playerId, players)))
+  }, [props.socket, props.playerId]);
+
+  const getDate = () => {
+    return makeDate(round);
+  }
+
+  const makeDate = (round) => {
+    return 0;
+  }
 
   return (
     <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
-      <NewsList />
+      <NewsList socket={props.socket} makeDate={makeDate} />
 
       <div className="flex grow flex-col gap-5">
-        <BakerInfo date="dimanche 28 janvier" name="Eren" money={20393} />
+        <BakerInfo date={getDate()} name={player.name} money={player.money} />
 
-        <div className="flex h-full w-full flex-col gap-5 rounded-xl border-2 border-success bg-white p-8">
-          <h1 className="text-4xl font-bold text-success">Action</h1>
-
-          <div className="flex flex-row text-success">
-            <ValueDisplay value="2240" legend="gateaux en rayon" />
-            <ValueDisplay value="10.3 €" legend="prix de vente" />
-          </div>
-
-          <p>
-            <Chart data={myRoundData} />
-          </p>
-        </div>
+        <GameContent socket={props.socket}/>
+        
       </div>
 
-      <CompetitorsList />
+      <CompetitorsList socket={props.socket}/>
     </div>
   );
 }
