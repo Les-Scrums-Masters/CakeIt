@@ -16,7 +16,7 @@ export default function BakerInfo(props) {
       <div className="flex flex-col justify-end text-right">
 
           <p className="text-sm font-light">trésorerie</p>
-          <p className="text-2xl font-light">{props.money + " €"}</p>
+          <p className="text-3xl font-light">{props.money + " €"}</p>
 
       </div>
   

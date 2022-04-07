@@ -2,7 +2,7 @@ import React from "react";
 
 import JoinForm from "./joinForm";
 
-export default function Homepage(props) {
+export default function HomePage(props) {
   return (
     <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-center justify-center gap-5 align-middle">
       <h1 className="text-center text-6xl font-bold text-error">Cake It !</h1>

@@ -11,10 +11,10 @@ export default function GamePage(props) {
       <div className="grow flex flex-col gap-5">
         <BakerInfo date="dimanche 28 janvier" name="Eren" money={20393}/>
 
-        <div className="flex w-full flex-col rounded-xl border-2 bg-white border-success p-8 gap-5">
+        <div className="flex w-full flex-col rounded-xl border-2 bg-white border-success p-8 gap-5 h-full">
           <h1 className="font-bold text-4xl text-success">Action</h1>
 
-          <div className="flex flex-row">
+          <div className="flex flex-row text-success">
             <ValueDisplay value="2240" legend="gateaux en rayon" />
             <ValueDisplay value="10.3 €" legend="prix de vente" />
           </div>
