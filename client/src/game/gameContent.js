@@ -7,8 +7,12 @@ export default function GameContent(props) {
   const [isReport, setIsReport] = useState(false);
 
   useEffect(() => {
-    props.socket.on("next_day", () => {});
-    props.socket.on("end_day", () => {});
+    props.socket.on("next_day", () => {
+      setIsReport(false);
+    });
+    props.socket.on("end_day", () => {
+      setIsReport(true);
+    });
   });
 
   let volumes = props.player.volume.values;
