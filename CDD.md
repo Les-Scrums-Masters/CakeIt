@@ -45,3 +45,38 @@ Il y a deux types de conséquences, qui peuvent à la fois être positives ou n�
 - La notion de choc de l’offre désigne une variation importante et imprévue des conditions de production qui affecte les producteurs.
 - Elle modifie les coûts de production des biens et se traduit par une variations des prix demandés par les entreprises. On peut aussi parler de choc de prix.
 - Les chocs d’offre ou/et de demande peuvent générer des périodes d’expansion (choc positif) ou provoquer des crises économiques (choc négatif).
+
+## Description du jeu
+
+**Type de jeu** : Gestion
+Incarnation du joueur : Un boulanger
+
+**Déroulement d’une partie**
+
+Description du déroulement d’une partie : début, déroulement et fin\*\*
+
+Nous avons créé un jeu multijoueur. Les joueurs incarnent des boulangeries en concurrence. Les boulangeries ne vendent qu’un seul produit : des gâteaux aux chocolats.
+Les habitants de ce monde merveilleux ne peuvent pas vivre bien longtemps sans gâteaux aux chocolats.
+
+Pour chaque tour, le joueur peut modifier le prix et le volume de production.
+La seule information qu’ils peuvent connaître de leur concurrent est le prix à laquelle ils commercialisent leurs gâteaux. Les jours se déroulent, et les ventes se font toutes seules …
+
+Chaque matin, les boulangers peuvent consulter leurs résultats et peuvent adapter leurs paramètres s'ils le souhaitent. Et certains jours, une ou plusieurs actualités surviennent.
+A ce moment-là, les boulangeries mettent en pause leur production et analysent les évolutions du prix des matières premières, ou un changement de la demande des consommateurs. Et d’après ces paramètres, les différentes boulangeries adaptent ou non leur prix et leurs volumes de production. Les joueurs ont un temps limité pour effectuer des changements s’ils le souhaitent. Un tour dure 1 seul jour. Le jeu se termine au bout de 15 tours. Et le boulanger ayant le plus grand profit gagne le jeu.
+
+## Paramétrage d’une partie
+
+Description des options permettant de paramétrer une partie.
+
+- Nombre de joueur : 2-X joueurs, chacun joue sur son appareil
+- Chaque joueur est en concurrence avec tous les autres
+- Nom du joueur
+- Numéro du salon s’il souhaite jouer à plusieurs
+- Nombre de tours : 10 tours de jeu avec 1 tour correspondant à 1 jour
+
+- Prix initial des matières premières
+- Prix initial et volume de vente initial
+
+## Modèle conceptuel applicatif
+
+Voici notre diagramme de classe décrivant notre jeu :
