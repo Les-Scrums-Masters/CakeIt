@@ -59,7 +59,7 @@ export default function GamePage(props) {
         <NewsList
           socket={props.socket}
           makeDate={makeDate}
-          showNews={props.showNews}
+          showModal={props.showModal}
         />
 
         <div className="flex grow flex-col gap-5">
