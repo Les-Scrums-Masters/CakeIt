@@ -63,7 +63,7 @@ export default function JoinForm(props) {
       value={name}
       onChange={(e) => setName(e.target.value)}
       type="text"
-      className="input input-bordered bg-white text-center"
+      className="input input-bordered bg-white text-center text-xl"
       key="name"
     />
   );
@@ -83,7 +83,7 @@ export default function JoinForm(props) {
           value={roomCode}
           onChange={(e) => setRoomCode(e.target.value)}
           type="text"
-          className="input input-bordered input-error bg-white text-center"
+          className="input input-bordered input-error bg-white text-center text-xl"
           key="code"
         />,
         buttons[1],
