@@ -1,6 +1,7 @@
 export default function Panel(props) {
   const borderColor = "border-" + props.color;
   const textColor = "text-" + props.color;
+  const bgColor = "bg-" + props.color;
 
   return (
     <article
@@ -9,8 +10,8 @@ export default function Panel(props) {
         borderColor
       }
     >
-      <header className="p-5">
-        <h3 className={"font-3xl font-bold " + textColor}>{props.title}</h3>
+      <header className={"border-b-2 px-5 py-4 " + borderColor}>
+        <h3 className={"text-xl font-bold " + textColor}>{props.title}</h3>
       </header>
 
       <div className="grow">{props.children}</div>
