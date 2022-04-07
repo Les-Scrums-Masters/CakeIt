@@ -27,12 +27,17 @@ climbServer.findRoom = (roomId) => {
 };
 
 climbServer.joinRoom = (roomId, playerName) => {
-  for (let i = 0; i < climbServer.rooms.length; i++) {
-    if (climbServer.rooms[i].getId() == roomId) {
-      climbServer.rooms[i].addPlayer(climbServer.getRandomCode(), playerName);
-      console.log(climbServer.rooms[i]);
-    }
+  let room = climbServer.findRoom(roomId);
+  room.addPlayer(climbServer.getRandomCode(), playerName);
+};
+
+climbServer.startGame = (roomId) => {
+  let room = climbServer.findRoom(roomId);
+  if (room?.getPlayers().length >= 2) {
+    room.startGame();
+    return true;
   }
+  return false;
 };
 
 climbServer.getRandomCode = () => {

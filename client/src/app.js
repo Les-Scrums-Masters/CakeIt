@@ -7,7 +7,7 @@ import GamePage from "./game/gamePage";
 const socket = io.connect("http://localhost:3001");
 
 function App() {
-  //Possible display : HomePage, RoomLobby
+  //Possible display : HomePage, RoomLobby, GamePage
   const [display, setDisplay] = useState("HomePage");
 
   useEffect(() => {
@@ -15,10 +15,16 @@ function App() {
       //Il a rejoint une room
       setDisplay("RoomLobby");
     });
+    socket.on("game_started", (room) => {
+      //Il a rejoint une room
+      setDisplay("GamePage");
+    });
   }, [socket]);
 
   if (display === "RoomLobby") {
     return <RoomLobby socket={socket} />;
+  } else if (display === "GamePage") {
+    return <GamePage socket={socket} />;
   } else {
     return <HomePage socket={socket} />;
   }
