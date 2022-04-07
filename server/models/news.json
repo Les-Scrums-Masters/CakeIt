@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Contrôle de relance du gouvernement",
+    "descriptions": "Suite à la fin du covid, le gouvernement à décider de relancer l'économie en donnant une aide exceptionnelle de 100€ !",
+    "multipliers": {
+      "egg": 0.9,
+      "chocolate": 0.9,
+      "butter": 0.9,
+      "sugar": 0.85,
+      "flour": 0.8
+    }
+  },
+  {
+    "name": "Pandémies : COVID !",
+    "descriptions": "Le covid est de retour !!!",
+    "multipliers": {
+      "egg": 1.2,
+      "chocolate": 1.3,
+      "butter": 1.3,
+      "sugar": 1.1,
+      "flour": 1.1
+    }
+  },
+  {
+    "name": "Un nouveau moyen de faire du chocolat ?!",
+    "descriptions": "Un énorme filon de chocolat a été trouvé en France !",
+    "multipliers": {
+      "egg": 1,
+      "chocolate": 0.8,
+      "butter": 1.0,
+      "sugar": 1.0,
+      "flour": 1.0
+    }
+  },
+  {
+    "name": "Un nouveau confinement ?",
+    "descriptions": "Le covid est de retour ! Erkan Jeylan a annoncé officiellement un reconfinement dans tout le pays",
+    "multipliers": {
+      "egg": 1.1,
+      "chocolate": 1.2,
+      "butter": 1.2,
+      "sugar": 1.1,
+      "flour": 1.3
+    }
+  }
+]
