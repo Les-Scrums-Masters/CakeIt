@@ -85,7 +85,7 @@ function App() {
 
   let content;
   let logo = (
-    <h1 className="absolute left-40 top-5 text-left text-2xl font-bold text-error">
+    <h1 className="absolute left-10 top-5 text-left text-2xl font-bold text-error">
       Cake It !
     </h1>
   );
@@ -117,7 +117,7 @@ function App() {
       {logo}
 
       {sound !== null ? (
-        <MusicSound sound={sound} additionnalStyle="absolute right-10 top-8" />
+        <MusicSound sound={sound} additionnalStyle="absolute right-10 top-5" />
       ) : (
         ""
       )}
