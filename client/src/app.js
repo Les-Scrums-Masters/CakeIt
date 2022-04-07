@@ -112,7 +112,7 @@ function App() {
         socket={socket}
         room={room}
         playerId={playerId}
-        showNews={showNewsModal}
+        showModal={showNewsModal}
       />
     );
   } else {

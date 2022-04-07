@@ -15,8 +15,6 @@ export default function GameContent(props) {
   const [production, setProduction] = useState(5);
   const [price, setPrice] = useState(5);
 
-  const [ingredients, setIngredients] = useState({});
-
   const ready = () => {
     let data = {
       price: price,
@@ -31,9 +29,6 @@ export default function GameContent(props) {
     });
     props.socket.on("end_day", () => {
       setIsReport(true);
-    });
-    props.socket.on("update_ingredients", (data) => {
-      setIngredients(data);
     });
   });
 
@@ -72,30 +67,14 @@ export default function GameContent(props) {
     content = (
       <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
         <div className="col-span-2 row-span-3 h-full">
-          {Object.keys(ingredients).length === 5 ? (
-            <Chart ingredients={ingredients} />
+          {Object.keys(props.ingredients).length === 5 ? (
+            //<Chart ingredients={props.ingredients} />
+            <div></div>
           ) : (
             ""
           )}
         </div>
         <div className="row-span-2 flex flex-col pl-3 align-middle">
-          <h3 className="text-2xl font-bold text-success">
-            Coût des ingrédients
-          </h3>
-
-          {Object.values(ingredients).map((item) => {
-            let price = 0;
-            let evolution = 0;
-
-            return (
-              <IngredientItem
-                name={item.name}
-                price={price}
-                evolution={evolution}
-              />
-            );
-          })}
-
           <h3 className="text-2xl font-bold text-success">
             Ajustez votre production
           </h3>
@@ -165,7 +144,9 @@ export default function GameContent(props) {
         {isReport ? "Bilan" : "Vente en cours ..."}
       </h1>
 
-      <div className="grid grid-cols-4 gap-3 text-success">{values}</div>
+      <div className="grid grid-cols-4 items-center gap-3 text-success">
+        {values}
+      </div>
 
       {content}
     </div>
