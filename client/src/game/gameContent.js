@@ -6,6 +6,11 @@ import ValueDisplay from "./valueDisplay";
 export default function GameContent(props) {
   const [isReport, setIsReport] = useState(false);
 
+  const [production, setProduction] = useState(5);
+  const [price, setPrice] = useState(5);
+
+  const ready = () => {};
+
   useEffect(() => {
     props.socket.on("next_day", () => {
       setIsReport(false);
@@ -35,24 +40,35 @@ export default function GameContent(props) {
         <ValueDisplay value={lastPrice} legend="prix de vente" />
       </div>
 
-      <div className="h-16 w-full bg-info">Charts</div>
+      <div class="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
+        <div class="col-span-2 row-span-3 h-full bg-info">Charts</div>
+        <div class="row-span-2 flex flex-col pl-3 align-middle">
+          <h3 className="text-2xl font-bold text-success">
+            Ajustez votre production
+          </h3>
 
-      <div className="flex flex-col">
-        <h3 className="text-2xl font-bold text-success">
-          Ajustez votre production
-        </h3>
-
-        <Slider
-          min={0}
-          max={1}
-          onChange={() => {}}
-          caption="Prix"
-          suffix=" €"
-        />
-        <Slider min={0} max={1} onChange={() => {}} caption="Quantité" />
+          <Slider
+            min={1}
+            max={15}
+            step={0.1}
+            value={price}
+            caption="Prix"
+            suffix=" €"
+            onChange={(v) => setPrice(v)}
+          />
+          <Slider
+            min={0}
+            max={1000}
+            step={1}
+            value={production}
+            caption="Quantité"
+            onChange={(v) => setProduction(v)}
+          />
+        </div>
+        <div className="flex justify-end">
+          <button className="btn btn-success">Valider</button>
+        </div>
       </div>
-
-      <p></p>
     </div>
   );
 }
