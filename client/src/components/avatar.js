@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import image from "../images/chef.png";
 
 function Avatar(props) {

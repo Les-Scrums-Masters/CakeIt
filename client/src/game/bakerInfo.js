@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Avatar from "./../components/avatar";
 
 export default function BakerInfo(props) {
