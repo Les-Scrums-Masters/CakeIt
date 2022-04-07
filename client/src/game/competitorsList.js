@@ -13,7 +13,7 @@ export default function CompetitorsList(props) {
           );
           console.log(item);
 
-          if (item.id != props.player.id) {
+          if (item.id !== props.player.id) {
             let price = 0;
             let money = 0;
 

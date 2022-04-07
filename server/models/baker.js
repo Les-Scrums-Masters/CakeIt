@@ -14,6 +14,7 @@ class Baker {
     this.volume = new HistoryValue(Baker.INITIAL_VOLUME);
     this.money = new HistoryValue(Baker.INITIAL_MONEY);
     this.sales = new HistoryValue(0);
+    this.profit = new HistoryValue(0);
 
     this.ready = false;
   }
@@ -22,9 +23,10 @@ class Baker {
     return this.id;
   }
 
-  newDay(price, volume, cakeSold) {
+  newDay(price, volume, profit, cakeSold) {
     this.price.set(price);
     this.volume.set(volume);
+    this.profit.set(profit);
     this.cakeSold.set(cakeSold);
   }
 
@@ -32,6 +34,7 @@ class Baker {
     this.moneyEvolution = this.money.getEvolution();
     this.salesEvolution = this.sales.getEvolution();
     this.volumeEvolution = this.volume.getEvolution();
+    this.profitEvolution = this.profit.getEvolution();
   }
 }
 
