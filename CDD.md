@@ -23,8 +23,8 @@ Selon la théorie, sur un marché en CPP, le prix des biens est fixé par un éq
 L’équilibre entre l’offre et la demande peut être modifié par des chocs, ce sont des évènements extérieurs qui viennent régulièrement impacter l’offre ou la demande. Ces changements violents ont le pouvoir de créer un bouleversement au plan économique.
 Il y a deux types de conséquences, qui peuvent à la fois être positives ou négatives :
 
-- Choc sur la demande : peur de la pénurie entraîne une hausse de la demande ou un scandale sur l'hygiène d’une industrie fait chuter la demande.
-- Choc sur l’offre : pénuries entraînent une augmentation du prix des matières premières (négatif) ou innovation permettant une meilleure productivité (positif).
+- **Choc sur la demande** : peur de la pénurie entraîne une hausse de la demande ou un scandale sur l'hygiène d’une industrie fait chuter la demande.
+- **Choc sur l’offre** : pénuries entraînent une augmentation du prix des matières premières (négatif) ou innovation permettant une meilleure productivité (positif).
 
 ## Description de l’Unité d’Enseignement 1
 
@@ -43,7 +43,7 @@ Il y a deux types de conséquences, qui peuvent à la fois être positives ou n�
 #### Choc de l’offre :
 
 - La notion de choc de l’offre désigne une variation importante et imprévue des conditions de production qui affecte les producteurs.
-- Elle modifie les coûts de production des biens et se traduit par une variations des prix demandés par les entreprises. On peut aussi parler de choc de prix.
+- Elle modifie les coûts de production des biens et se traduit par une variations des prix demandés par les entreprises. On peut aussi parler de **choc de prix**.
 - Les chocs d’offre ou/et de demande peuvent générer des périodes d’expansion (choc positif) ou provoquer des crises économiques (choc négatif).
 
 ## Description du jeu
@@ -53,7 +53,7 @@ Incarnation du joueur : Un boulanger
 
 **Déroulement d’une partie**
 
-Description du déroulement d’une partie : début, déroulement et fin\*\*
+Description du déroulement d’une partie : début, déroulement et fin
 
 Nous avons créé un jeu multijoueur. Les joueurs incarnent des boulangeries en concurrence. Les boulangeries ne vendent qu’un seul produit : des gâteaux aux chocolats.
 Les habitants de ce monde merveilleux ne peuvent pas vivre bien longtemps sans gâteaux aux chocolats.
@@ -68,14 +68,13 @@ A ce moment-là, les boulangeries mettent en pause leur production et analysent 
 
 Description des options permettant de paramétrer une partie.
 
-- Nombre de joueur : 2-X joueurs, chacun joue sur son appareil
-- Chaque joueur est en concurrence avec tous les autres
-- Nom du joueur
-- Numéro du salon s’il souhaite jouer à plusieurs
-- Nombre de tours : 10 tours de jeu avec 1 tour correspondant à 1 jour
+- **Nombre de joueur** : 2-X joueurs, chacun joue sur son appareil. Chaque joueur est en concurrence avec tous les autres
+- **Nom du joueur**
+- **Numéro du salon** s’il souhaite jouer à plusieurs
+- **Nombre de tours** : 10 tours de jeu avec 1 tour correspondant à 1 jour
 
-- Prix initial des matières premières
-- Prix initial et volume de vente initial
+- **Prix initial des matières premières**
+- **Prix initial et volume de vente initial**
 
 ## Modèle conceptuel applicatif
 
@@ -89,14 +88,12 @@ Liste des actions possibles par le joueur.
 
 #### Gestion des tours :
 
-- Augmenter ou diminuer le prix des gâteaux aux chocolats
-- Augmenter ou diminuer le volume de sa production
-  Gestion des tâches
-  Examiner les graphiques mises à disposition afin de prendre des décisions
+- **Augmenter ou diminuer** le prix des gâteaux aux chocolats
+- **Augmenter ou diminuer** le volume de sa production
 
 #### Gestion des tâches
 
-- Examiner les graphiques mises à disposition afin de prendre des décisions
+- **Examiner** les graphiques mises à disposition afin de prendre des décisions
 
 ### Informations au joueur
 
@@ -104,17 +101,17 @@ Liste des informations présentées au joueurs.
 
 #### Gestion des tours
 
-- Date actuelle : la date d'aujourd'hui
-- Trésorerie de la boulangerie : trésorerie de la boulangerie
-- Actualités : les actualités de la journée, ce sont les changement de contexte
-- Concurrents : les concurrents ce sont les autres boulangeries
-  - Prix de vente des concurrents : le prix que les concurrents ont fixé pour les gâteaux aux chocolats
-  - Trésorerie : la trésorerie des concurrents
-- Bilan de la veille du boulanger : données de la boulangerie
-  - Gâteaux en rayon : nombre de gâteau en rayon
-  - Prix de vente du gâteau : prix du gâteau
-  - Gâteaux vendus : nombre de gâteau vendus
-- Graphiques : graphiques montrant l’évolution des prix des matières premières (Chocolat, Farine, Beurre, Sucre et Oeufs) en fonction du temps
+- **Date actuelle** : la date d'aujourd'hui
+- **Trésorerie de la boulangerie** : trésorerie de la boulangerie
+- **Actualités** : les actualités de la journée, ce sont les changement de contexte
+- **Concurrents** : les concurrents ce sont les autres boulangeries
+  - **Prix de vente des concurrents** : le prix que les concurrents ont fixé pour les gâteaux aux chocolats
+  - **Trésorerie** : la trésorerie des concurrents
+- **Bilan de la veille du boulanger** : données de la boulangerie
+  - **Gâteaux en rayon** : nombre de gâteau en rayon
+  - **Prix de vente du gâteau** : prix du gâteau
+  - **Gâteaux vendus** : nombre de gâteau vendus
+- **Graphiques** : graphiques montrant l’évolution des prix des matières premières (Chocolat, Farine, Beurre, Sucre et Oeufs) en fonction du temps
 
 ### Moteur interne
 
@@ -122,13 +119,10 @@ Liste des interactions entre les actions du joueurs et les informations
 
 #### Gestion des tours
 
-Augmenter le prix des gâteaux :
-Prix de ventes lendemain ++:
+- **Augmenter le prix des gâteaux** : Prix de ventes lendemain ++
 
-#### Diminuer le prix des gâteaux :
+- **Diminuer le prix des gâteaux** : Prix de ventes lendemain - -
 
-Prix de ventes lendemain - -
+- **Augmenter le volume de la production** : Gâteaux en rayon lendemain ++
 
-#### Augmenter le volume de la production :
-
-Gâteaux en rayon lendemain ++:
+- **Diminuer le volume de la production** : Gâteaux en rayon lendemain - -
