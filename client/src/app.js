@@ -105,6 +105,7 @@ function App() {
         <a
           href="https://git.unistra.fr/les-scrums-masters/pec22-t4-a"
           target="_blank"
+          rel={"noreferrer"}
         >
           Les Scrum Masters © 2022
         </a>
