@@ -1,5 +1,5 @@
 import BakerInfo from "./bakerInfo";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CompetitorsList from "./competitorsList";
 import NewsList from "./newsList";
 import ValueDisplay from "./valueDisplay";

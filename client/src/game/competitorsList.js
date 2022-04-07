@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Panel from "../components/panel";
 import CompetitorItem from "./competitorItem";
 
@@ -6,7 +6,7 @@ export default function CompetitorsList(props) {
 
   const [competitors, setCompetitors] = useState([]);
 
-  useState(()=> {
+  useEffect(()=> {
     
     props.socket.on("refresh_players", (players) => setCompetitors(players))
 
