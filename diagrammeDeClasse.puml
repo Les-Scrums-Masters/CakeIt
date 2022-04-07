@@ -59,6 +59,12 @@ class Baker {
 
 class Ingredient {
 
+    + {static}EGG_PRICE:double
+    + {static}BUTTER_PRICE:double
+    + {static}CHOCOLATE_PRICE:double
+    + {static}SUGAR_PRICE:double
+    + {static}FLOUR_PRICE:double
+
     - name:String
     + price:HistoryValue<double>
 
