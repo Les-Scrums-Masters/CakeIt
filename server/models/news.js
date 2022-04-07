@@ -5,7 +5,7 @@ class News {
     this.name = name;
     this.description = description;
     this.multipliers = multipliers;
-    this.date = "NO VALUE";
+    this.date = 0;
   }
 
   static loadNews() {

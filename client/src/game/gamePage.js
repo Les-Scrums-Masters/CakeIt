@@ -20,12 +20,6 @@ export default function GamePage(props) {
   const [ingredients, setIngredients] = useState({});
   const [news, setNews] = useState({});
 
-  const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
-  });
-
   useEffect(() => {
     props.socket.on("next_day", (round) => setRound(round));
     props.socket.on("refresh_players", (p) => {
@@ -42,21 +36,6 @@ export default function GamePage(props) {
     });
   }, [props.socket, props.playerId]);
 
-  const getDate = () => {
-    return makeDate(round);
-  };
-
-  const makeDate = (round) => {
-    let increment = round ?? 0;
-
-    let initialDate = Date.now();
-    //let result = new Date(initialDate);
-    //result.setDate(result.getDate() + increment);
-    console.log(initialDate);
-    // FORMATTAGE
-    return dateFormatter.format(initialDate);
-  };
-
   if (player === undefined || player == null || players == null) {
     return <div className=""></div>;
   } else {
@@ -64,13 +43,13 @@ export default function GamePage(props) {
       <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 p-20 align-middle lg:flex-row">
         <NewsList
           socket={props.socket}
-          makeDate={makeDate}
+          makeDate={props.makeDate}
           showModal={props.showModal}
           news={news}
         />
 
         <div className="flex grow flex-col gap-5">
-          <BakerInfo date={getDate()} player={player} />
+          <BakerInfo date={props.makeDate(round)} player={player} />
 
           <GameContent
             ingredients={ingredients}
