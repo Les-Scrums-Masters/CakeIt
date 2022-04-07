@@ -10,7 +10,7 @@ export default function Slider(props) {
         max={props.max}
         value={props.value}
         step={props.step}
-        class="range-success range grow"
+        className="range-success range grow"
         onChange={(e) => props.onChange(e.target.value)}
       />
       <p className="w-20 text-right">{props.value + suffix}</p>
