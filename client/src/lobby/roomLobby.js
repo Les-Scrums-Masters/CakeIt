@@ -1,40 +1,44 @@
 import React, { useState } from "react";
+import LobbyPlayerList from "./playerList";
 
 export default function RoomLobby(props) {
   function startGame() {
     alert("Commencer la partie");
   }
 
-  let content, button;
-  content = (
-    <div className="bg-grey justify justif container mx-auto flex h-full w-full flex-col items-center justify-center gap-5 align-middle">
-      <p className="max-w-lg text-center">Salon</p>
-      <h1 className="text-center text-6xl font-bold text-error">
-        {props.roomCode}
-      </h1>
-    </div>
-  );
-  var players = ["Franck", "Eren", "Clément", "Derya"];
+  function back() {
+    alert("Quitter");
+  }
+
+  let players = [
+
+    {name: "Eren"},
+    {name: "Derya"},
+    {name: "Clément"},
+    {name: "Franck"}
+
+  ]
+
   return (
-    <div className="carousel-center carousel rounded-box max-w-md space-x-4 bg-neutral p-4">
-      <div className="carousel-center carousel rounded-box max-w-md space-x-4 bg-neutral p-4">
-        {players?.map((player, index) => {
-          return (
-            <div className="carousel-item">
-              <img
-                className="mask mask-circle"
-                src="https://api.lorem.space/image/shoes?w=160&h=160"
-                alt="Avatar"
-              />
-              <p className="max-w-lg text-center">{props.name}</p>
-            </div>
-          );
-        })}
-      </div>
-      <button className="btn btn-primary" onClick={startGame}>
-        Commencer une partie
-      </button>
-      {button}
+    <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-center justify-center gap-20 align-middle">
+
+        <div className="grid">
+          <p className="text-neutral text-center">Salon</p>
+          <h1 className="text-error text-6xl font-bold">{props.roomCode}</h1>
+        </div>
+
+        <LobbyPlayerList players={players} />
+
+        <div className="flex flex-col gap-3">
+          <button className="btn btn-success" onClick={startGame}>
+              Commencer la partie
+          </button>
+
+          <button className="btn btn-link" onClick={back}>
+            Retour
+          </button>
+        </div>
+
     </div>
-  );
+  )
 }
