@@ -34,7 +34,11 @@ const emitRoom = (roomId, event, params) => {
 
 const refreshPlayers = (roomId) => {
   //io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
-  emitRoom(roomId, "refresh_players", [climbServer.getPlayers(roomId)]);
+  let players = climbServer.getPlayers(roomId);
+  console.log("COMPETITORS SENT : ");
+  console.log(players);
+  console.log("---------------------");
+  emitRoom(roomId, "refresh_players", [players]);
 };
 
 const sendPlayersInfo = (roomId) => {
