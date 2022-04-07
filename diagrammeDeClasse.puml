@@ -13,8 +13,7 @@ class Room {
     + {static}NEWS_SPAWN_PROBABILITY:double
     + {static}SALE_DURATION:Integer
     + {static}DECISION_DURATION:Integer
-
-    - creatorId:Integer
+    
     - roomCode:Integer
     - roundNumber:Integer
     + Room(roomCode: Integer, firstPlayer:String)
@@ -22,7 +21,8 @@ class Room {
     + addPlayer(name:String):Integer
     + removePlayer(id:Integer)
 
-    + getId():Integer
+    + getRoomCode():Integer
+    + getRandomNews():News
     + getIngredients():Ingredient{}
     + getPlayer(id:String):Baker
     + getRound():Integer
@@ -35,6 +35,7 @@ class Room {
 Room *--> "-players \n2...MAX_PLAYERS" Baker
 Room *--> "-ingredients \n5" Ingredient
 Room *--> "-news \n 0...X" News
+Room *--> "-newsStock \n 0...X" News
 
 class Baker {
 
@@ -59,12 +60,6 @@ class Baker {
 
 class Ingredient {
 
-    + {static}EGG_PRICE:double
-    + {static}BUTTER_PRICE:double
-    + {static}CHOCOLATE_PRICE:double
-    + {static}SUGAR_PRICE:double
-    + {static}FLOUR_PRICE:double
-
     - name:String
     + price:HistoryValue<double>
 
@@ -75,18 +70,12 @@ class Ingredient {
 
 class News {
 
-    + {static}NEWS_LIST:News[]
-    + {static}loadNews()
-    + {static}getRandomNews():News
-
     - name:String
     - description:String
     - multipliers:double{}
 
-    + date:Integer
-
-    - News(json:{})
-
+    - News(name:String, description:String, multipliers:double{})
+    
     + getName():String
     + getDescription():String
     + getMultipliers():double[]
