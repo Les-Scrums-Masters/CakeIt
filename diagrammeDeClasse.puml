@@ -74,12 +74,12 @@ class News {
     - multipliers:double{}
     - date:Integer
 
-    - News(jsonNew:json)
+    - News(jsonNew:{})
     
     + getName():String
     + getDescription():String
     + getMultipliers():double[]
-    + {static}loadNews(jsonNews:json)
+    + {static}loadNews(jsonNews:{})
 }
 
 class HistoryValue<T> {
