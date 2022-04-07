@@ -7,10 +7,12 @@ export default function NewsList(props) {
   useEffect(() => {
     props.socket.on("new_news", (n) => {
       setNews(n);
-      let lastNews = news[news.length - 1];
-      props.showModal(lastNews);
+      console.log("-------------NEW NEWS-----------");
+      console.log(n);
+      //let lastNews = news[news.length - 1];
+      //props.showModal(lastNews);
     });
-  });
+  }, [props.socket, setNews, news]);
 
   return (
     <Panel title="News" color="info">

@@ -50,6 +50,18 @@ class Room {
     return null;
   }
 
+  getNews(number) {
+    let newList = [];
+    this.remainingNews.forEach((news, index) => {
+      if (index != number) {
+        newList.push(news);
+      }
+    });
+    let news = this.remainingNews[number % this.remainingNews.length];
+    this.remainingNews = newList;
+    return news;
+  }
+
   getRound() {
     return this.roundNumber;
   }
