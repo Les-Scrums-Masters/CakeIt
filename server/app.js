@@ -84,8 +84,11 @@ io.on("connection", (socket) => {
   socket.on("start_game", (roomId) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
+    climbServer.pickNews(roomId);
+
     console.log("Launch game : " + roomId);
     emitRoom(roomId, "game_started", [roomId]);
+    updateIngredients(roomId);
     refreshPlayers(roomId);
     sendPlayersInfo(roomId);
   });
@@ -101,6 +104,7 @@ io.on("connection", (socket) => {
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
       emitRoom(roomId, "next_day", [room.roundNumber]);
+      updateIngredients(roomId);
       refreshPlayers(roomId);
       sendPlayersInfo(roomId);
     }
