@@ -25,10 +25,10 @@ let sockets = [];
 io.on("connection", (socket) => {
   sockets.push(socket);
   console.log(`User connected : ${socket.id}`);
-  console.log(sockets);
+  console.log(sockets.length);
 
-  socket.on("create_room", (hostParticipant) => {
-    const room = climbServer.createGame(io, hostParticipant);
+  socket.on("create_room", (hostName) => {
+    const room = climbServer.createGame(socket.id, hostName);
     socket.join(room.getId());
     socket.emit("room_joined", room);
     console.log(`User (${socket.id}) created room : ${room.getId()}`);
@@ -36,7 +36,6 @@ io.on("connection", (socket) => {
 
   socket.on("join_room", (roomId, playerName) => {
     const room = climbServer.findRoom(roomId);
-    console.log(room);
     if (room === undefined) {
       socket.emit("not_find_room");
     } else {
@@ -45,6 +44,7 @@ io.on("connection", (socket) => {
       socket.emit("room_joined", room);
       console.log(`User (${socket.id}) joined room : ${roomId}`);
     }
+    console.log(room);
   });
 
   socket.on("start_game", (data) => {
@@ -56,6 +56,10 @@ io.on("connection", (socket) => {
   socket.on("end_day", (data) => {
     //Condition à faire : Si tout les joueurs sont prêt
     socket.to(data.room.getId()).emit("next_day", data);
+  });
+
+  socket.on("quit_game", (roomId, playerId) => {
+    climbServer.quitRoom(roomId, playerId);
   });
 
   socket.on("disconnect", () => {

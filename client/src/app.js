@@ -9,10 +9,12 @@ const socket = io.connect("http://localhost:3001");
 function App() {
   //Possible display : HomePage, RoomLobby, GamePage
   const [display, setDisplay] = useState("HomePage");
+  const [room, setRoom] = useState({});
 
   useEffect(() => {
     socket.on("room_joined", (room) => {
       //Il a rejoint une room
+      setRoom(room);
       setDisplay("RoomLobby");
     });
     socket.on("game_started", (room) => {
@@ -21,8 +23,8 @@ function App() {
     });
   }, [socket]);
 
-  if (true/*display === "RoomLobby"*/) {
-    return <RoomLobby socket={socket} roomCode={2039} />;
+  if (display === "RoomLobby") {
+    return <RoomLobby socket={socket} room={room} />;
   } else if (display === "GamePage") {
     return <GamePage socket={socket} />;
   } else {
