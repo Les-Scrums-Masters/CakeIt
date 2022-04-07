@@ -34,7 +34,7 @@ const emitRoom = (roomId, event, params) => {
 
 const refreshPlayers = (roomId) => {
   //io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
-  emitRoom(roomId, "refresh_players", climbServer.getPlayers(roomId));
+  emitRoom(roomId, "refresh_players", [climbServer.getPlayers(roomId)]);
 };
 
 /* CONNEXION */
@@ -66,12 +66,13 @@ io.on("connection", (socket) => {
 
   socket.on("leave_room", (roomId, playerId) => {
     climbServer.leaveRoom(roomId, playerId);
+    refreshPlayers(roomId);
   });
 
-  socket.on("start_game", (room) => {
+  socket.on("start_game", (roomId) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
-    io.to(data.room.getId()).emit("game_started", roomId);
+    io.to(roomId).emit("game_started", roomId);
   });
 
   socket.on("end_day", (data) => {

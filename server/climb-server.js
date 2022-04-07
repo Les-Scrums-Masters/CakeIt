@@ -45,7 +45,8 @@ climbServer.startGame = (roomId) => {
 
 climbServer.leaveRoom = (roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
-  console.log("player id : " + playerId);
+  console.log("all rooms : ");
+  console.log(climbServer.rooms);
   room.removePlayer(playerId);
 };
 
