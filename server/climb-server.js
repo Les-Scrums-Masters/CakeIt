@@ -13,6 +13,8 @@ climbServer.createGame = (io, hostParticipant) => {
 
   // Keep track
   climbServer.roomCount += 1;
+
+  return newRoom;
 };
 
 climbServer.findGame = (roomId) => {

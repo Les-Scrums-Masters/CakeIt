@@ -1,4 +1,4 @@
-import Baker from "./baker.js";
+const Baker = require("./baker.js");
 
 class Room {
   constructor(firstPlayer, roomCode) {
