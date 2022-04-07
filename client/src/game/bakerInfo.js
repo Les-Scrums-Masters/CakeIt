@@ -1,13 +1,10 @@
 import { useState } from "react";
+import Avatar from "./../components/avatar";
 
 export default function BakerInfo(props) {
   return (
     <article className="align-center flex flex-row items-center gap-3 rounded-xl bg-success p-8 text-white">
-      <img
-        className="mask mask-circle w-20"
-        src="https://api.lorem.space/image/shoes?w=160&h=160"
-        alt="Avatar"
-      />
+      <Avatar className="mask mask-circle w-20" />
 
       <div className="flex grow flex-col">
         <h6 className="font-light">{props.date}</h6>
