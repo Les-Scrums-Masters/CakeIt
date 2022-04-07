@@ -4,7 +4,7 @@
 /
 
 ### room_joigned
-numéro de la room
+roomId, playerId
 
 ### game_started
 A DEFINIR
@@ -35,59 +35,22 @@ Dictionnaire 5 ingredients
 
 
 
-
-Arguments : /
-
-### room_joigned
-
-Arguments : numéro de la room
-
-### game_started
-
-Arguments: A DEFINIR
-
-### next_day
-
-Arguments: A DEFINIR
-
 # Evènements envoyé par les joueurs
 
 ### create_room
-nom du joueur
+playerName
 
 ### join_room
 roomId, playerName
+
+### ready
+roomId, playerId, price, volume
+
+### leave_room
+roomId, playerId
 
 ### start_game
 roomId
 
 ### disconnect
-/
-
-
-
-
-### ready
-price, volume
-
-Arguments : nom du joueur
-
-### join_room
-
-Arguments : roomId, playerName
-
-### leave_room
-
-Arguments : roomId, playerName
-
-### start_game
-
-Arguments: roomId
-
-### end_day
-
-Arguments : data
-
-### disconnect
-
-Arguments : /
+playerId
