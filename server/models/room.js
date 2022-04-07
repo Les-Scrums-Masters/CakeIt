@@ -21,18 +21,8 @@ class Room {
     this.news = [];
   }
 
-  addPlayer(name) {
-    this.players.push(new Baker(getRandomCode(), name));
-  }
-
-  getRandomCode() {
-    code = 1000 + Math.floor(Math.random() * 8999);
-    this.players.forEach((player) => {
-      if (player.getId() === code) {
-        code = getRandomCode();
-      }
-    });
-    return code;
+  addPlayer(id, name) {
+    this.players.push(new Baker(id, name));
   }
 
   removePlayer(id) {
