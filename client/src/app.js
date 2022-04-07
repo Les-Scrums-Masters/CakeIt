@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import HomePage from "./home/homePage";
 import RoomLobby from "./lobby/roomLobby";
 import GamePage from "./game/gamePage";
+import Modal from "./components/modal";
 
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
@@ -20,9 +21,8 @@ function App() {
    const [buttons, setButtons] = useState(null);
    const [modalOpen, setModalOpen] = useState(false);
  
-   // Fonction de fermeture de la boite de dialogue
    const closeModal = () => setModalOpen(false);
- 
+
    let showNewsModal = (news) => {
      setModalEmoji( String.fromCodePoint(0x2139) );
      setModalTitle("Nouvelle actualité !");
@@ -69,13 +69,18 @@ function App() {
       />
     );
   } else if (display === "GamePage") {
-    content = <GamePage socket={socket} room={room} playerId={playerId} />;
+    content = <GamePage socket={socket} room={room} playerId={playerId} showNews={showNewsModal}/>;
   } else {
     content = <HomePage socket={socket} />;
   }
 
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
+      
+      <Modal open={modalOpen} emoji={modalEmoji} title={modalTitle} buttons={buttons} onClose={closeModal}>
+            {modalContent}
+      </Modal>
+      
       {/*header */}
 
       {content}

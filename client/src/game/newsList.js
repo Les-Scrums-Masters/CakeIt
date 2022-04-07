@@ -8,7 +8,11 @@ export default function NewsList(props) {
 
   useEffect(()=> {
     
-    props.socket.on("new_news", (news) => setNews(news))
+    props.socket.on("new_news", (n) => {
+      setNews(n)
+      let lastNews = news[news.length-1];
+      props.showModal(lastNews);
+    })
 
   });
 
