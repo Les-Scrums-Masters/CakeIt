@@ -20,22 +20,33 @@ const io = new Server(server, {
   },
 });
 
-let sockets = [];
+/*** FUNCTIONS */
+
+const emitRoom = (roomId, event, params) => {
+  const room = climbServer.findRoom(roomId);
+  const socketId = room.creatorId;
+
+  console.log("EMIT EVENT " + event);
+
+  io.to(roomId).emit(event, ...params);
+  io.to(socketId).emit(event, ...params);
+};
+
+const refreshPlayers = (roomId) => {
+  //io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
+  emitRoom(roomId, "refresh_players", [climbServer.getPlayers(roomId)]);
+};
+
+/* CONNEXION */
 
 io.on("connection", (socket) => {
-  sockets.push(socket);
   console.log(`User connected : ${socket.id}`);
-  console.log(sockets.length);
 
-  const refreshPlayers = (roomId) => {
-    io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
-  }
- 
   socket.on("create_room", (hostName) => {
     const room = climbServer.createGame(socket.id, hostName);
     socket.join(room.getId());
+    console.log(socket.id + " (CREATED) now in rooms ", socket.rooms);
     socket.emit("room_joined", room, socket.id);
-    console.log(`User (${socket.id}) created room : ${room.getId()}`);
   });
 
   socket.on("join_room", (roomId, playerName) => {
@@ -46,9 +57,8 @@ io.on("connection", (socket) => {
       socket.join(roomId);
       climbServer.joinRoom(roomId, socket.id, playerName);
       socket.emit("room_joined", room, socket.id);
+      console.log(socket.id + " (JOIGNED) now in rooms ", socket.rooms);
       refreshPlayers(roomId);
-
-      console.log(`User (${socket.id}) joined room : ${roomId}`);
     }
     const newroom = climbServer.findRoom(roomId);
     console.log(newroom);
@@ -56,12 +66,13 @@ io.on("connection", (socket) => {
 
   socket.on("leave_room", (roomId, playerId) => {
     climbServer.leaveRoom(roomId, playerId);
+    refreshPlayers(roomId);
   });
 
   socket.on("start_game", (roomId) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
-    io.to(data.room.getId()).emit("game_started", roomId);
+    io.to(roomId).emit("game_started", roomId);
   });
 
   socket.on("end_day", (data) => {

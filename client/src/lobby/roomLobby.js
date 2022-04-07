@@ -10,12 +10,13 @@ export default function RoomLobby(props) {
       setPlayers(list);
     });
 
-    // setNewPlayer(false);   
+    // setNewPlayer(false);
   }, [props.socket, players]);
 
   function startGame() {
     //if (props.room.players.length >= 2) {
     if (props.room.players.length >= 1) {
+      console.log("starting : " + props.room.roomCode);
       props.socket.emit("start_game", props.room.roomCode);
       props.setDisplay("GamePage");
     } else {
