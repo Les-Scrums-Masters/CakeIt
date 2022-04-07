@@ -1,3 +1,5 @@
+import Panel from "../components/panel";
+
 export default function BakerInfo(props) {
-  return <p>Baker info</p>;
+  return <p>BakerInfo</p>;
 }
