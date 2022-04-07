@@ -1,30 +1,57 @@
 # Evènements envoyés par le serveur
 
 ### not_find_room
-Arguments : /
+/
 
 ### room_joigned
-Arguments : numéro de la room
+numéro de la room
 
 ### game_started
-Arguments: A DEFINIR
+A DEFINIR
 
-### next_day
-Arguments: A DEFINIR
+### refresh_players
+Liste des Bakers
+
+
+
+
+### new_news
+Object News
+
+### update_ingredients
+Dictionnaire 5 ingredients
+{
+    egg: {
+        value: [toutes les valeurs ...],
+        latest: x
+        evolution: 0.8
+    }
+}
+
+### start_day
+
+### end_day
+
+
+
+
 
 # Evènements envoyé par les joueurs
 
 ### create_room
-Arguments : nom du joueur
+nom du joueur
 
 ### join_room
-Arguments : roomId, playerName
+roomId, playerName
 
 ### start_game
-Arguments: roomId
-
-### end_day
-Arguments : data
+roomId
 
 ### disconnect
-Arguments : /
+/
+
+
+
+
+### ready
+price, volume

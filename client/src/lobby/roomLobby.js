@@ -12,7 +12,7 @@ export default function RoomLobby(props) {
       setPlayers(list);
     });
 
-    // setNewPlayer(false);
+    // setNewPlayer(false);   
   }, [props.socket, players]);
 
   function startGame() {

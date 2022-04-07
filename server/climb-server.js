@@ -67,3 +67,12 @@ climbServer.getRandomCode = () => {
 };
 
 module.exports = climbServer;
+
+
+climbServer.getPlayers = (roomId) => {
+
+  let room = climbServer.findRoom(roomId);
+  room.players.forEach((player) => player.generateEvolution());
+  return room.players;
+
+}

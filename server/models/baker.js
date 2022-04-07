@@ -25,6 +25,13 @@ class Baker {
     this.volume.set(volume);
     this.cakeSold.set(cakeSold);
   }
+
+  generateEvolution() {
+    this.moneyEvolution = this.money.getEvolution();
+    this.salesEvolution = this.sales.getEvolution();
+    this.volumeEvolution = this.volume.getEvolution();
+  }
+
 }
 
 module.exports = Baker;
