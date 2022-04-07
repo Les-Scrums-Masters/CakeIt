@@ -1,7 +1,6 @@
 export default function Panel(props) {
   const borderColor = "border-" + props.color;
   const textColor = "text-" + props.color;
-  const bgColor = "bg-" + props.color;
 
   return (
     <article

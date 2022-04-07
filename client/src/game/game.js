@@ -8,8 +8,8 @@ export default function GamePage(props) {
     <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
       <NewsList />
 
-      <div className="grow bg-primary">
-        <BakerInfo />
+      <div className="grow">
+        <BakerInfo date="dimanche 28 janvier" name="Eren" money={20393}/>
 
         <div className="">
           <h1>Action</h1>
