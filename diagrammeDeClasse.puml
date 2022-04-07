@@ -22,7 +22,7 @@ class Room {
     + addPlayer(name:String):Integer
     + removePlayer(id:Integer)
 
-    + getRoomCode():Integer
+    + getId():Integer
     + getIngredients():Ingredient{}
     + getPlayer(id:String):Baker
     + getRound():Integer
@@ -70,14 +70,17 @@ class Ingredient {
 class News {
 
     + {static}NEWS_LIST:News[]
+    + {static}loadNews()
     + {static}getRandomNews():News
 
     - name:String
     - description:String
     - multipliers:double{}
 
-    - News(name:String, description:String, multipliers:double{})
-    
+    + date:Integer
+
+    - News(json:{})
+
     + getName():String
     + getDescription():String
     + getMultipliers():double[]
