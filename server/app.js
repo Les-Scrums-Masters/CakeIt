@@ -58,7 +58,7 @@ io.on("connection", (socket) => {
     climbServer.leaveRoom(roomId, playerId);
   });
 
-  socket.on("start_game", (room) => {
+  socket.on("start_game", (roomId) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
     io.to(data.room.getId()).emit("game_started", roomId);
