@@ -7,7 +7,6 @@ import GamePage from "./game/gamePage";
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
 
-
 function App() {
   //Possible display : HomePage, RoomLobby, GamePage
   const [display, setDisplay] = useState("HomePage");
@@ -59,8 +58,9 @@ function App() {
     });
   });
 
+  let content;
   if (display === "RoomLobby") {
-    return (
+    content = (
       <RoomLobby
         socket={socket}
         room={room}
@@ -69,10 +69,22 @@ function App() {
       />
     );
   } else if (display === "GamePage") {
-    return <GamePage socket={socket} room={room} playerId={playerId}/>;
+    content = <GamePage socket={socket} room={room} playerId={playerId} />;
   } else {
-    return <HomePage socket={socket} />;
+    content = <HomePage socket={socket} />;
   }
+
+  return (
+    <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
+      {/*header */}
+
+      {content}
+
+      <footer class="absolute right-10 bottom-10 ">
+        Les Scrum Masters © 2022
+      </footer>
+    </main>
+  );
 }
 
 export default App;
