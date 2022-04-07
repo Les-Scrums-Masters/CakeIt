@@ -27,6 +27,10 @@ io.on("connection", (socket) => {
   console.log(`User connected : ${socket.id}`);
   console.log(sockets.length);
 
+  const refreshPlayers = (roomId) => {
+    io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
+  }
+ 
   socket.on("create_room", (hostName) => {
     const room = climbServer.createGame(socket.id, hostName);
     socket.join(room.getId());
@@ -42,9 +46,7 @@ io.on("connection", (socket) => {
       socket.join(roomId);
       climbServer.joinRoom(roomId, socket.id, playerName);
       socket.emit("room_joined", room, socket.id);
-
-      //Refresh to all room
-      io.to(roomId).emit("refresh_players", room.players);
+      refreshPlayers(roomId);
 
       console.log(`User (${socket.id}) joined room : ${roomId}`);
     }
