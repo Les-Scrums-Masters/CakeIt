@@ -6,10 +6,7 @@ import RoomLobby from "./lobby/roomLobby";
 const socket = io.connect("http://localhost:3001");
 
 function App() {
-  return (
-    // <Homepage />
-    <RoomLobby roomCode={1234} name="test" socket={socket} />
-  );
+  return <Homepage socket={socket} />;
 }
 
 export default App;

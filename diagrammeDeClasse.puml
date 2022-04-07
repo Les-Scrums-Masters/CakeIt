@@ -13,7 +13,7 @@ class Room {
     + {static}NEWS_SPAWN_PROBABILITY:double
     + {static}SALE_DURATION:Integer
     + {static}DECISION_DURATION:Integer
-
+    
     - roomCode:Integer
     - roundNumber:Integer
     + Room(roomCode: Integer, firstPlayer:String)
@@ -22,6 +22,7 @@ class Room {
     + removePlayer(id:Integer)
 
     + getRoomCode():Integer
+    + getRandomNews():News
     + getIngredients():Ingredient{}
     + getPlayer(id:String):Baker
     + getRound():Integer
@@ -34,6 +35,7 @@ class Room {
 Room *--> "-players \n2...MAX_PLAYERS" Baker
 Room *--> "-ingredients \n5" Ingredient
 Room *--> "-news \n 0...X" News
+Room *--> "-newsStock \n 0...X" News
 
 class Baker {
 
@@ -67,9 +69,6 @@ class Ingredient {
 }
 
 class News {
-
-    + {static}NEWS_LIST:News[]
-    + {static}getRandomNews():News
 
     - name:String
     - description:String

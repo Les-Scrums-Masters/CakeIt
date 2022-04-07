@@ -1,11 +1,24 @@
-import Baker from "./baker.js";
+const Baker = require("./baker.js");
+const Ingredient = require("./ingredient.js");
 
 class Room {
-  constructor(firstPlayer, roomCode) {
-    this.players = [];
-    addPlayer(firstPlayer);
-    this.roomCode = roomCode; //Ask to server
+  constructor(hostname, roomCode) {
+    this.players = [
+      new Baker(1000 + Math.floor(Math.random() * 8999), hostname),
+    ];
+    this.roomCode = roomCode;
     this.roundNumber = 0;
+    this.ingredients = {
+      egg: new Ingredient("egg", Ingredient.INITIAL_PRICE_EGG),
+      chocolate: new Ingredient(
+        "chocolate",
+        Ingredient.INITIAL_PRICE_CHOCOLATE
+      ),
+      sugar: new Ingredient("sugar", Ingredient.INITIAL_PRICE_SUGAR),
+      butter: new Ingredient("butter", Ingredient.INITIAL_PRICE_BUTTER),
+      flour: new Ingredient("flour", Ingredient.INITIAL_PRICE_FLOUR),
+    };
+    this.news = [];
   }
 
   addPlayer(name) {
@@ -13,7 +26,7 @@ class Room {
   }
 
   getRandomCode() {
-    code = Math.floor(Math.random() * 100000);
+    code = 1000 + Math.floor(Math.random() * 8999);
     this.players.forEach((player) => {
       if (player.getId() === code) {
         code = getRandomCode();
@@ -30,7 +43,7 @@ class Room {
     });
   }
 
-  getRoomCode() {
+  getId() {
     return this.roomCode;
   }
 
@@ -53,3 +66,5 @@ class Room {
 
   nextDay() {}
 }
+
+module.exports = Room;
