@@ -26,7 +26,7 @@ function App() {
       //Il a rejoint une room
       setDisplay("GamePage");
     });
-  }, [socket]);
+  });
 
   if (display === "RoomLobby") {
     return (

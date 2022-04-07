@@ -1,15 +1,16 @@
+import { useState } from "react";
 import Panel from "../components/panel";
 import CompetitorItem from "./competitorItem";
-import NewsItem from "./newsItem";
 
 export default function CompetitorsList(props) {
 
-  let competitors = [
+  const [competitors, setCompetitors] = useState([]);
 
-    {name: "derya", status: "ajuste sa production ...", price: "293 €", money: "29 €"},
-    {name: "derya", status: "ajuste sa production ...", price: "293 €", money: "29 €"},
+  useState(()=> {
+    
+    props.socket.on("refresh_players", (players) => setCompetitors(players))
 
-  ]
+  });
 
   return (
     <Panel title="Concurrents" color="error">

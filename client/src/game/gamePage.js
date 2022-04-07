@@ -15,10 +15,10 @@ export default function GamePage(props) {
 
   return (
     <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
-      <NewsList />
+      <NewsList socket={props.socket} />
 
       <div className="flex grow flex-col gap-5">
-        <BakerInfo date="dimanche 28 janvier" name="Eren" money={20393} />
+        <BakerInfo date="dimanche 28 janvier" name="Eren" money={20393} socket={props.socket} />
 
         <div className="flex h-full w-full flex-col gap-5 rounded-xl border-2 border-success bg-white p-8">
           <h1 className="text-4xl font-bold text-success">Action</h1>
@@ -34,7 +34,7 @@ export default function GamePage(props) {
         </div>
       </div>
 
-      <CompetitorsList />
+      <CompetitorsList socket={props.socket}/>
     </div>
   );
 }
