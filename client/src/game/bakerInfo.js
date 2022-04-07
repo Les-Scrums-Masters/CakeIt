@@ -1,6 +1,6 @@
 export default function BakerInfo(props) {
   return (
-    <article className="rounded-lg bg-primary p-5 flex flex-row align-center items-center gap-3">
+    <article className="rounded-xl bg-success p-8 flex flex-row align-center items-center gap-3 text-white">
 
       <img
           className="mask mask-circle w-20"
@@ -8,9 +8,16 @@ export default function BakerInfo(props) {
           alt="Avatar"
         />
 
-      <div className="grow flex flex-col text-white">
+      <div className="grow flex flex-col">
           <h6 className="font-light">{props.date}</h6>
-          <h2 className="font-xl">{props.name}</h2>
+          <h2 className="text-3xl font-bold">{props.name}</h2>
+      </div>
+
+      <div className="flex flex-col justify-end text-right">
+
+          <p className="text-sm font-light">trésorerie</p>
+          <p className="text-2xl font-light">{props.money + " €"}</p>
+
       </div>
   
     </article>

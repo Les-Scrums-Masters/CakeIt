@@ -1,3 +1,10 @@
 export default function ValueDisplay(props) {
-  return <p>Value Display</p>;
+  return (
+    <div className="grow flex flex-col">
+
+      <p>{props.value}</p>
+      <p>{props.legend}</p>
+
+    </div>
+  );
 }
