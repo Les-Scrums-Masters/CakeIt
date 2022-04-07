@@ -6,7 +6,7 @@ import GamePage from "./game/game";
 const socket = io.connect("http://localhost:3001");
 
 function App() {
-  return <GamePage />;
+  return <Homepage socket={socket} />;
 }
 
 export default App;

@@ -1,9 +1,10 @@
 const Baker = require("./baker.js");
 
 class Room {
-  constructor(firstPlayer, roomCode) {
-    this.players = [];
-    addPlayer(firstPlayer);
+  constructor(hostname, roomCode) {
+    this.players = [
+      new Baker(1000 + Math.floor(Math.random() * 8999), hostname),
+    ];
     this.roomCode = roomCode;
     this.roundNumber = 0;
   }
@@ -30,7 +31,7 @@ class Room {
     });
   }
 
-  getRoomCode() {
+  getId() {
     return this.roomCode;
   }
 
@@ -53,3 +54,5 @@ class Room {
 
   nextDay() {}
 }
+
+module.exports = Room;

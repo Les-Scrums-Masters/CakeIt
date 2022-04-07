@@ -1,3 +1,5 @@
+const HistoryValue = require("./historyValue.js");
+
 class Baker {
   static INITIAL_PRICE = 10.0;
   static INITIAL_VOLUME = 100;
@@ -24,3 +26,5 @@ class Baker {
     this.cakeSold.set(cakeSold);
   }
 }
+
+module.exports = Baker;

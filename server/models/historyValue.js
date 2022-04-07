@@ -27,3 +27,5 @@ class HistoryValue {
     this.values.push(newValue);
   }
 }
+
+module.exports = HistoryValue;

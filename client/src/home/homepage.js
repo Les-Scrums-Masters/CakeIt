@@ -11,7 +11,7 @@ export default function Homepage(props) {
         producteurs face aux circonstances extérieures
       </p>
 
-      <JoinForm />
+      <JoinForm socket={props.socket} />
 
       <button className="btn btn-outline btn-secondary">Tutoriel</button>
     </div>
