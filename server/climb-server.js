@@ -35,11 +35,6 @@ climbServer.joinRoom = (roomId, playerSocket, playerName) => {
   room.addPlayer(playerSocket, playerName);
 };
 
-climbServer.leftRoom = (roomId, playerId) => {
-  let room = climbServer.findRoom(roomId);
-  room.removePlayer(playerId);
-};
-
 climbServer.startGame = (roomId) => {
   let room = climbServer.findRoom(roomId);
   if (room?.getPlayers().length >= 2) {
@@ -47,6 +42,12 @@ climbServer.startGame = (roomId) => {
     return true;
   }
   return false;
+};
+
+climbServer.leaveRoom = (roomId, playerId) => {
+  let room = climbServer.findRoom(roomId);
+  console.log("player id : " + playerId);
+  room.removePlayer(playerId);
 };
 
 climbServer.codeExist = (code) => {

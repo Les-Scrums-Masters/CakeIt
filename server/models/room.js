@@ -24,9 +24,11 @@ class Room {
   }
 
   removePlayer(id) {
+    console.log(this.players.length);
     this.players.forEach((player, index) => {
+      console.log(player.getId() + " " + id);
       if (player.getId() == id) {
-        this.player.splice(index, 1);
+        this.players.splice(index, 1);
       }
     });
   }
