@@ -22,14 +22,7 @@ Object News
 
 ### update_ingredients
 
-Dictionnaire 5 ingredients
-{
-egg: {
-value: [toutes les valeurs ...],
-latest: x
-evolution: 0.8
-}
-}
+{}
 
 ### next_day
 

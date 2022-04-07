@@ -45,6 +45,11 @@ const sendPlayersInfo = (roomId) => {
   });
 };
 
+const updateIngredients = (roomId) => {
+  const room = climbServer.findRoom(roomId);
+  emitRoom(roomId, "update_ingredients", [room.ingredients]);
+};
+
 /* CONNEXION */
 
 io.on("connection", (socket) => {

@@ -60,6 +60,20 @@ class Room {
   }
 
   nextDay() {}
+
+  updateIngredientPrices(multipliers) {
+    const egg = this.ingredients.egg.price;
+    const chocolate = this.ingredients.chocolate.price;
+    const sugar = this.ingredients.sugar.price;
+    const butter = this.ingredients.butter.price;
+    const flour = this.ingredients.flour.price;
+
+    egg.set(egg.get() * multipliers.egg);
+    chocolate.set(chocolate.get() * multipliers.chocolate);
+    sugar.set(sugar.get() * multipliers.sugar);
+    butter.set(butter.get() * multipliers.butter);
+    flour.set(flour.get() * multipliers.flour);
+  }
 }
 
 module.exports = Room;
