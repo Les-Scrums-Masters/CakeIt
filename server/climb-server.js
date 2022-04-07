@@ -83,13 +83,12 @@ climbServer.codeExist = (code) => {
 
 climbServer.pickNews = (roomId) => {
   let prob = Math.floor(Math.random() * 100);
-  console.log(prob);
   if (prob > 1) {
     let room = climbServer.findRoom(roomId);
     let number = Math.floor(Math.random() * room.remainingNews.length);
     let news = room.getNews(number);
+    news.date = room.round;
     room.news.push(news);
-    console.log(room);
   }
 };
 
