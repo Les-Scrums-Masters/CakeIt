@@ -4,7 +4,7 @@ class Room {
   constructor(firstPlayer, roomCode) {
     this.players = [];
     addPlayer(firstPlayer);
-    this.roomCode = roomCode; //Ask to server
+    this.roomCode = roomCode;
     this.roundNumber = 0;
   }
 
@@ -13,7 +13,7 @@ class Room {
   }
 
   getRandomCode() {
-    code = Math.floor(Math.random() * 100000);
+    code = 1000 + Math.floor(Math.random() * 8999);
     this.players.forEach((player) => {
       if (player.getId() === code) {
         code = getRandomCode();
