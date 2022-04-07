@@ -20,8 +20,12 @@ const io = new Server(server, {
   },
 });
 
+let sockets = [];
+
 io.on("connection", (socket) => {
+  sockets.push(socket);
   console.log(`User connected : ${socket.id}`);
+  console.log(sockets);
 
   socket.on("create_room", (hostParticipant) => {
     const room = climbServer.createGame(io, hostParticipant);
@@ -37,7 +41,7 @@ io.on("connection", (socket) => {
       socket.emit("not_find_room");
     } else {
       socket.join(roomId);
-      climbServer.joinRoom(roomId, playerName);
+      climbServer.joinRoom(roomId, socket.id, playerName);
       socket.emit("room_joined", room);
       console.log(`User (${socket.id}) joined room : ${roomId}`);
     }
