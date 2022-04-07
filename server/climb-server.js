@@ -20,15 +20,30 @@ climbServer.createGame = (hostSocket, hostParticipant) => {
 
 climbServer.findRoom = (roomId) => {
   console.log(climbServer.rooms);
-  console.log("searching room " + roomId);
   for (let i = 0; i < climbServer.rooms.length; i++) {
     if (climbServer.rooms[i].getId() == roomId) {
-      console.log("room existante");
       return climbServer.rooms[i];
     }
   }
-  console.log("room INEXISTANTE !!");
+  console.log("room INEXISTANTE !! " + roomId);
   return null;
+};
+
+climbServer.setReady = (roomId, playerId) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
+    if (player.id == playerId) {
+      player.ready = true;
+    }
+  });
+};
+
+climbServer.allReady = (roomId) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
+    if (!player.ready) {
+      return false;
+    }
+  });
+  return true;
 };
 
 climbServer.joinRoom = (roomId, playerSocket, playerName) => {
@@ -47,8 +62,6 @@ climbServer.startGame = (roomId) => {
 
 climbServer.leaveRoom = (roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
-  console.log("all rooms : ");
-  console.log(climbServer.rooms);
   room.removePlayer(playerId);
 };
 

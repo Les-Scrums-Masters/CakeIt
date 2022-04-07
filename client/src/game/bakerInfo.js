@@ -11,7 +11,7 @@ export default function BakerInfo(props) {
 
       <div className="flex grow flex-col">
         <h6 className="font-light">{props.date}</h6>
-        <h2 className="text-3xl font-bold">{props.name}</h2>
+        <h2 className="text-3xl font-bold">{props.player.name}</h2>
       </div>
 
       <div className="flex flex-col justify-end text-right">
