@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import LobbyPlayerList from "./playerList";
 
 export default function RoomLobby(props) {
-
   let [players, setPlayers] = useState(props.room.players);
 
   useEffect(() => {
-
     props.socket.on("refresh_players", (list) => {
-      console.log(list)
       setPlayers(list);
     });
 
@@ -16,11 +13,18 @@ export default function RoomLobby(props) {
   }, [props.socket, players]);
 
   function startGame() {
-    alert("Commencer la partie");
+    //if (props.room.players.length >= 2) {
+    if (props.room.players.length >= 1) {
+      props.socket.emit("start_game", props.room.roomCode);
+      props.setDisplay("GamePage");
+    } else {
+      //avert : pas assez de joueur
+    }
   }
 
   function back() {
-    alert("Quitter");
+    props.socket.emit("leave_room", props.room.roomCode, props.playerId);
+    props.setDisplay("HomePage");
   }
 
   return (
