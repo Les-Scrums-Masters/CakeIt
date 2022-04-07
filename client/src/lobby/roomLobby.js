@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import LobbyPlayerList from "./playerList";
 
 export default function RoomLobby(props) {
-  const [newPlayer, setNewPlayer] = useState(false);
+
+  let [players, setPlayers] = useState(props.room.players);
 
   useEffect(() => {
-    props.socket.on("room_joined", (room) => {
-      console.log("Nouveau joueur !!!!!!!!");
-      setNewPlayer(true);
+
+    props.socket.on("refresh_players", (list) => {
+      console.log(list)
+      setPlayers(list);
     });
-    setNewPlayer(false);
-  }, [props.socket]);
+
+    // setNewPlayer(false);
+  }, [props.socket, players]);
 
   function startGame() {
     alert("Commencer la partie");
@@ -27,7 +30,7 @@ export default function RoomLobby(props) {
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
       </div>
 
-      <LobbyPlayerList players={props.room.players} />
+      <LobbyPlayerList players={players} />
 
       <div className="flex flex-col gap-3">
         <button className="btn btn-success" onClick={startGame}>

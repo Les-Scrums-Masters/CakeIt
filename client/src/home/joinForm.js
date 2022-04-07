@@ -16,7 +16,6 @@ export default function JoinForm(props) {
   function joinGame() {
     if (joinMode) {
       // REJOINDRE UNE PARTIE
-      alert("Rejoindre une partie");
       if (name !== "") {
         props.socket.emit("join_room", roomCode, name);
       } else {
