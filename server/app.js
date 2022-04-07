@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("end_day", (data) => {
-    //Condition à faire : Si tout les joueurs sont prêt alors :
+    //Condition à faire : Si tout les joueurs sont prêt
     socket.to(data.room.getId()).emit("next_day", data);
   });
 
