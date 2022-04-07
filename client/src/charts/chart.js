@@ -1,12 +1,57 @@
 import { VictoryChart, VictoryLine, VictoryLabel } from "victory";
 import React, { useState } from "react";
 
-function Chart(props) {
-  let dataChocolat = props.data.chocolate;
-  let dataOeuf = props.data.egg;
-  let dataBeurre = props.data.butter;
-  let dataFarine = props.data.flour;
-  let dataSucre = props.data.sugar;
+function Chart() {
+  let dataChocolat = [
+    { x: 1, y: 0 },
+    { x: 2, y: 0 },
+    { x: 3, y: 0 },
+    { x: 4, y: 0 },
+    { x: 5, y: 3 },
+    { x: 6, y: 0 },
+    { x: 7, y: 0 },
+    { x: 8, y: 1 },
+  ];
+  let dataOeuf = [
+    { x: 1, y: 10 },
+    { x: 2, y: 10 },
+    { x: 3, y: 10 },
+    { x: 4, y: 10 },
+    { x: 5, y: 2 },
+    { x: 6, y: 10 },
+    { x: 7, y: 10 },
+    { x: 8, y: 11 },
+  ];
+  let dataBeurre = [
+    { x: 1, y: 20 },
+    { x: 2, y: 20 },
+    { x: 3, y: 20 },
+    { x: 4, y: 23 },
+    { x: 5, y: 20 },
+    { x: 6, y: 20 },
+    { x: 7, y: 20 },
+    { x: 8, y: 21 },
+  ];
+  let dataFarine = [
+    { x: 1, y: 30 },
+    { x: 2, y: 30 },
+    { x: 3, y: 30 },
+    { x: 4, y: 30 },
+    { x: 5, y: 30 },
+    { x: 6, y: 10 },
+    { x: 7, y: 30 },
+    { x: 8, y: 31 },
+  ];
+  let dataSucre = [
+    { x: 1, y: 40 },
+    { x: 2, y: 40 },
+    { x: 3, y: 40 },
+    { x: 4, y: 40 },
+    { x: 5, y: 0 },
+    { x: 6, y: 40 },
+    { x: 7, y: 40 },
+    { x: 8, y: 41 },
+  ];
 
   let ingredients = ["Chocolat", "Oeuf", "Farine", "Sucre", "Beurre"];
   const [selected, setSelected] = useState(ingredients[0]);
@@ -62,13 +107,13 @@ function Chart(props) {
   };
 
   return (
-    <div className="h-6/12 container mx-auto w-6/12">
-      <VictoryChart height={200} width={800}>
+    <div className="container mx-auto">
+      <VictoryChart height={300} width={500}>
         <VictoryLabel x={20} y={20} style={title} text={selected} />
         <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
         <VictoryLabel
-          x={500}
-          y={185}
+          x={400}
+          y={290}
           style={labelOne}
           text={"Temps (en tour)"}
         />

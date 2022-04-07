@@ -3,14 +3,10 @@ import React, { useRef, useState, useEffect } from "react";
 import CompetitorsList from "./competitorsList";
 import NewsList from "./newsList";
 import ValueDisplay from "./valueDisplay";
-import Chart from "./../charts/chart";
 
 export default function GamePage(props) {
-  let myRoundData = [];
   useEffect(() => {
-    props.socket.on("next_day", (roundData) => {
-      myRoundData = roundData;
-    });
+    props.socket.on("next_day", (roundData) => {});
   }, [props.socket]);
 
   return (
@@ -28,9 +24,7 @@ export default function GamePage(props) {
             <ValueDisplay value="10.3 €" legend="prix de vente" />
           </div>
 
-          <p>
-            <Chart data={myRoundData} />
-          </p>
+          <p>...</p>
         </div>
       </div>
 
