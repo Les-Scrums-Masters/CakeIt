@@ -25,9 +25,9 @@ const io = new Server(server, {
 const emitRoom = (roomId, event, params) => {
   const room = climbServer.findRoom(roomId);
 
-  console.log("EMIT EVENT " + event);
+  console.log("EMIT EVENT " + event + " to room " + roomId);
 
-  room.players.forEach((player) => {
+  room?.players.forEach((player) => {
     io.to(player.id).emit(event, ...params);
   });
 };
@@ -85,9 +85,11 @@ io.on("connection", (socket) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
     climbServer.pickNews(roomId);
+    const room = climbServer.findRoom(roomId);
 
     console.log("Launch game : " + roomId);
     emitRoom(roomId, "game_started", [roomId]);
+    emitRoom(roomId, "new_news", [room.news]);
     updateIngredients(roomId);
     refreshPlayers(roomId);
     sendPlayersInfo(roomId);

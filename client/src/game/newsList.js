@@ -11,7 +11,7 @@ export default function NewsList(props) {
       let lastNews = news[news.length - 1];
       props.showModal(lastNews);
     });
-  });
+  }, [props.socket, setNews, news]);
 
   return (
     <Panel title="News" color="info">
