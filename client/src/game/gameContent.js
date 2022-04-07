@@ -165,7 +165,9 @@ export default function GameContent(props) {
         {isReport ? "Bilan" : "Vente en cours ..."}
       </h1>
 
-      <div className="grid grid-cols-4 gap-3 text-success">{values}</div>
+      <div className="grid grid-cols-4 items-center gap-3 text-success">
+        {values}
+      </div>
 
       {content}
     </div>
