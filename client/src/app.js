@@ -83,6 +83,8 @@ function App() {
   });
 
   function back() {
+    console.log(room);
+    console.log(playerId);
     socket.emit("leave_room", room.roomCode, playerId);
     setDisplay("HomePage");
   }

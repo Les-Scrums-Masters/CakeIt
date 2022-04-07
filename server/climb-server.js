@@ -1,4 +1,5 @@
 const Room = require("./models/room.js");
+const Ingredient = require("./models/ingredient.js");
 
 const climbServer = { rooms: [] };
 
@@ -67,6 +68,7 @@ climbServer.startGame = (roomId) => {
 
 climbServer.leaveRoom = (roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
+  console.log("Searching " + roomId);
   room.removePlayer(playerId);
 };
 
@@ -88,10 +90,28 @@ climbServer.getRandomCode = () => {
 };
 
 climbServer.sellingDay = (data, roomId, playerId) => {
+  let room = climbServer.findRoom(roomId);
+  let cakePrice = 0;
+  Object.values(room.ingredients).forEach((ingredient) => {
+    cakePrice += ingredient.price.get();
+  });
   climbServer.getPlayers(roomId)?.forEach((player) => {
     if (player.id == playerId) {
-      player.newDay(data.price, data.production, 1000 / data.price);
+      let sales = 1000 / data.price;
+      let profit = sales * data.price - data.production * cakePrice;
+      player.newDay(
+        parseFloat(data.price),
+        parseInt(data.production),
+        sales,
+        profit,
+        player.money.get() + profit
+      );
+      console.log(player);
+      console.log(player.price);
+      console.log(player.volume);
+      console.log(player.money);
       console.log(player.sales);
+      console.log(player.profit);
     }
   });
 };
