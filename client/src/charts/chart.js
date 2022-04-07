@@ -77,6 +77,11 @@ function Chart() {
       currentData = dataChocolat;
   }
 
+  let max = 0;
+  currentData.forEach((element) => {
+    if (element.y > max) max = element.y;
+  });
+
   //a refaire ??
   const title = {
     textAnchor: "start",
@@ -86,20 +91,44 @@ function Chart() {
     fontSize: "22px",
     fontWeight: "bold",
   };
+  const labelOne = {
+    fill: "#291334",
+    fontFamily: "Lexend Deca",
+    fontSize: 12,
+    fontStyle: "italic",
+  };
+
+  const parent = {
+    background: "#E5E5E5",
+    boxSizing: "border-box",
+    display: "inline",
+    padding: 0,
+    fontFamily: "'Fira Sans', sans-serif",
+  };
 
   return (
     <div className="container mx-auto">
-      <VictoryChart>
-        <VictoryLabel x={25} y={24} style={title} text={selected} />
+      <VictoryChart height={300} width={500}>
+        <VictoryLabel x={20} y={20} style={title} text={selected} />
+        <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
+        <VictoryLabel
+          x={400}
+          y={290}
+          style={labelOne}
+          text={"Temps (en tour)"}
+        />
         <VictoryLine
           style={{
             data: { stroke: "#F87272" },
             parent: { border: "1px solid #ccc" },
           }}
           data={currentData}
+          domain={{
+            x: [1, currentData.length],
+            y: [0, max],
+          }}
         />
       </VictoryChart>
-
       <div class="btn-group">
         {ingredients.map((ingredient) => {
           let cssclasses =
