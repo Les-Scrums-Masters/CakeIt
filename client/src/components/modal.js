@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 
 /**
  * Boîte de dialogue : la boîte de dialogue qui apparait par dessus l'écran principal
@@ -21,11 +20,15 @@ import { Dialog, Transition } from '@headlessui/react'
  * @return {JSX} Le rendu jsx de la modal
  */
 function Modal(props) {
-
-   return (
+  return (
     <Transition.Root show={props.open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" initialFocus={props.focusedRef} onClose={props.onClose}>
-        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 ">
+      <Dialog
+        as="div"
+        className="fixed inset-0 z-10 overflow-y-auto"
+        initialFocus={props.focusedRef}
+        onClose={props.onClose}
+      >
+        <div className="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0 ">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -39,7 +42,10 @@ function Modal(props) {
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+          <span
+            className="hidden sm:inline-block sm:h-screen sm:align-middle"
+            aria-hidden="true"
+          >
             &#8203;
           </span>
           <Transition.Child
@@ -51,21 +57,30 @@ function Modal(props) {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className={"inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"}>
+            <div
+              className={
+                "inline-block transform overflow-hidden rounded-xl bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle"
+              }
+            >
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div>
-                    <h1 className="text-6xl text-center mt-4"><span role='img' aria-label="emoji">{props.emoji}</span></h1>
+                  <h1 className="mt-4 text-center text-6xl">
+                    <span role="img" aria-label="emoji">
+                      {props.emoji}
+                    </span>
+                  </h1>
                   <div className="mt-5 text-center">
-                    <Dialog.Title as="h3" className="text-2xl leading-6 font-medium text-gray-900">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-2xl font-medium leading-6 text-gray-900"
+                    >
                       {props.title}
                     </Dialog.Title>
-                    <div className="mt-6">
-                      {props.children}
-                    </div>
+                    <div className="mt-6">{props.children}</div>
                   </div>
                 </div>
               </div>
-              <div className={"bg-gray-50 px-4 " + props.paddingY ?? "" }>
+              <div className={"bg-gray-50 px-4 " + props.paddingY ?? ""}>
                 {props.buttons}
               </div>
             </div>
@@ -74,7 +89,6 @@ function Modal(props) {
       </Dialog>
     </Transition.Root>
   );
-
 }
 
 export default Modal;
