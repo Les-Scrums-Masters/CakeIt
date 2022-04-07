@@ -47,7 +47,7 @@ export default function GamePage(props) {
         <div className="flex grow flex-col gap-5">
           <BakerInfo date={getDate()} player={player} />
 
-          <GameContent socket={props.socket} />
+          <GameContent socket={props.socket} player={player} />
         </div>
 
         <CompetitorsList

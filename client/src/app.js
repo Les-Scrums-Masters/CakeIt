@@ -57,6 +57,11 @@ function App() {
   });
 
   let content;
+  let logo = (
+    <h1 className="absolute left-40 top-5 text-left text-2xl font-bold text-error">
+      Cake It !
+    </h1>
+  );
   if (display === "RoomLobby") {
     content = (
       <RoomLobby
@@ -77,13 +82,12 @@ function App() {
     );
   } else {
     content = <HomePage socket={socket} />;
+    logo = null;
   }
 
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
-      <h1 className="absolute top-10 left-10 text-left text-4xl font-bold text-error">
-        Cake It !
-      </h1>
+      {logo}
 
       <Modal
         open={modalOpen}
@@ -101,6 +105,7 @@ function App() {
         <a
           href="https://git.unistra.fr/les-scrums-masters/pec22-t4-a"
           target="_blank"
+          rel={"noreferrer"}
         >
           Les Scrum Masters © 2022
         </a>
