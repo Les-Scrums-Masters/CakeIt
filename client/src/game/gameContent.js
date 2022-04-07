@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Chart from "../charts/chart";
+import Slider from "../components/slider";
 import ValueDisplay from "./valueDisplay";
 
 export default function GameContent(props) {
@@ -28,6 +29,23 @@ export default function GameContent(props) {
       <div className="flex flex-row text-success">
         <ValueDisplay value={lastVolume} legend="gateaux en rayon" />
         <ValueDisplay value={lastPrice} legend="prix de vente" />
+      </div>
+
+      <div className="h-16 w-full bg-info">Charts</div>
+
+      <div className="flex flex-col">
+        <h3 className="text-2xl font-bold text-success">
+          Ajustez votre production
+        </h3>
+
+        <Slider
+          min={0}
+          max={1}
+          onChange={() => {}}
+          caption="Prix"
+          suffix=" €"
+        />
+        <Slider min={0} max={1} onChange={() => {}} caption="Quantité" />
       </div>
 
       <p></p>
