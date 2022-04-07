@@ -12,8 +12,6 @@ climbServer.createGame = (hostSocket, hostParticipant) => {
   );
   console.log("New game object created", newRoom);
 
-  newRoom.creatorId = hostSocket;
-
   // Store it in the list of game
   climbServer.rooms.push(newRoom);
 

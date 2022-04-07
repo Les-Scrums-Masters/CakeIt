@@ -9,6 +9,10 @@ export default function RoomLobby(props) {
       console.log(list)
       setPlayers(list);
     });
+    props.socket.on("game_started", () => {
+      console.log("Game started ...");
+      props.setDisplay("GamePage");
+    });
 
     // setNewPlayer(false);
   }, [props.socket, players]);
@@ -44,9 +48,8 @@ export default function RoomLobby(props) {
         <p className="text-center text-neutral">Salon</p>
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
       </div>
-      {btnStart}
       <LobbyPlayerList players={players} />
-
+      {btnStart}
       <div className="flex flex-col gap-3">
         <button className="btn btn-link" onClick={back}>
           Retour
