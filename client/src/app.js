@@ -36,7 +36,6 @@ function App() {
   });
 
   //Si l'utilisateur est connecté ou pas
-  const [isLogged, setLogged] = useState(false);
   useEffect(() => {
     // LANCER LA MUSIQUE LORSQU'ELLE EST ACTUALISEE
     if (sound !== null && !initializedSound) {

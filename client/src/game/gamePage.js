@@ -49,7 +49,7 @@ export default function GamePage(props) {
     return dateFormatter.format(result);
   };
 
-  if (player == undefined || player == null || players == null) {
+  if (player === undefined || player == null || players == null) {
     return <div className=""></div>;
   } else {
     return (

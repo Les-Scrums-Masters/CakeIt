@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Chart from "../charts/chart";
+// import Chart from "../charts/chart";
 import Slider from "../components/slider";
 import IngredientItem from "./ingredientItem";
 import ValueDisplay from "./valueDisplay";

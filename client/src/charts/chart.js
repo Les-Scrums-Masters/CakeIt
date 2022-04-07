@@ -53,13 +53,13 @@ function Chart(props) {
     fontStyle: "italic",
   };
 
-  const parent = {
-    background: "#E5E5E5",
-    boxSizing: "border-box",
-    display: "inline",
-    padding: 0,
-    fontFamily: "'Fira Sans', sans-serif",
-  };
+  // const parent = {
+  //   background: "#E5E5E5",
+  //   boxSizing: "border-box",
+  //   display: "inline",
+  //   padding: 0,
+  //   fontFamily: "'Fira Sans', sans-serif",
+  // };
 
   return (
     <div className="h-6/12 container mx-auto w-6/12">
