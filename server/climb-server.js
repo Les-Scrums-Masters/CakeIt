@@ -1,6 +1,6 @@
 const Room = require("./models/room.js");
 
-const climbServer = { rooms: [], roomCount: 0 };
+const climbServer = { rooms: [] };
 
 climbServer.createGame = (hostSocket, hostParticipant) => {
   // Create a new game instance
@@ -12,11 +12,10 @@ climbServer.createGame = (hostSocket, hostParticipant) => {
   );
   console.log("New game object created", newRoom);
 
+  newRoom.creatorId = hostSocket;
+
   // Store it in the list of game
   climbServer.rooms.push(newRoom);
-
-  // Keep track
-  climbServer.roomCount += 1;
 
   return newRoom;
 };
@@ -46,7 +45,8 @@ climbServer.startGame = (roomId) => {
 
 climbServer.leaveRoom = (roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
-  console.log("player id : " + playerId);
+  console.log("all rooms : ");
+  console.log(climbServer.rooms);
   room.removePlayer(playerId);
 };
 
@@ -69,11 +69,8 @@ climbServer.getRandomCode = () => {
 
 module.exports = climbServer;
 
-
 climbServer.getPlayers = (roomId) => {
-
   let room = climbServer.findRoom(roomId);
   room.players.forEach((player) => player.generateEvolution());
   return room.players;
-
-}
+};

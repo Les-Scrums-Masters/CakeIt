@@ -10,12 +10,13 @@ export default function RoomLobby(props) {
       setPlayers(list);
     });
 
-    // setNewPlayer(false);   
+    // setNewPlayer(false);
   }, [props.socket, players]);
 
   function startGame() {
     //if (props.room.players.length >= 2) {
     if (props.room.players.length >= 1) {
+      console.log("starting : " + props.room.roomCode);
       props.socket.emit("start_game", props.room.roomCode);
       props.setDisplay("GamePage");
     } else {
@@ -28,20 +29,25 @@ export default function RoomLobby(props) {
     props.setDisplay("HomePage");
   }
 
+  let btnStart = null;
+  if (props.room.players[0].id === props.playerId) {
+    btnStart = (
+      <button className="btn btn-success" onClick={startGame}>
+        Commencer la partie
+      </button>
+    );
+  }
+
   return (
     <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-center justify-center gap-20 align-middle">
       <div className="grid">
         <p className="text-center text-neutral">Salon</p>
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
       </div>
-
+      {btnStart}
       <LobbyPlayerList players={players} />
 
       <div className="flex flex-col gap-3">
-        <button className="btn btn-success" onClick={startGame}>
-          Commencer la partie
-        </button>
-
         <button className="btn btn-link" onClick={back}>
           Retour
         </button>
