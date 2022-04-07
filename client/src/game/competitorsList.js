@@ -8,18 +8,31 @@ export default function CompetitorsList(props) {
       <div className="flex flex-col gap-3 divide-y-2 divide-error">
         {console.log(props.players)}
         {props.players.map((item, index) => {
+          console.log(
+            "item competitor : " + item.id + " player " + props.player.id
+          );
+          console.log(item);
+
           if (item.id != props.player.id) {
-            {
-              console.log(item);
-              console.log("gooooooooooooood");
-            }
-            <CompetitorItem
-              name={item.name}
-              status={item.status}
-              price={item.price}
-              money={item.money.values[item.money.values.length - 1]}
-              key={index}
-            />;
+            let price = 0;
+            let money = 0;
+
+            if (item.money.values.length > 0)
+              money = item.money.values[item.money.values.length - 1];
+            if (item.price.values.length > 0)
+              price = item.price.values[item.price.values.length - 1];
+
+            return (
+              <CompetitorItem
+                name={item.name}
+                status={item.status}
+                price={price + " €"}
+                money={money + " €"}
+                key={index}
+              />
+            );
+          } else {
+            return "";
           }
         })}
       </div>

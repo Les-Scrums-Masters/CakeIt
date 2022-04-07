@@ -40,9 +40,9 @@ export default function GameContent(props) {
         <ValueDisplay value={lastPrice} legend="prix de vente" />
       </div>
 
-      <div class="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
-        <div class="col-span-2 row-span-3 h-full bg-info">Charts</div>
-        <div class="row-span-2 flex flex-col pl-3 align-middle">
+      <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
+        <div className="col-span-2 row-span-3 h-full bg-info">Charts</div>
+        <div className="row-span-2 flex flex-col pl-3 align-middle">
           <h3 className="text-2xl font-bold text-success">
             Ajustez votre production
           </h3>
