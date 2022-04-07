@@ -28,7 +28,6 @@ export default function GamePage(props) {
     );
   }, [props.socket, props.playerId]);
 
-
   const getDate = () => {
     return makeDate(round);
   };
@@ -43,8 +42,12 @@ export default function GamePage(props) {
     );
   } else {
     return (
-      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
-        <NewsList socket={props.socket} makeDate={makeDate} showNews={props.showNews}/>
+      <div className="flex h-full w-full flex-col items-stretch justify-center gap-5 p-20 align-middle lg:flex-row">
+        <NewsList
+          socket={props.socket}
+          makeDate={makeDate}
+          showNews={props.showNews}
+        />
 
         <div className="flex grow flex-col gap-5">
           <BakerInfo date={getDate()} name={player.name} money={player.money} />
