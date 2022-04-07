@@ -28,10 +28,12 @@ class Baker {
     this.ready = value;
   }
 
-  newDay(price, volume, sales) {
+  newDay(price, volume, sales, profit, money) {
     this.price.set(price);
     this.volume.set(volume);
     this.sales.set(sales);
+    this.profit.set(profit);
+    this.money.set(money);
   }
 
   generateEvolution() {
