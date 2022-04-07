@@ -5,10 +5,10 @@ import ValueDisplay from "./valueDisplay";
 
 export default function GamePage(props) {
   return (
-    <div className="bg-grey justify justif container mx-auto flex h-full w-full items-center justify-center gap-5 align-middle">
+    <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
       <NewsList />
 
-      <div className="flex-1 bg-primary">
+      <div className="grow bg-primary">
         <BakerInfo />
 
         <div className="">

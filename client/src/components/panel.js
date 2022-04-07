@@ -1,12 +1,19 @@
 export default function Panel(props) {
-  const bgColor = "bg-" + props.color;
-  const textColor = "bg-" + props.color;
+  const borderColor = "border-" + props.color;
+  const textColor = "text-" + props.color;
 
   return (
-    <div className="bg-white ">
-      <h3 className={textColor}>{props.title}</h3>
+    <article
+      className={
+        "flex w-full flex-col rounded-lg border-2 bg-white lg:w-80 " +
+        borderColor
+      }
+    >
+      <header className="p-5">
+        <h3 className={"font-3xl font-bold " + textColor}>{props.title}</h3>
+      </header>
 
-      {props.children}
-    </div>
+      <div className="grow">{props.children}</div>
+    </article>
   );
 }
