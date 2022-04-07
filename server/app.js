@@ -42,7 +42,7 @@ io.on("connection", (socket) => {
       socket.join(roomId);
       climbServer.joinRoom(roomId, socket.id, playerName);
       socket.emit("room_joined", room);
-      socket.to(roomId).emit("refresh_player", room.players);
+      socket.to(roomId).emit("refresh_players", room.players);
 
       console.log(`User (${socket.id}) joined room : ${roomId}`);
     }
