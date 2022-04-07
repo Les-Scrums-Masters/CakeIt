@@ -2,38 +2,28 @@ import { VictoryChart, VictoryLine, VictoryLabel } from "victory";
 import React, { useState } from "react";
 
 function Chart(props) {
-  let dataChocolat = props.data.chocolate;
-  let dataOeuf = props.data.egg;
-  let dataBeurre = props.data.butter;
-  let dataFarine = props.data.flour;
-  let dataSucre = props.data.sugar;
+  const convertToChart = (values) => {
+    let result = [];
+    let x = 1;
+    values.forEach((value) => {
+      let item = { x: x, y: value };
+      result.push(item);
+      x++;
+    });
+    return result;
+  };
 
-  let ingredients = ["Chocolat", "Oeuf", "Farine", "Sucre", "Beurre"];
-  const [selected, setSelected] = useState(ingredients[0]);
-
-  let currentData;
-  switch (selected) {
-    case "Chocolat":
-      currentData = dataChocolat;
-      break;
-    case "Oeuf":
-      currentData = dataOeuf;
-      break;
-    case "Farine":
-      currentData = dataFarine;
-      break;
-    case "Sucre":
-      currentData = dataSucre;
-      break;
-    case "Beurre":
-      currentData = dataBeurre;
-      break;
-    default:
-      currentData = dataChocolat;
-  }
+  let names = {
+    egg: "Oeufs",
+    chocolate: "Chocolat",
+    flour: "Farine",
+    sugar: "Sucre",
+    butter: "Beurre",
+  };
+  const [selected, setSelected] = useState(Object.keys(props.ingredients)[0]);
 
   let max = 0;
-  currentData.forEach((element) => {
+  props.ingredients[selected].prices.values.forEach((element) => {
     if (element.y > max) max = element.y;
   });
 
@@ -64,7 +54,7 @@ function Chart(props) {
   return (
     <div className="h-6/12 container mx-auto w-6/12">
       <VictoryChart height={200} width={800}>
-        <VictoryLabel x={20} y={20} style={title} text={selected} />
+        <VictoryLabel x={20} y={20} style={title} text={names[selected]} />
         <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
         <VictoryLabel
           x={500}
@@ -77,22 +67,20 @@ function Chart(props) {
             data: { stroke: "#F87272" },
             parent: { border: "1px solid #ccc" },
           }}
-          data={currentData}
+          data={convertToChart(props.ingredients[selected].prices.values)}
           domain={{
-            x: [1, currentData.length],
+            x: [1, props.ingredients[selected].prices.values.length],
             y: [0, max],
           }}
         />
       </VictoryChart>
       <div class="btn-group">
-        {ingredients.map((ingredient) => {
+        {Object.keys(names).map((key) => {
           let cssclasses =
-            selected === ingredient
-              ? "ingredients btn btn-active"
-              : "ingredients btn";
+            selected === key ? "ingredients btn btn-active" : "ingredients btn";
           return (
-            <button class={cssclasses} onClick={() => setSelected(ingredient)}>
-              {ingredient}
+            <button class={cssclasses} onClick={() => setSelected(key)}>
+              {names[key]}
             </button>
           );
         })}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import Chart from "../charts/chart";
+import Chart from "../charts/chart";
 import Slider from "../components/slider";
 import IngredientItem from "./ingredientItem";
 import ValueDisplay from "./valueDisplay";
@@ -50,7 +50,11 @@ export default function GameContent(props) {
   let values = [];
 
   values.push(
-    <ValueDisplay value={lastVolume} legend="gateaux initialement produits" />
+    <ValueDisplay
+      value={lastVolume}
+      legend="gateaux initialement produits"
+      key="volume"
+    />
   );
 
   values.push(
@@ -58,13 +62,20 @@ export default function GameContent(props) {
       value={lastPrice}
       legend="prix de vente d'un gateau"
       suffix=" €"
+      key="price"
     />
   );
 
   if (isReport) {
     content = (
       <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
-        <div className="col-span-2 row-span-3 h-full bg-info">Charts</div>
+        <div className="col-span-2 row-span-3 h-full">
+          {Object.keys(ingredients).length == 5 ? (
+            <Chart ingredients={ingredients} />
+          ) : (
+            ""
+          )}
+        </div>
         <div className="row-span-2 flex flex-col pl-3 align-middle">
           <h3 className="text-2xl font-bold text-success">
             Coût des ingrédients
@@ -122,13 +133,13 @@ export default function GameContent(props) {
     if (profit.length > 0) lastProfit = profit[profit.length - 1];
 
     values.push(
-      <div className="rounded-xl bg-success p-3">
+      <div className="rounded-xl bg-success p-3" key="sales">
         <ValueDisplay value={lastSales} legend="gateaux vendus" suffix=" €" />
       </div>
     );
 
     values.push(
-      <div className="rounded-xl bg-success p-3">
+      <div className="rounded-xl bg-success p-3" key="profit">
         <ValueDisplay value={lastProfit} legend="profit" suffix=" €" />
       </div>
     );
