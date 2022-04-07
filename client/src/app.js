@@ -14,35 +14,33 @@ function App() {
   const [room, setRoom] = useState({});
   const [playerId, setPlayerId] = useState(0);
 
-   // ------- Boite de dialogue  -------
-   const [modalEmoji, setModalEmoji] = useState("");
-   const [modalTitle, setModalTitle] = useState("");
-   const [modalContent, setModalContent] = useState(null);
-   const [buttons, setButtons] = useState(null);
-   const [modalOpen, setModalOpen] = useState(false);
- 
-   const closeModal = () => setModalOpen(false);
+  // ------- Boite de dialogue  -------
+  const [modalEmoji, setModalEmoji] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalContent, setModalContent] = useState(null);
+  const [buttons, setButtons] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
-   let showNewsModal = (news) => {
-     setModalEmoji( String.fromCodePoint(0x2139) );
-     setModalTitle("Nouvelle actualité !");
-     setModalContent(
-       <div className="">
-         <p>{news.date}</p>
-         <h3>{news.name}</h3>
-         <p>
-           {news.description}
-         </p>
-       </div>
-     )
- 
-     setButtons(
-       <button onClick={() => setModalOpen(false)} className="btn btn-success">
-         J'ai compris !
-       </button>
-     )
-     setModalOpen(true);
-   }
+  const closeModal = () => setModalOpen(false);
+
+  let showNewsModal = (news) => {
+    setModalEmoji(String.fromCodePoint(0x2139));
+    setModalTitle("Nouvelle actualité !");
+    setModalContent(
+      <div className="">
+        <p>{news.date}</p>
+        <h3>{news.name}</h3>
+        <p>{news.description}</p>
+      </div>
+    );
+
+    setButtons(
+      <button onClick={() => setModalOpen(false)} className="btn btn-success">
+        J'ai compris !
+      </button>
+    );
+    setModalOpen(true);
+  };
 
   useEffect(() => {
     socket.on("room_joined", (room, playerId) => {
@@ -69,24 +67,43 @@ function App() {
       />
     );
   } else if (display === "GamePage") {
-    content = <GamePage socket={socket} room={room} playerId={playerId} showNews={showNewsModal}/>;
+    content = (
+      <GamePage
+        socket={socket}
+        room={room}
+        playerId={playerId}
+        showNews={showNewsModal}
+      />
+    );
   } else {
     content = <HomePage socket={socket} />;
   }
 
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
-      
-      <Modal open={modalOpen} emoji={modalEmoji} title={modalTitle} buttons={buttons} onClose={closeModal}>
-            {modalContent}
+      <h1 className="absolute top-10 left-10 text-left text-4xl font-bold text-error">
+        Cake It !
+      </h1>
+
+      <Modal
+        open={modalOpen}
+        emoji={modalEmoji}
+        title={modalTitle}
+        buttons={buttons}
+        onClose={closeModal}
+      >
+        {modalContent}
       </Modal>
-      
-      {/*header */}
 
       {content}
 
-      <footer class="absolute right-10 bottom-10 ">
-        Les Scrum Masters © 2022
+      <footer className="absolute right-5 bottom-5 ">
+        <a
+          href="https://git.unistra.fr/les-scrums-masters/pec22-t4-a"
+          target="_blank"
+        >
+          Les Scrum Masters © 2022
+        </a>
       </footer>
     </main>
   );

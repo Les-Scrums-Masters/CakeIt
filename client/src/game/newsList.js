@@ -4,17 +4,12 @@ import NewsItem from "./newsItem";
 
 export default function NewsList(props) {
   const [news, setNews] = useState([]);
-
-  const [news, setNews] = [];
-
-  useEffect(()=> {
-    
+  useEffect(() => {
     props.socket.on("new_news", (n) => {
-      setNews(n)
-      let lastNews = news[news.length-1];
+      setNews(n);
+      let lastNews = news[news.length - 1];
       props.showModal(lastNews);
-    })
-
+    });
   });
 
   return (
