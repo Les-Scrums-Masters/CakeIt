@@ -49,12 +49,29 @@ function App() {
 
   const closeModal = () => setModalOpen(false);
 
+  const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+
+  const makeDate = (round) => {
+    let increment = round ?? 0;
+
+    let initialDate = Date.now();
+    let result = new Date(initialDate);
+    result.setDate(result.getDate() + increment);
+
+    // FORMATTAGE
+    return dateFormatter.format(initialDate);
+  };
+
   let showNewsModal = (news) => {
     setModalEmoji(String.fromCodePoint(0x2139));
     setModalTitle("Nouvelle actualité !");
     setModalContent(
       <div className="">
-        <p>{news.date}</p>
+        <p>{makeDate(news.date)}</p>
         <h3>{news.name}</h3>
         <p>{news.description}</p>
       </div>
@@ -112,7 +129,8 @@ function App() {
         socket={socket}
         room={room}
         playerId={playerId}
-        showModal={showNewsModal}
+        showNews={showNewsModal}
+        makeDate={makeDate}
       />
     );
   } else {
