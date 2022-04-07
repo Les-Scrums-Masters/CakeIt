@@ -6,8 +6,7 @@ export default function RoomLobby(props) {
 
   useEffect(() => {
     props.socket.on("refresh_players", (list) => {
-      console.log("Refreshing players ...");
-      console.log(list);
+      console.log(list)
       setPlayers(list);
     });
     props.socket.on("game_started", () => {
