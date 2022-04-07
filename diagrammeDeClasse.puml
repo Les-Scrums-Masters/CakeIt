@@ -69,17 +69,17 @@ class Ingredient {
 }
 
 class News {
-
     - name:String
     - description:String
     - multipliers:double{}
+    - date:Integer
 
-    - News(name:String, description:String, multipliers:double{})
+    - News(jsonNew:{})
     
     + getName():String
     + getDescription():String
     + getMultipliers():double[]
-
+    + {static}loadNews(jsonNews:{})
 }
 
 class HistoryValue<T> {

@@ -2,19 +2,26 @@ import React, { useRef, useState, useEffect } from "react";
 
 export default function JoinForm(props) {
   const [name, setName] = useState("");
-  const [roomCode, setRoomCode] = useState("");
-  const [joinMode, setJoinMode] = useState("");
+  const [roomCode, setRoomCode] = useState("0000");
+  const [joinMode, setJoinMode] = useState(false);
 
   function createGame() {
-    alert("Creer une partie");
-    props.socket.emit("create_room", name);
+    if (name !== "") {
+      props.socket.emit("create_room", name);
+    } else {
+      //Avertissement qu'il n'a pas de nom
+    }
   }
 
   function joinGame() {
     if (joinMode) {
       // REJOINDRE UNE PARTIE
       alert("Rejoindre une partie");
-      props.socket.emit("join_room", roomCode);
+      if (name !== "d") {
+        props.socket.emit("join_room", roomCode, "name");
+      } else {
+        //Avertissement qu'il n'a pas de nom
+      }
     } else {
       setJoinMode(true);
     }
@@ -23,6 +30,7 @@ export default function JoinForm(props) {
   useEffect(() => {
     props.socket.on("room_joined", (room) => {
       //Il a rejoint une room
+      setRoomCode(room);
     });
     props.socket.on("not_find_room", () => {
       //La room n'existe pas
