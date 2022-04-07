@@ -19,7 +19,6 @@ climbServer.createGame = (hostSocket, hostParticipant) => {
 };
 
 climbServer.findRoom = (roomId) => {
-  console.log(climbServer.rooms);
   for (let i = 0; i < climbServer.rooms.length; i++) {
     if (climbServer.rooms[i].getId() == roomId) {
       return climbServer.rooms[i];
@@ -30,20 +29,26 @@ climbServer.findRoom = (roomId) => {
 };
 
 climbServer.setReady = (roomId, playerId) => {
-  climbServer.getPlayers(roomId)?.forEach((player) => {
+  climbServer.getPlayers(roomId).forEach((player) => {
     if (player.id == playerId) {
-      player.ready = true;
+      player.setReady(true);
     }
   });
 };
 
 climbServer.allReady = (roomId) => {
+  let count = 0;
   climbServer.getPlayers(roomId)?.forEach((player) => {
-    if (!player.ready) {
-      return false;
+    console.log(player.ready);
+    if (player.ready == true) {
+      count++;
     }
   });
-  return true;
+  if (count === climbServer.getPlayers(roomId)?.length) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 climbServer.joinRoom = (roomId, playerSocket, playerName) => {
@@ -53,7 +58,7 @@ climbServer.joinRoom = (roomId, playerSocket, playerName) => {
 
 climbServer.startGame = (roomId) => {
   let room = climbServer.findRoom(roomId);
-  if (room?.getPlayers().length >= 2) {
+  if (room?.getPlayers().length >= 1) {
     room.startGame();
     return true;
   }
@@ -80,6 +85,15 @@ climbServer.getRandomCode = () => {
     code = climbServer.getRandomCode();
   }
   return code;
+};
+
+climbServer.sellingDay = (data, roomId, playerId) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
+    if (player.id == playerId) {
+      player.newDay(data.price, data.production, 1000 / data.price);
+      console.log(player.sales);
+    }
+  });
 };
 
 module.exports = climbServer;
