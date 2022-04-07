@@ -38,7 +38,7 @@ export default function JoinForm(props) {
           value={roomCode}
           onChange={(e) => setRoomCode(e.target.value)}
           type="text"
-          className="input input-bordered input-error bg-white"
+          className="input input-bordered input-error bg-white text-center"
         />
       </div>
     );
@@ -49,24 +49,24 @@ export default function JoinForm(props) {
     );
   } else {
     content = (
-      <div className="flex flex-col gap-3 align-middle">
-        <input
-          placeholder="Entrez votre pseudo"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          className="input input-bordered bg-white"
-        />
-        <button className="btn btn-primary" onClick={createGame}>
-          Créer une partie
-        </button>
-      </div>
+      <button className="btn btn-primary" onClick={createGame}>
+        Créer une partie
+      </button>
     );
     button = "";
   }
 
   return (
     <div className="align-center flex flex-col justify-center gap-3">
+      
+      <input
+          placeholder="Entrez votre pseudo"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          className="input input-bordered bg-white text-center"
+        />
+      
       {content}
 
       <button className="btn btn-secondary" onClick={joinGame}>
