@@ -31,12 +31,10 @@ export default function GamePage(props) {
   };
 
   if (player == undefined || player == null || players == null) {
-    return (
-      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row"></div>
-    );
+    return <div className=""></div>;
   } else {
     return (
-      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
+      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 p-20 align-middle lg:flex-row">
         <NewsList
           socket={props.socket}
           makeDate={makeDate}

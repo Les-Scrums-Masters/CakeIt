@@ -34,11 +34,11 @@ evolution: 0.8
 ### next_day
 
 date
-PASSAGE AUX VENTES
+DEBUT DE LA VENTE AUX VENTES
 
 ### end_day
 
-PASSAGE AU BILAN
+PASSAGE AU BILAN / SLIDER
 
 # Evènements envoyé par les joueurs
 
