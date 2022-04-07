@@ -5,27 +5,23 @@ import NewsList from "./newsList";
 import GameContent from "./gameContent";
 
 export default function GamePage(props) {
-  const findPlayer = (playerId, players) => {
-    players.forEach((p) => {
-      if (p.id == playerId) {
-        setPlayer(p);
-      }
-    });
-    return null;
-  };
-
-  const [player, setPlayer] = useState({});
   const [round, setRound] = useState(0);
+  const [player, setPlayer] = useState(null);
+  const [players, setPlayers] = useState(null);
 
   useEffect(() => {
-    if (player === {}) {
-      findPlayer(props.playerId, props.room.players);
-    }
     props.socket.on("next_day", (round) => setRound(round));
-    props.socket.on("refresh_players", (players) =>
-      findPlayer(props.playerId, players)
-    );
-  }, [props.socket, props.playerId, player, props.room.players]);
+    props.socket.on("refresh_players", (p) => {
+      console.log("REFRESH :");
+      console.log(p);
+      setPlayers(p);
+    });
+    props.socket.on("send_player_info", (player) => {
+      console.log("MY PLAYER :");
+      console.log(player);
+      setPlayer(player);
+    });
+  }, [props.socket, props.playerId]);
 
   const getDate = () => {
     return makeDate(round);
@@ -35,13 +31,13 @@ export default function GamePage(props) {
     return 0;
   };
 
-  if (player === null) {
+  if (player == undefined || player == null || players == null) {
     return (
       <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row"></div>
     );
   } else {
     return (
-      <div className="flex h-full w-full flex-col items-stretch justify-center gap-5 p-20 align-middle lg:flex-row">
+      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
         <NewsList
           socket={props.socket}
           makeDate={makeDate}
@@ -49,12 +45,16 @@ export default function GamePage(props) {
         />
 
         <div className="flex grow flex-col gap-5">
-          <BakerInfo date={getDate()} name={player.name} money={player.money} />
+          <BakerInfo date={getDate()} player={player} />
 
           <GameContent socket={props.socket} player={player} />
         </div>
 
-        <CompetitorsList socket={props.socket} />
+        <CompetitorsList
+          socket={props.socket}
+          players={players}
+          player={player}
+        />
       </div>
     );
   }

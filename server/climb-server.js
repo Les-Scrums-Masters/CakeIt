@@ -20,11 +20,15 @@ climbServer.createGame = (hostSocket, hostParticipant) => {
 
 climbServer.findRoom = (roomId) => {
   console.log(climbServer.rooms);
+  console.log("searching room " + roomId);
   for (let i = 0; i < climbServer.rooms.length; i++) {
     if (climbServer.rooms[i].getId() == roomId) {
+      console.log("room existante");
       return climbServer.rooms[i];
     }
   }
+  console.log("room INEXISTANTE !!");
+  return null;
 };
 
 climbServer.joinRoom = (roomId, playerSocket, playerName) => {
