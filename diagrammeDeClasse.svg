@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="626px" preserveAspectRatio="none" style="width:862px;height:626px;background:#FFFFFF;" version="1.1" viewBox="0 0 862 626" width="862px" zoomAndPan="magnify"><defs/><g><!--MD5=[d218c48b946d362ff1ecd879cabebcad]
+class Room--><rect codeLine="9" fill="#FEFECE" height="303.9766" id="Room" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="227" x="313" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="33" x="410" y="24.457">Room</text><line style="stroke:#A80036;stroke-width:1.5;" x1="314" x2="539" y1="32.0938" y2="32.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="119" x="319" y="47.5127">+MAX_PLAYERS:Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="188" x="319" y="61.3486">+NEWS_SPAWN_PROBABILITY:double</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="127" x="319" y="75.1846">+SALE_DURATION:Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="146" x="319" y="89.0205">+DECISION_DURATION:Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="322" y="102.8564"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="89" x="319" y="116.6924">-roomCode:Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="105" x="319" y="130.5283">-roundNumber:Integer</text><line style="stroke:#A80036;stroke-width:1.5;" x1="314" x2="539" y1="136.9453" y2="136.9453"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="215" x="319" y="152.3643">+Room(roomCode: Integer, firstPlayer:String)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="322" y="166.2002"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="155" x="319" y="180.0361">+addPlayer(name:String):Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="124" x="319" y="193.8721">+removePlayer(id:Integer)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="322" y="207.708"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="319" y="221.5439">+getRoomCode():Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="140" x="319" y="235.3799">+getIngredients():Ingredient{}</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="129" x="319" y="249.2158">+getPlayer(id:String):Baker</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="96" x="319" y="263.0518">+getRound():Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="322" y="276.8877"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="64" x="319" y="290.7236">+startGame()</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="54" x="319" y="304.5596">+nextDay()</text><!--MD5=[63fe793d2fb4625588ecf6479e9637da]
+class Baker--><rect codeLine="37" fill="#FEFECE" height="248.6328" id="Baker" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="287" x="7" y="371"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="34" x="133.5" y="388.457">Baker</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="293" y1="396.0938" y2="396.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="108" x="13" y="411.5127">+INITIAL_PRICE:double</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="124" x="13" y="425.3486">+INITIAL_VOLUME:Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="117" x="13" y="439.1846">+INITIAL_MONEY:double</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="103" x="13" y="453.0205">+FIXED_COST:double</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="16" y="466.8564"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="48" x="13" y="480.6924">-id:Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="13" y="494.5283">-name:String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="13" y="508.3643">+price:HistoryValue&lt;double&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="142" x="13" y="522.2002">+sales:HistoryValue&lt;Integer&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="150" x="13" y="536.0361">+volume:HistoryValue&lt;Integer&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="147" x="13" y="549.8721">+money:HistoryValue&lt;double&gt;</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="293" y1="556.2891" y2="556.2891"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="149" x="13" y="571.708">+Baker(id:Integer, name:String)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="73" x="13" y="585.5439">+getId():Integer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="16" y="599.3799"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="275" x="13" y="613.2158">+newDay(price:double, volume:double, cakeSold:Integer)</text><!--MD5=[91ffdd76f1c8795364bfc7c752e5da6a]
+class Ingredient--><rect codeLine="58" fill="#FEFECE" height="110.2734" id="Ingredient" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="195" x="329" y="440.5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="57" x="398" y="457.957">Ingredient</text><line style="stroke:#A80036;stroke-width:1.5;" x1="330" x2="523" y1="465.5938" y2="465.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="335" y="481.0127">-name:String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="139" x="335" y="494.8486">+price:HistoryValue&lt;double&gt;</text><line style="stroke:#A80036;stroke-width:1.5;" x1="330" x2="523" y1="501.2656" y2="501.2656"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="183" x="335" y="516.6846">+Ingredient(name:String, price:double)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="338" y="530.5205"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="335" y="544.3564">+getName():String</text><!--MD5=[cbaac4eed5b318c44b2ea50495fa77ea]
+class News--><rect codeLine="68" fill="#FEFECE" height="179.4531" id="News" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="296" x="559.5" y="406"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="32" x="691.5" y="423.457">News</text><line style="stroke:#A80036;stroke-width:1.5;" x1="560.5" x2="854.5" y1="431.0938" y2="431.0938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="101" x="565.5" y="446.5127">+NEWS_LIST:News[]</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="568.5" y="460.3486"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="61" x="565.5" y="474.1846">-name:String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="88" x="565.5" y="488.0205">-description:String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="94" x="565.5" y="501.8564">-multipliers:double{}</text><line style="stroke:#A80036;stroke-width:1.5;" x1="560.5" x2="854.5" y1="508.2734" y2="508.2734"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" text-decoration="underline" textLength="129" x="565.5" y="523.6924">+getRandomNews():News</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="284" x="565.5" y="537.5283">-News(name:String, description:String, multipliers:double{})</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="87" x="565.5" y="551.3643">+getName():String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="114" x="565.5" y="565.2002">+getDescription():String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="117" x="565.5" y="579.0361">+getMultipliers():double[]</text><!--MD5=[a35b452bf88f619d03bcbf70803326e5]
+class HistoryValue--><rect codeLine="85" fill="#FEFECE" height="179.4531" id="HistoryValue" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="167" x="575" y="69.5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="72" x="617" y="86.957">HistoryValue</text><rect fill="#FFFFFF" height="17.0938" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="736" y="66.5"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="737" y="79.957">T</text><line style="stroke:#A80036;stroke-width:1.5;" x1="576" x2="741" y1="94.5938" y2="94.5938"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="57" x="581" y="110.0127">-value:&lt;T&gt;[]</text><line style="stroke:#A80036;stroke-width:1.5;" x1="576" x2="741" y1="116.4297" y2="116.4297"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="123" x="581" y="131.8486">+HistoryValue(value:&lt;T&gt;)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="584" y="145.6846"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="581" y="159.5205">+get():&lt;T&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="90" x="581" y="173.3564">+getHistory():&lt;T&gt;[]</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="155" x="581" y="187.1924">+getAtIndex(index:Integer):&lt;T&gt;[]</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="584" y="201.0283"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="581" y="214.8643">+getEvolution():double</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="584" y="228.7002"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="100" x="581" y="242.5361">+set(newValue:&lt;T&gt;)</text><!--MD5=[7a97672ea3f0576920631f3816b5a2c0]
+link Room to Baker--><path codeLine="33" d="M305.0146,307.2475 C305.0146,307.2475 275.17,343.41 260.93,360.66 " fill="none" id="Room-Baker" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="252.6,370.75,261.4124,366.3521,255.7814,366.8927,255.2407,361.2618,252.6,370.75" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="255.7814" x2="260.88" y1="366.8927" y2="360.725"/><polygon fill="#A80036" points="312.65,297.99,305.7465,300.0736,305.0146,307.2475,311.9181,305.1639,312.65,297.99" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="46" x="173.3483" y="343.7008">-players</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114" x="141.3483" y="360.0523">2...MAX_PLAYERS</text><!--MD5=[163d9a8c1740d42f7ef7dc036da9e315]
+link Room to Ingredient--><path codeLine="34" d="M426.5,323.1 C426.5,323.1 426.5,397.28 426.5,427.21 " fill="none" id="Room-Ingredient" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="426.5,440.46,430.5,431.46,426.5,435.46,422.5,431.46,426.5,440.46" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="426.5" x2="426.5" y1="435.46" y2="427.46"/><polygon fill="#A80036" points="426.5,311.1,422.5,317.1,426.5,323.1,430.5,317.1,426.5,311.1" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="67" x="351.1734" y="413.3233">-ingredients</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="7" x="383.1734" y="429.6749">5</text><!--MD5=[ecc55e7c34e76eb77c016c48b429f7b5]
+link Room to News--><path codeLine="35" d="M548.1111,304.7561 C548.1111,304.7561 600.65,367.31 624.34,395.51 " fill="none" id="Room-News" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="632.94,405.75,630.2179,396.2848,629.7256,401.9202,624.0902,401.4278,632.94,405.75" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="629.7256" x2="624.585" y1="401.9202" y2="395.795"/><polygon fill="#A80036" points="540.39,295.57,541.1885,302.7368,548.1111,304.7561,547.3126,297.5894,540.39,295.57" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="34" x="587.4844" y="378.8281">-news</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="595.4844" y="395.1797">0...X</text><!--MD5=[309d4a719a62da76206e9ad82b8eceed]
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam roundcorner 10
+hide enum methods
+
+class Room {
+
+    + {static}MAX_PLAYERS:Integer
+    + {static}NEWS_SPAWN_PROBABILITY:double
+    + {static}SALE_DURATION:Integer
+    + {static}DECISION_DURATION:Integer
+
+    - roomCode:Integer
+    - roundNumber:Integer
+    + Room(roomCode: Integer, firstPlayer:String)
+
+    + addPlayer(name:String):Integer
+    + removePlayer(id:Integer)
+
+    + getRoomCode():Integer
+    + getIngredients():Ingredient{}
+    + getPlayer(id:String):Baker
+    + getRound():Integer
+
+    + startGame()
+    + nextDay()
+
+}
+
+Room *- -> "-players \n2...MAX_PLAYERS" Baker
+Room *- -> "-ingredients \n5" Ingredient
+Room *- -> "-news \n 0...X" News
+
+class Baker {
+
+    + {static}INITIAL_PRICE:double
+    + {static}INITIAL_VOLUME:Integer
+    + {static}INITIAL_MONEY:double
+    + {static}FIXED_COST:double
+    
+    - id:Integer
+    - name:String
+    + price:HistoryValue<double>
+    + sales:HistoryValue<Integer>
+    + volume:HistoryValue<Integer>
+    + money:HistoryValue<double>
+
+    + Baker(id:Integer, name:String)
+    + getId():Integer
+
+    + newDay(price:double, volume:double, cakeSold:Integer)
+
+}
+
+class Ingredient {
+
+    - name:String
+    + price:HistoryValue<double>
+
+    + Ingredient(name:String, price:double)
+
+    + getName():String
+}
+
+class News {
+
+    + {static}NEWS_LIST:News[]
+    + {static}getRandomNews():News
+
+    - name:String
+    - description:String
+    - multipliers:double{}
+
+    - News(name:String, description:String, multipliers:double{})
+    
+    + getName():String
+    + getDescription():String
+    + getMultipliers():double[]
+
+}
+
+class HistoryValue<T> {
+
+    - value:<T>[]
+
+    + HistoryValue(value:<T>)
+
+    + get():<T>
+    + getHistory():<T>[]
+    + getAtIndex(index:Integer):<T>[]
+
+    + getEvolution():double
+
+    + set(newValue:<T>)
+
+}
+
+@enduml
+
+@startuml
+
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam roundcorner 10
+hide enum methods
+
+class Room {
+
+    + {static}MAX_PLAYERS:Integer
+    + {static}NEWS_SPAWN_PROBABILITY:double
+    + {static}SALE_DURATION:Integer
+    + {static}DECISION_DURATION:Integer
+
+    - roomCode:Integer
+    - roundNumber:Integer
+    + Room(roomCode: Integer, firstPlayer:String)
+
+    + addPlayer(name:String):Integer
+    + removePlayer(id:Integer)
+
+    + getRoomCode():Integer
+    + getIngredients():Ingredient{}
+    + getPlayer(id:String):Baker
+    + getRound():Integer
+
+    + startGame()
+    + nextDay()
+
+}
+
+Room *- -> "-players \n2...MAX_PLAYERS" Baker
+Room *- -> "-ingredients \n5" Ingredient
+Room *- -> "-news \n 0...X" News
+
+class Baker {
+
+    + {static}INITIAL_PRICE:double
+    + {static}INITIAL_VOLUME:Integer
+    + {static}INITIAL_MONEY:double
+    + {static}FIXED_COST:double
+    
+    - id:Integer
+    - name:String
+    + price:HistoryValue<double>
+    + sales:HistoryValue<Integer>
+    + volume:HistoryValue<Integer>
+    + money:HistoryValue<double>
+
+    + Baker(id:Integer, name:String)
+    + getId():Integer
+
+    + newDay(price:double, volume:double, cakeSold:Integer)
+
+}
+
+class Ingredient {
+
+    - name:String
+    + price:HistoryValue<double>
+
+    + Ingredient(name:String, price:double)
+
+    + getName():String
+}
+
+class News {
+
+    + {static}NEWS_LIST:News[]
+    + {static}getRandomNews():News
+
+    - name:String
+    - description:String
+    - multipliers:double{}
+
+    - News(name:String, description:String, multipliers:double{})
+    
+    + getName():String
+    + getDescription():String
+    + getMultipliers():double[]
+
+}
+
+class HistoryValue<T> {
+
+    - value:<T>[]
+
+    + HistoryValue(value:<T>)
+
+    + get():<T>
+    + getHistory():<T>[]
+    + getAtIndex(index:Integer):<T>[]
+
+    + getEvolution():double
+
+    + set(newValue:<T>)
+
+}
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK Server VM
+Default Encoding: Cp1252
+Language: fr
+Country: FR
+--></g></svg>
