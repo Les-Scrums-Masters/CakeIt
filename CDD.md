@@ -80,3 +80,55 @@ Description des options permettant de paramétrer une partie.
 ## Modèle conceptuel applicatif
 
 Voici notre diagramme de classe décrivant notre jeu :
+
+## Description des fonctionnalités
+
+### Actions du joueur
+
+Liste des actions possibles par le joueur.
+
+#### Gestion des tours :
+
+- Augmenter ou diminuer le prix des gâteaux aux chocolats
+- Augmenter ou diminuer le volume de sa production
+  Gestion des tâches
+  Examiner les graphiques mises à disposition afin de prendre des décisions
+
+#### Gestion des tâches
+
+- Examiner les graphiques mises à disposition afin de prendre des décisions
+
+### Informations au joueur
+
+Liste des informations présentées au joueurs.
+
+#### Gestion des tours
+
+- Date actuelle : la date d'aujourd'hui
+- Trésorerie de la boulangerie : trésorerie de la boulangerie
+- Actualités : les actualités de la journée, ce sont les changement de contexte
+- Concurrents : les concurrents ce sont les autres boulangeries
+  - Prix de vente des concurrents : le prix que les concurrents ont fixé pour les gâteaux aux chocolats
+  - Trésorerie : la trésorerie des concurrents
+- Bilan de la veille du boulanger : données de la boulangerie
+  - Gâteaux en rayon : nombre de gâteau en rayon
+  - Prix de vente du gâteau : prix du gâteau
+  - Gâteaux vendus : nombre de gâteau vendus
+- Graphiques : graphiques montrant l’évolution des prix des matières premières (Chocolat, Farine, Beurre, Sucre et Oeufs) en fonction du temps
+
+### Moteur interne
+
+Liste des interactions entre les actions du joueurs et les informations
+
+#### Gestion des tours
+
+Augmenter le prix des gâteaux :
+Prix de ventes lendemain ++:
+
+#### Diminuer le prix des gâteaux :
+
+Prix de ventes lendemain - -
+
+#### Augmenter le volume de la production :
+
+Gâteaux en rayon lendemain ++:
