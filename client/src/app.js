@@ -45,12 +45,14 @@ function App() {
 
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
-      {/*header */}
+      <h1 className="absolute top-10 left-10 text-left text-4xl font-bold text-error">
+        Cake It !
+      </h1>
 
       {content}
 
-      <footer class="absolute right-10 bottom-10 ">
-        Les Scrum Masters © 2022
+      <footer className="absolute right-5 bottom-5 ">
+        <a>Les Scrum Masters © 2022</a>
       </footer>
     </main>
   );
