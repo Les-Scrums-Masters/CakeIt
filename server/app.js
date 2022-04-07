@@ -37,6 +37,15 @@ const refreshPlayers = (roomId) => {
   emitRoom(roomId, "refresh_players", [climbServer.getPlayers(roomId)]);
 };
 
+const sendPlayersInfo = (roomId) => {
+  //io.to(roomId).emit("refresh_players", climbServer.getPlayers(roomId));
+  climbServer.getPlayers(roomId).forEach((player) => {
+    console.log("EMIT EVENT PLAYER_INFO");
+
+    io.to(player.id).emit("send_player_info", player);
+  });
+};
+
 /* CONNEXION */
 
 io.on("connection", (socket) => {
@@ -74,6 +83,8 @@ io.on("connection", (socket) => {
     climbServer.startGame(roomId);
     console.log("Launch " + roomId);
     emitRoom(roomId, "game_started", [roomId]);
+    refreshPlayers(roomId);
+    sendPlayersInfo(roomId);
   });
 
   socket.on("end_day", (data) => {
