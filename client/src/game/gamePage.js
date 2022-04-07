@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CompetitorsList from "./competitorsList";
 import NewsList from "./newsList";
 import GameContent from "./gameContent";
+import IngredientList from "./ingredientList";
 
 /* PROPS : 
         socket={socket}
@@ -15,6 +16,8 @@ export default function GamePage(props) {
   const [round, setRound] = useState(1);
   const [player, setPlayer] = useState(null);
   const [players, setPlayers] = useState(null);
+
+  const [ingredients, setIngredients] = useState({});
 
   const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
     year: "numeric",
@@ -29,6 +32,9 @@ export default function GamePage(props) {
     });
     props.socket.on("send_player_info", (player) => {
       setPlayer(player);
+    });
+    props.socket.on("update_ingredients", (data) => {
+      setIngredients(data);
     });
   }, [props.socket, props.playerId]);
 
@@ -60,17 +66,18 @@ export default function GamePage(props) {
           <BakerInfo date={getDate()} player={player} />
 
           <GameContent
+            ingredients={ingredients}
             socket={props.socket}
             player={player}
             roomCode={props.room.roomCode}
           />
         </div>
 
-        <CompetitorsList
-          socket={props.socket}
-          players={players}
-          player={player}
-        />
+        <div className="grid grid-rows-2 gap-3">
+          <CompetitorsList players={players} player={player} />
+
+          <IngredientList ingredients={ingredients} />
+        </div>
       </div>
     );
   }
