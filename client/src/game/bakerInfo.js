@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function BakerInfo(props) {
+
   return (
     <article className="rounded-xl bg-success p-8 flex flex-row align-center items-center gap-3 text-white">
 

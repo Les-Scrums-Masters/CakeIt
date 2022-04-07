@@ -28,7 +28,7 @@ Dictionnaire 5 ingredients
     }
 }
 
-### start_day
+### next_day
 date
 
 ### end_day

@@ -38,7 +38,7 @@ function App() {
       />
     );
   } else if (display === "GamePage") {
-    return <GamePage socket={socket} />;
+    return <GamePage socket={socket} room={room} playerId={playerId}/>;
   } else {
     return <HomePage socket={socket} />;
   }

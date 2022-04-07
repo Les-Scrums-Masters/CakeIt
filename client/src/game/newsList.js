@@ -12,12 +12,11 @@ export default function NewsList(props) {
 
   });
 
-
   return (
     <Panel title="News" color="info">
       <div className="flex flex-col gap-3 divide-y-2 divide-info">
         {news.map((item, index) => 
-          <NewsItem date={item.date} title={item.name} key={index}/>
+          <NewsItem date={props.makeDate(item.date)} title={item.name} key={index}/>
         )}
       </div>
     </Panel>
