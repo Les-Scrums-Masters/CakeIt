@@ -18,9 +18,13 @@ class HistoryValue {
   }
 
   getEvolution() {
-    let actual = this.get();
-    let old = this.getAtIndex(this.values.length - 2);
-    return ((actual - old) * 100) / old;
+    if (this.values.length > 2) {
+      let actual = this.get();
+      let old = this.getAtIndex(this.values.length - 2);
+      return ((actual - old) * 100) / old;
+    } else {
+      return 0;
+    }
   }
 
   set(newValue) {

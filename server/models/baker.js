@@ -41,6 +41,7 @@ class Baker {
     this.salesEvolution = this.sales.getEvolution();
     this.volumeEvolution = this.volume.getEvolution();
     this.profitEvolution = this.profit.getEvolution();
+    this.priceEvolution = this.price.getEvolution();
   }
 }
 

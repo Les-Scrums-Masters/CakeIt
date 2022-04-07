@@ -54,6 +54,7 @@ export default function GameContent(props) {
       value={lastVolume}
       legend="gateaux initialement produits"
       key="volume"
+      evolution={props.player.volumeEvolution}
     />
   );
 
@@ -63,6 +64,7 @@ export default function GameContent(props) {
       legend="prix de vente d'un gateau"
       suffix=" €"
       key="price"
+      evolution={props.player.priceEvolution}
     />
   );
 
@@ -70,7 +72,7 @@ export default function GameContent(props) {
     content = (
       <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
         <div className="col-span-2 row-span-3 h-full">
-          {Object.keys(ingredients).length == 5 ? (
+          {Object.keys(ingredients).length === 5 ? (
             <Chart ingredients={ingredients} />
           ) : (
             ""
@@ -133,14 +135,24 @@ export default function GameContent(props) {
     if (profit.length > 0) lastProfit = profit[profit.length - 1];
 
     values.push(
-      <div className="rounded-xl bg-success p-3" key="sales">
-        <ValueDisplay value={lastSales} legend="gateaux vendus" suffix=" €" />
+      <div className="rounded-xl bg-success p-3 text-white" key="sales">
+        <ValueDisplay
+          value={lastSales}
+          legend="gateaux vendus"
+          suffix=" €"
+          evolution={props.player.salesEvolution}
+        />
       </div>
     );
 
     values.push(
-      <div className="rounded-xl bg-success p-3" key="profit">
-        <ValueDisplay value={lastProfit} legend="profit" suffix=" €" />
+      <div className="rounded-xl bg-success p-3 text-white" key="profit">
+        <ValueDisplay
+          value={lastProfit}
+          legend="profit"
+          suffix=" €"
+          evolution={props.player.profitEvolution}
+        />
       </div>
     );
   } else {
@@ -153,7 +165,7 @@ export default function GameContent(props) {
         {isReport ? "Bilan" : "Vente en cours ..."}
       </h1>
 
-      <div className="flex flex-row text-success">{values}</div>
+      <div className="grid grid-cols-4 gap-3 text-success">{values}</div>
 
       {content}
     </div>
