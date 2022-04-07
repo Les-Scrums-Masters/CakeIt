@@ -43,6 +43,12 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("start_game", (data) => {
+    //Condition à faire : Si tout les joueurs sont prêt
+    climbServer.startGame(roomId);
+    socket.to(data.room.getId()).emit("game_started", data);
+  });
+
   socket.on("end_day", (data) => {
     //Condition à faire : Si tout les joueurs sont prêt
     socket.to(data.room.getId()).emit("next_day", data);

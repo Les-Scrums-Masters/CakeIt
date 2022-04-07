@@ -39,6 +39,10 @@ class Room {
 
   getIngredients() {}
 
+  getPlayers() {
+    return this.players;
+  }
+
   getPlayer(id) {
     this.players.forEach((player, index) => {
       if (player.getId() === id) {
@@ -52,7 +56,9 @@ class Room {
     return this.roundNumber;
   }
 
-  startGame() {}
+  startGame() {
+    this.roundNumber = 1;
+  }
 
   nextDay() {}
 }
