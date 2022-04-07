@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 export default function JoinForm(props) {
   const [name, setName] = useState("");
@@ -7,16 +7,27 @@ export default function JoinForm(props) {
 
   function createGame() {
     alert("Creer une partie");
+    props.socket.emit("create_room", name);
   }
 
   function joinGame() {
     if (joinMode) {
       // REJOINDRE UNE PARTIE
       alert("Rejoindre une partie");
+      props.socket.emit("join_room", roomCode);
     } else {
       setJoinMode(true);
     }
   }
+
+  useEffect(() => {
+    props.socket.on("room_joined", (room) => {
+      //Il a rejoint une room
+    });
+    props.socket.on("not_find_room", () => {
+      //La room n'existe pas
+    });
+  }, [props.socket]);
 
   let content, button;
   if (joinMode) {
