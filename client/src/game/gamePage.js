@@ -16,6 +16,12 @@ export default function GamePage(props) {
   const [player, setPlayer] = useState(null);
   const [players, setPlayers] = useState(null);
 
+  const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+
   useEffect(() => {
     props.socket.on("next_day", (round) => setRound(round));
     props.socket.on("refresh_players", (p) => {
@@ -31,10 +37,15 @@ export default function GamePage(props) {
   };
 
   const makeDate = (round) => {
-    return 0;
+    let initialDate = Date.now();
+    let result = new Date(initialDate);
+    result.setDate(result.getDate() + round);
+
+    // FORMATTAGE
+    return dateFormatter.format(result);
   };
 
-  if (player == undefined || player == null || players == null) {
+  if (player === undefined || player == null || players == null) {
     return <div className=""></div>;
   } else {
     return (

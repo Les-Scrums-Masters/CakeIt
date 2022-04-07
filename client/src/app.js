@@ -36,7 +36,6 @@ function App() {
   });
 
   //Si l'utilisateur est connecté ou pas
-  const [isLogged, setLogged] = useState(false);
   useEffect(() => {
     // LANCER LA MUSIQUE LORSQU'ELLE EST ACTUALISEE
     if (sound !== null && !initializedSound) {
@@ -83,11 +82,18 @@ function App() {
     });
   });
 
+  function back() {
+    socket.emit("leave_room", room.roomCode, playerId);
+    setDisplay("HomePage");
+  }
+
   let content;
   let logo = (
-    <h1 className="absolute left-40 top-5 text-left text-2xl font-bold text-error">
-      Cake It !
-    </h1>
+    <button className="btn btn-link capitalize " onClick={back}>
+      <h1 className="absolute left-10 top-5 text-left text-2xl font-bold text-error">
+        Cake It !
+      </h1>
+    </button>
   );
   if (display === "RoomLobby") {
     content = (
@@ -117,7 +123,7 @@ function App() {
       {logo}
 
       {sound !== null ? (
-        <MusicSound sound={sound} additionnalStyle="absolute right-10 top-8" />
+        <MusicSound sound={sound} additionnalStyle="absolute right-10 top-5" />
       ) : (
         ""
       )}

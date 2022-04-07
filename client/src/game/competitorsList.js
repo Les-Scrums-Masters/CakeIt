@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Panel from "../components/panel";
 import CompetitorItem from "./competitorItem";
 
@@ -11,7 +10,7 @@ export default function CompetitorsList(props) {
             "item competitor : " + item.id + " player " + props.player.id
           );
 
-          if (item.id != props.player.id) {
+          if (item.id !== props.player.id) {
             let price = 0;
             let money = 0;
 

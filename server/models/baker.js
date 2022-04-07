@@ -14,6 +14,7 @@ class Baker {
     this.volume = new HistoryValue(Baker.INITIAL_VOLUME);
     this.money = new HistoryValue(Baker.INITIAL_MONEY);
     this.sales = new HistoryValue(0);
+    this.profit = new HistoryValue(0);
 
     this.ready = false;
   }
@@ -37,6 +38,7 @@ class Baker {
     this.moneyEvolution = this.money.getEvolution();
     this.salesEvolution = this.sales.getEvolution();
     this.volumeEvolution = this.volume.getEvolution();
+    this.profitEvolution = this.profit.getEvolution();
   }
 }
 

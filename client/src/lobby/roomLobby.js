@@ -6,7 +6,7 @@ export default function RoomLobby(props) {
 
   useEffect(() => {
     props.socket.on("refresh_players", (list) => {
-      console.log(list)
+      console.log(list);
       setPlayers(list);
     });
     props.socket.on("game_started", () => {
@@ -15,7 +15,7 @@ export default function RoomLobby(props) {
     });
 
     // setNewPlayer(false);
-  }, [props.socket, players]);
+  }, [props.socket, players, props]);
 
   function startGame() {
     //if (props.room.players.length >= 2) {
