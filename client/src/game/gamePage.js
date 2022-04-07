@@ -12,20 +12,16 @@ import GameContent from "./gameContent";
 */
 
 export default function GamePage(props) {
-  const [round, setRound] = useState(0);
+  const [round, setRound] = useState(1);
   const [player, setPlayer] = useState(null);
   const [players, setPlayers] = useState(null);
 
   useEffect(() => {
     props.socket.on("next_day", (round) => setRound(round));
     props.socket.on("refresh_players", (p) => {
-      console.log("REFRESH :");
-      console.log(p);
       setPlayers(p);
     });
     props.socket.on("send_player_info", (player) => {
-      console.log("MY PLAYER :");
-      console.log(player);
       setPlayer(player);
     });
   }, [props.socket, props.playerId]);

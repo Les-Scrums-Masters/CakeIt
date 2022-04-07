@@ -5,7 +5,7 @@ class Room {
   constructor(hostSocket, hostName, roomCode) {
     this.players = [new Baker(hostSocket, hostName)];
     this.roomCode = roomCode;
-    this.roundNumber = 0;
+    this.roundNumber = 1;
     this.ingredients = {
       egg: new Ingredient("egg", Ingredient.INITIAL_PRICE_EGG),
       chocolate: new Ingredient(
@@ -24,7 +24,6 @@ class Room {
   }
 
   removePlayer(id) {
-    console.log(this.players.length);
     this.players.forEach((player, index) => {
       if (player.getId() == id) {
         this.players.splice(index, 1);

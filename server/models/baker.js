@@ -22,10 +22,15 @@ class Baker {
     return this.id;
   }
 
-  newDay(price, volume, cakeSold) {
+  setReady(value) {
+    console.log("SETTTTTTING READY");
+    this.ready = value;
+  }
+
+  newDay(price, volume, sales) {
     this.price.set(price);
     this.volume.set(volume);
-    this.cakeSold.set(cakeSold);
+    this.sales.set(sales);
   }
 
   generateEvolution() {
