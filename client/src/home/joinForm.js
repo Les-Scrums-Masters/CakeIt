@@ -3,27 +3,37 @@ import React, { useState, useEffect } from "react";
 export default function JoinForm(props) {
   const [name, setName] = useState("");
   const [roomCode, setRoomCode] = useState("0000");
-  const [joinMode, setJoinMode] = useState(false);
+  const [joinMode, setJoinMode] = useState(true);
+  const [selected, setSelected] = useState(false);
 
   function createGame() {
-    if (name !== "") {
-      props.socket.emit("create_room", name);
+    if (!selected) {
+      setSelected(true);
+      setJoinMode(false);
     } else {
-      //Avertissement qu'il n'a pas de nom
+      if (name !== "") {
+        props.socket.emit("create_room", name);
+      } else {
+        //Avertissement qu'il n'a pas de nom
+      }
     }
   }
 
   function joinGame() {
-    if (joinMode) {
-      // REJOINDRE UNE PARTIE
+    if (!selected) {
+      setSelected(true);
+      setJoinMode(true);
+    } else {
       if (name !== "") {
         props.socket.emit("join_room", roomCode, name);
       } else {
         //Avertissement qu'il n'a pas de nom
       }
-    } else {
-      setJoinMode(true);
     }
+  }
+
+  function back() {
+    setSelected(false);
   }
 
   useEffect(() => {
@@ -36,51 +46,59 @@ export default function JoinForm(props) {
     });
   }, [props.socket]);
 
-  let content, button;
-  if (joinMode) {
-    content = (
-      <div>
+  let buttons = [
+    <button className="btn btn-primary" onClick={createGame} key="create">
+      Créer une partie
+    </button>,
+    <button className="btn btn-secondary" onClick={joinGame} key="join">
+      Rejoindre une partie
+    </button>,
+  ];
+
+  let content;
+
+  let nameInput = (
+    <input
+      placeholder="Entrez votre pseudo"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      type="text"
+      className="input input-bordered bg-white text-center"
+      key="name"
+    />
+  );
+
+  let backButton = (
+    <button className="btn btn-link" onClick={back} key="back">
+      Retour
+    </button>
+  );
+
+  if (selected) {
+    if (joinMode) {
+      content = [
+        nameInput,
         <input
           placeholder="Entrez un code partie"
           value={roomCode}
           onChange={(e) => setRoomCode(e.target.value)}
           type="text"
           className="input input-bordered input-error bg-white text-center"
-        />
-      </div>
-    );
-    button = (
-      <button className="btn btn-link" onClick={() => setJoinMode(false)}>
-        Retour
-      </button>
-    );
+          key="code"
+        />,
+        buttons[1],
+        backButton,
+      ];
+    } else {
+      content = [nameInput, buttons[0], backButton];
+    }
   } else {
-    content = (
-      <button className="btn btn-primary" onClick={createGame}>
-        Créer une partie
-      </button>
-    );
-    button = "";
+    content = buttons;
   }
 
   return (
     <div className="align-center flex flex-col justify-center gap-3">
-      
-      <input
-          placeholder="Entrez votre pseudo"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          className="input input-bordered bg-white text-center"
-        />
-      
       {content}
-
-      <button className="btn btn-secondary" onClick={joinGame}>
-        Rejoindre une partie
-      </button>
-
-      {button}
     </div>
   );
 }
