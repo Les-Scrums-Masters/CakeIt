@@ -26,9 +26,9 @@ climbServer.findRoom = (roomId) => {
   }
 };
 
-climbServer.joinRoom = (roomId, playerName) => {
+climbServer.joinRoom = (roomId, playerSocket, playerName) => {
   let room = climbServer.findRoom(roomId);
-  room.addPlayer(climbServer.getRandomCode(), playerName);
+  room.addPlayer(playerSocket, playerName);
 };
 
 climbServer.startGame = (roomId) => {
