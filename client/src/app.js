@@ -21,8 +21,8 @@ function App() {
     });
   }, [socket]);
 
-  if (display === "RoomLobby") {
-    return <RoomLobby socket={socket} />;
+  if (true/*display === "RoomLobby"*/) {
+    return <RoomLobby socket={socket} roomCode={2039} />;
   } else if (display === "GamePage") {
     return <GamePage socket={socket} />;
   } else {

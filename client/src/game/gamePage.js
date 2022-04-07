@@ -5,7 +5,7 @@ import ValueDisplay from "./valueDisplay";
 
 export default function GamePage(props) {
   return (
-    <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
+    <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 py-20 align-middle lg:flex-row">
       <NewsList />
 
       <div className="grow flex flex-col gap-5">
