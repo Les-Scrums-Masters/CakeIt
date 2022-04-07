@@ -7,7 +7,7 @@ module.exports = {
   safelist: [
     {
       pattern:
-        /(text|border|bg)-(neutral|primary|secondary|accent|info|success|warning|error)/,
+        /(text|border|bg|fill)-(neutral|primary|secondary|accent|info|success|warning|error)/,
     },
   ],
 };
