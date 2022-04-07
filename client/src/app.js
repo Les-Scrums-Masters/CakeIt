@@ -56,7 +56,7 @@ function App() {
     });
   });
 
-  let content;
+  let content, logo;
   if (display === "RoomLobby") {
     content = (
       <RoomLobby
@@ -65,6 +65,11 @@ function App() {
         playerId={playerId}
         setDisplay={setDisplay}
       />
+    );
+    logo = (
+      <h1 className="absolute top-5 left-20 text-left text-2xl font-bold text-error">
+        Cake It !
+      </h1>
     );
   } else if (display === "GamePage") {
     content = (
@@ -75,15 +80,19 @@ function App() {
         showNews={showNewsModal}
       />
     );
+    logo = (
+      <h1 className="absolute top-5 left-20 text-left text-2xl font-bold text-error">
+        Cake It !
+      </h1>
+    );
   } else {
     content = <HomePage socket={socket} />;
+    logo = null;
   }
 
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
-      <h1 className="absolute top-10 left-10 text-left text-4xl font-bold text-error">
-        Cake It !
-      </h1>
+      {logo}
 
       <Modal
         open={modalOpen}
