@@ -18,15 +18,14 @@ export default function GamePage(props) {
   const [round, setRound] = useState(0);
 
   useEffect(() => {
-    findPlayer(props.playerId, props.room.players);
-    console.log(props.playerId);
-    console.log(props.room.players);
-    console.log(player);
+    if (player === {}) {
+      findPlayer(props.playerId, props.room.players);
+    }
     props.socket.on("next_day", (round) => setRound(round));
     props.socket.on("refresh_players", (players) =>
       findPlayer(props.playerId, players)
     );
-  }, [props.socket, props.playerId]);
+  }, [props.socket, props.playerId, player, props.room.players]);
 
   const getDate = () => {
     return makeDate(round);
@@ -52,7 +51,7 @@ export default function GamePage(props) {
         <div className="flex grow flex-col gap-5">
           <BakerInfo date={getDate()} name={player.name} money={player.money} />
 
-          <GameContent socket={props.socket} />
+          <GameContent socket={props.socket} player={player} />
         </div>
 
         <CompetitorsList socket={props.socket} />
