@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import HomePage from "./home/homePage";
 import RoomLobby from "./lobby/roomLobby";
 import GamePage from "./game/gamePage";
+import Modal from "./components/modal";
 
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
@@ -12,6 +13,36 @@ function App() {
   const [display, setDisplay] = useState("HomePage");
   const [room, setRoom] = useState({});
   const [playerId, setPlayerId] = useState(0);
+
+   // ------- Boite de dialogue  -------
+   const [modalEmoji, setModalEmoji] = useState("");
+   const [modalTitle, setModalTitle] = useState("");
+   const [modalContent, setModalContent] = useState(null);
+   const [buttons, setButtons] = useState(null);
+   const [modalOpen, setModalOpen] = useState(false);
+ 
+   const closeModal = () => setModalOpen(false);
+
+   let showNewsModal = (news) => {
+     setModalEmoji( String.fromCodePoint(0x2139) );
+     setModalTitle("Nouvelle actualité !");
+     setModalContent(
+       <div className="">
+         <p>{news.date}</p>
+         <h3>{news.name}</h3>
+         <p>
+           {news.description}
+         </p>
+       </div>
+     )
+ 
+     setButtons(
+       <button onClick={() => setModalOpen(false)} className="btn btn-success">
+         J'ai compris !
+       </button>
+     )
+     setModalOpen(true);
+   }
 
   useEffect(() => {
     socket.on("room_joined", (room, playerId) => {
@@ -38,13 +69,18 @@ function App() {
       />
     );
   } else if (display === "GamePage") {
-    content = <GamePage socket={socket} room={room} playerId={playerId} />;
+    content = <GamePage socket={socket} room={room} playerId={playerId} showNews={showNewsModal}/>;
   } else {
     content = <HomePage socket={socket} />;
   }
 
   return (
     <main className="flex h-full w-full flex-col overflow-hidden overscroll-none">
+      
+      <Modal open={modalOpen} emoji={modalEmoji} title={modalTitle} buttons={buttons} onClose={closeModal}>
+            {modalContent}
+      </Modal>
+      
       {/*header */}
 
       {content}
