@@ -14,6 +14,8 @@ class Baker {
     this.volume = new HistoryValue(Baker.INITIAL_VOLUME);
     this.money = new HistoryValue(Baker.INITIAL_MONEY);
     this.sales = new HistoryValue(0);
+
+    this.ready = false;
   }
 
   getId() {
@@ -31,7 +33,6 @@ class Baker {
     this.salesEvolution = this.sales.getEvolution();
     this.volumeEvolution = this.volume.getEvolution();
   }
-
 }
 
 module.exports = Baker;

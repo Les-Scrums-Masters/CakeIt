@@ -3,13 +3,24 @@ import Chart from "../charts/chart";
 import Slider from "../components/slider";
 import ValueDisplay from "./valueDisplay";
 
+/* PROPS : 
+            socket={props.socket}
+            player={player}
+            roomCode={props.room.roomCode}
+*/
 export default function GameContent(props) {
   const [isReport, setIsReport] = useState(false);
 
   const [production, setProduction] = useState(5);
   const [price, setPrice] = useState(5);
 
-  const ready = () => {};
+  const ready = () => {
+    let data = {
+      price: price,
+      production: production,
+    };
+    props.socket.emit("end_day", data, props.roomCode, props.player);
+  };
 
   useEffect(() => {
     props.socket.on("next_day", () => {
@@ -70,7 +81,9 @@ export default function GameContent(props) {
           />
         </div>
         <div className="flex justify-end">
-          <button className="btn btn-success">Valider</button>
+          <button className="btn btn-success" onClick={ready}>
+            Valider
+          </button>
         </div>
       </div>
     </div>

@@ -4,6 +4,13 @@ import CompetitorsList from "./competitorsList";
 import NewsList from "./newsList";
 import GameContent from "./gameContent";
 
+/* PROPS : 
+        socket={socket}
+        room={room}
+        playerId={playerId}
+        showNews={showNewsModal}
+*/
+
 export default function GamePage(props) {
   const [round, setRound] = useState(0);
   const [player, setPlayer] = useState(null);
@@ -45,7 +52,11 @@ export default function GamePage(props) {
         <div className="flex grow flex-col gap-5">
           <BakerInfo date={getDate()} player={player} />
 
-          <GameContent socket={props.socket} player={player} />
+          <GameContent
+            socket={props.socket}
+            player={player}
+            roomCode={props.room.roomCode}
+          />
         </div>
 
         <CompetitorsList
