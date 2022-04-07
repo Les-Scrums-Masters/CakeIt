@@ -18,6 +18,7 @@ export default function IngredientList(props) {
           return (
             <IngredientItem
               name={ingredient.name}
+              image={key}
               price={latestPrice}
               evolution={ingredient.priceEvolution}
               key={index}

@@ -19,6 +19,10 @@ class Ingredient {
   getPrice() {
     return this.price.get();
   }
+
+  getEvolution() {
+    this.priceEvolution = this.price.getEvolution();
+  }
 }
 
 module.exports = Ingredient;

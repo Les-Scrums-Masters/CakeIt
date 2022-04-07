@@ -47,6 +47,12 @@ const sendPlayersInfo = (roomId) => {
 
 const updateIngredients = (roomId) => {
   const room = climbServer.findRoom(roomId);
+
+  // Calcul de l'évolution des ingrédients
+  Object.values(room.ingredients).forEach((ingredient) =>
+    ingredient.getEvolution()
+  );
+
   emitRoom(roomId, "update_ingredients", [room.ingredients]);
 };
 
