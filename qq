@@ -1,0 +1,16 @@
+[1mdiff --git a/client/src/app.js b/client/src/app.js[m
+[1mindex 9a8c0f6..8c3f0d7 100644[m
+[1m--- a/client/src/app.js[m
+[1m+++ b/client/src/app.js[m
+[36m@@ -6,9 +6,8 @@[m [mconst socket = io.connect("http://localhost:3001");[m
+ [m
+ function App() {[m
+   return ([m
+[31m-    [m
+[31m-    <Homepage />[m
+[31m-[m
+[32m+[m[32m    // <Homepage />[m
+[32m+[m[32m    <Lobby id={2308} />[m
+   );[m
+ }[m
+ [m
