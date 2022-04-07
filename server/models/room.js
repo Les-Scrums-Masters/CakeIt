@@ -1,5 +1,5 @@
 const Baker = require("./baker.js");
-const Ingredient = require("./ingredients.js");
+const Ingredient = require("./ingredient.js");
 
 class Room {
   constructor(hostname, roomCode) {
@@ -18,6 +18,7 @@ class Room {
       butter: new Ingredient("butter", Ingredient.INITIAL_PRICE_BUTTER),
       flour: new Ingredient("flour", Ingredient.INITIAL_PRICE_FLOUR),
     };
+    this.news = [];
   }
 
   addPlayer(name) {
