@@ -40,14 +40,18 @@ climbServer.startGame = (roomId) => {
   return false;
 };
 
-climbServer.getRandomCode = () => {
-  code = 1000 + Math.floor(Math.random() * 8999);
-
+climbServer.codeExist = (code) => {
   for (let i = 0; i < climbServer.rooms.length; i++) {
     if (climbServer.rooms[i].getId() === code) {
-      code = climbServer.getRandomCode();
+      return true
     }
   }
+  return false
+}
+
+climbServer.getRandomCode = () => {
+  code = 1000 + Math.floor(Math.random() * 8999);
+  while(this.codeExist(code)) {code=this.getRandomCode()}
   return code;
 };
 
