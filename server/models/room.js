@@ -35,8 +35,6 @@ class Room {
     return this.roomCode;
   }
 
-  getIngredients() {}
-
   getPlayers() {
     return this.players;
   }
@@ -58,7 +56,9 @@ class Room {
     this.roundNumber = 1;
   }
 
-  nextDay() {}
+  nextDay() {
+    this.roundNumber++;
+  }
 
   updateIngredientPrices(multipliers) {
     const egg = this.ingredients.egg.price;

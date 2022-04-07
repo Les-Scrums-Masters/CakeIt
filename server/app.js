@@ -76,6 +76,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("leave_room", (roomId, playerId) => {
+    console.log(playerId + " leaving " + roomId);
     climbServer.leaveRoom(roomId, playerId);
     refreshPlayers(roomId);
   });
@@ -93,11 +94,13 @@ io.on("connection", (socket) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.setReady(roomId, player.id);
     climbServer.sellingDay(data, roomId, player.id);
+    let room = climbServer.findRoom(roomId);
+    room.nextDay();
 
     //Si tout les joueurs sont prêt
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
-      emitRoom(roomId, "next_day", []);
+      emitRoom(roomId, "next_day", [room.roundNumber]);
       refreshPlayers(roomId);
       sendPlayersInfo(roomId);
     }
