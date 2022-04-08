@@ -60,11 +60,17 @@ climbServer.allReady = (roomId) => {
 
 climbServer.joinRoom = (roomId, playerSocket, playerName) => {
   let room = climbServer.findRoom(roomId);
-  room.addPlayer(playerSocket, playerName);
+  if (room === undefined || room === null) {
+    return;
+  }
+  room?.addPlayer(playerSocket, playerName);
 };
 
 climbServer.startGame = (roomId, probaEvent, nbRounds) => {
   let room = climbServer.findRoom(roomId);
+  if (room === undefined || room === null) {
+    return;
+  }
   if (room?.getPlayers().length >= 1) {
     room.startGame();
     room.setProba(probaEvent);
@@ -92,6 +98,9 @@ climbServer.codeExist = (code) => {
 climbServer.pickNews = (roomId) => {
   let prob = Math.floor(Math.random() * 100);
   let room = climbServer.findRoom(roomId);
+  if (room === undefined || room === null) {
+    return;
+  }
   if (prob < room.probaEvent) {
     let news = room.getNews();
     news.date = room.roundNumber;
@@ -121,6 +130,9 @@ climbServer.getRandomCode = () => {
 
 climbServer.sellingDay = (data, roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
+  if (room === undefined || room === null) {
+    return;
+  }
   let cakePrice = 0;
   if (room.ingredients != null) {
     Object.values(room.ingredients).forEach((ingredient) => {

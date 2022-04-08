@@ -66,13 +66,16 @@ io.on("connection", (socket) => {
 
   socket.on("create_room", (hostName) => {
     const room = climbServer.createGame(socket.id, hostName);
+    if (room === undefined || room === null) {
+      return;
+    }
     socket.join(room.getId());
     socket.emit("room_joined", room, socket.id);
   });
 
   socket.on("join_room", (roomId, playerName) => {
     const room = climbServer.findRoom(roomId);
-    if (room === undefined) {
+    if (room === undefined || room === null) {
       socket.emit("not_find_room");
     } else {
       socket.join(roomId);
@@ -93,6 +96,9 @@ io.on("connection", (socket) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId, probaEvent, nbRounds);
     const room = climbServer.findRoom(roomId);
+    if (room === undefined || room === null) {
+      return;
+    }
 
     console.log("Launch game : " + roomId);
     emitRoom(roomId, "game_started", [room]);
