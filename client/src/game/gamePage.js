@@ -45,7 +45,7 @@ export default function GamePage(props) {
     return <div className=""></div>;
   } else {
     return (
-      <div className="mx-auto grid h-full w-full flex-col items-stretch justify-center gap-5 overflow-auto p-20 align-middle 2xl:flex 2xl:flex-row">
+      <div className="mx-auto grid h-full w-full flex-col items-stretch justify-center gap-5 overflow-auto px-5 py-20 align-middle 2xl:flex 2xl:flex-row 2xl:px-20">
         <div className="grid">
           <NewsList
             socket={props.socket}

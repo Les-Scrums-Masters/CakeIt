@@ -50,13 +50,13 @@ function Chart(props) {
   // };
 
   return (
-    <div className="h-3/4">
-      <VictoryChart height={200} width={800}>
+    <div className="">
+      <VictoryChart height={400} width={800}>
         <VictoryLabel x={20} y={20} style={title} text={names[selected]} />
         <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
         <VictoryLabel
           x={500}
-          y={185}
+          y={385}
           style={labelOne}
           text={"Temps (en tour)"}
         />
@@ -72,7 +72,7 @@ function Chart(props) {
           }}
         />
       </VictoryChart>
-      <div className="btn-group">
+      <div className="flex flex-wrap gap-2 2xl:btn-group 2xl:gap-0">
         {Object.keys(names).map((key, index) => {
           let cssclasses =
             selected === key ? "btn btn-success" : "btn btn-accent";
