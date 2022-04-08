@@ -109,5 +109,41 @@
       "flour": 1.0,
       "demande": 0.8
     }
+  },
+  {
+    "name": "Le spectre de la sécheresse plane déjà",
+    "descriptions": "Le printemps est à peine commencé que la sécheresse affecte déjà plusieurs départements. ",
+    "multipliers": {
+      "egg": 1.0,
+      "chocolate": 1.0,
+      "butter": 1.0,
+      "sugar": 1.0,
+      "flour": 1.2,
+      "demande": 0.9
+    }
+  },
+  {
+    "name": "Bricomarché cherche 1000 salariés",
+    "descriptions": "Une enseigne de bricolage lance une publicité TV pour recruter des salariés. ",
+    "multipliers": {
+      "egg": 1.0,
+      "chocolate": 1.0,
+      "butter": 1.0,
+      "sugar": 0.9,
+      "flour": 1.0,
+      "demande": 0.6
+    }
+  },
+  {
+    "name": "Nouvelle journée de grève dans les transports !",
+    "descriptions": "Les syndicats ont déposé un préavis dans les transports en commun",
+    "multipliers": {
+      "egg": 1,
+      "chocolate": 1.0,
+      "butter": 0.8,
+      "sugar": 0.8,
+      "flour": 0.9,
+      "demande": 1.1
+    }
   }
 ]
