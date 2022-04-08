@@ -24,8 +24,8 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
 
 - Procédure
-  - [x] La procédure a été suivie à la lettre sans le moindre écart.
-  - [ ] La procédure a été globalement suivie.
+  - [ ] La procédure a été suivie à la lettre sans le moindre écart.
+  - [x] La procédure a été globalement suivie.
   - [ ] La procédure n'a pas été bien suivie.
 - Propositions d'amélioration du jeu
   - [ ] Au moins trois propositions d'améliorations pertinente sont faites.
@@ -46,10 +46,10 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 ### Résultat T2
 
-- Total d'item « Excellent » (2 point) : 1
-- Total d'item « Satisfaisant » (1 point) : 3
+- Total d'item « Excellent » (2 point) : 0
+- Total d'item « Satisfaisant » (1 point) : 4
 - Total d'item « Insatisfaisant » (0 point) : 1
-- Total des points (sur 10) : 5
+- Total des points (sur 10) : 4
 
 # Propositions d'amélioration du jeu
 
