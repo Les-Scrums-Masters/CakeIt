@@ -46,7 +46,30 @@ export default function RoomLobby(props) {
   }
 
   let btnStart = null;
+  let sliders = null;
   if (props.room.players[0].id === props.playerId) {
+    sliders = (
+      <div className="">
+        <Slider
+          min={2}
+          max={15}
+          step={1}
+          value={nbRounds}
+          caption="Nombre de rounds"
+          suffix=""
+          onChange={(v) => setRounds(v)}
+        />
+        <Slider
+          min={0}
+          max={100}
+          step={0.1}
+          value={probaEvent}
+          caption="Probabilité d'un évènement"
+          suffix="%"
+          onChange={(v) => setProba(v)}
+        />
+      </div>
+    );
     btnStart = (
       <button className="btn btn-success" onClick={startGame}>
         Commencer la partie
@@ -61,24 +84,7 @@ export default function RoomLobby(props) {
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
       </div>
       <LobbyPlayerList players={players} />
-      <Slider
-        min={2}
-        max={15}
-        step={1}
-        value={nbRounds}
-        caption="Nombre de rounds"
-        suffix=""
-        onChange={(v) => setRounds(v)}
-      />
-      <Slider
-        min={0}
-        max={100}
-        step={0.1}
-        value={probaEvent}
-        caption="Probabilité d'un évènement"
-        suffix="%"
-        onChange={(v) => setProba(v)}
-      />
+      {sliders}
       {btnStart}
       <div className="flex flex-col gap-3">
         <button className="btn btn-link" onClick={back}>
