@@ -39,6 +39,8 @@ class Room {
     };
     this.news = [];
     this.remainingNews = News.loadNews();
+    this.nbRounds = 5;
+    this.probaEvent = 95.5;
     shuffle(this.remainingNews);
   }
 
@@ -79,6 +81,12 @@ class Room {
     return this.roundNumber;
   }
 
+  setNbRounds(nbRounds) {
+    this.nbRounds = nbRounds;
+  }
+  setProba(probaEvent) {
+    this.probaEvent = probaEvent;
+  }
   startGame() {
     this.roundNumber = 1;
   }
