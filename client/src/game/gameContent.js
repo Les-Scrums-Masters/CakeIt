@@ -68,8 +68,7 @@ export default function GameContent(props) {
       <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
         <div className="col-span-2 row-span-3 h-full">
           {Object.keys(props.ingredients).length === 5 ? (
-            //<Chart ingredients={props.ingredients} />
-            <div></div>
+            <Chart ingredients={props.ingredients} />
           ) : (
             ""
           )}

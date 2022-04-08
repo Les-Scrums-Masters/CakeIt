@@ -22,10 +22,9 @@ function Chart(props) {
   };
   const [selected, setSelected] = useState(Object.keys(props.ingredients)[0]);
 
-  let max = 0;
-  props.ingredients[selected].prices.values.forEach((element) => {
-    if (element.y > max) max = element.y;
-  });
+  let values = props.ingredients[selected].price.values ?? [];
+  console.log(values);
+  let max = Math.max(...values);
 
   //a refaire ??
   const title = {
@@ -52,7 +51,7 @@ function Chart(props) {
   // };
 
   return (
-    <div className="h-6/12 container mx-auto w-6/12">
+    <div className="h-full">
       <VictoryChart height={200} width={800}>
         <VictoryLabel x={20} y={20} style={title} text={names[selected]} />
         <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
@@ -67,9 +66,9 @@ function Chart(props) {
             data: { stroke: "#F87272" },
             parent: { border: "1px solid #ccc" },
           }}
-          data={convertToChart(props.ingredients[selected].prices.values)}
+          data={convertToChart(values)}
           domain={{
-            x: [1, props.ingredients[selected].prices.values.length],
+            x: [1, values.length],
             y: [0, max],
           }}
         />
