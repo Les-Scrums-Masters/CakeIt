@@ -13,12 +13,11 @@ function EndChart(props) {
     return result;
   };
 
-  const [selected, setSelected] = useState(Object.keys(props.players)[0]);
+  const [selected, setSelected] = useState(0);
 
   let values = props.players[selected].money.values ?? [];
   let max = Math.max(...values);
 
-  //a refaire ??
   const title = {
     textAnchor: "start",
     verticalAnchor: "end",
@@ -71,13 +70,13 @@ function EndChart(props) {
         />
       </VictoryChart>
       <div className="btn-group">
-        {props.players.forEach((player, index) => {
+        {props.players.map((player, index) => {
           let cssclasses =
-            selected === player ? "btn btn-success" : "btn btn-accent";
+            selected === index ? "btn btn-accent" : "btn btn-success ";
           return (
             <button
               className={cssclasses}
-              onClick={() => setSelected(player)}
+              onClick={() => setSelected(index)}
               key={index}
             >
               {player.name}

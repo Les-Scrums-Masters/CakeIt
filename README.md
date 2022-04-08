@@ -68,3 +68,68 @@ npm run start
 ```
 
 L'application est alors disponible à l'adresse http://localhost:3000/
+
+## **📷 Galerie**
+
+<table>
+    <thead>
+        <tr>
+            <th>Menu principal</th>
+            <th>Menu de création de party</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img target="_blank" alt="Menu principal" src="./images/homePage.png"/></td>
+            <td><img target="_blank" alt="Lobby d'attente" src="./images/createPage.png"></td>
+        </tr>
+    </tbody>
+     <thead>
+        <tr>
+            <th>Lobby d'attente</th>
+            <th>Evenement arrivé</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img target="_blank" alt="Evenement arrivé" src="./images/roomLobby.png"></td>
+            <td><img target="_blank" alt="Menu de jeu" src="./images/newNews.png"></td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>Menu de jeu</th>
+            <th>Fin de partie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img target="_blank" alt="Objectif pédagogique" src="./images/gameView.png" /></td>
+            <td><img target="_blank"  alt="Classement"src="./images/endPage.png" /></td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>Vue de toutes ses manches</th>
+            <th>Vue d'une seule manche</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img target="_blank" alt="Vue de toutes ses manches" src="./images/RoundsView.png" /></td>
+            <td><img target="_blank"  alt="Vue d'une seule manche"src="./images/RoundView.png" /></td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>Vue lors d'une validation de mot</th>
+            <th>Avertissement pour l'utilisateur</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img target="_blank" alt="Vue de toutes ses manches" src="./images/ResultModal.png" /></td>
+            <td><img target="_blank"  alt="Vue d'une seule manche"src="./images/ErrorView.png" /></td>
+        </tr>
+    </tbody>
+</table>
