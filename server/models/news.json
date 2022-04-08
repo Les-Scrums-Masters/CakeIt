@@ -140,9 +140,9 @@
     "multipliers": {
       "egg": 1,
       "chocolate": 1.0,
-      "butter": 1.0,
-      "sugar": 1.1,
-      "flour": 1.0,
+      "butter": 1.3,
+      "sugar": 1.2,
+      "flour": 1.1,
       "demande": 1.1
     }
   }
