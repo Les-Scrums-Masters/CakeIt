@@ -128,8 +128,20 @@ climbServer.sellingDay = (data, roomId, playerId) => {
     });
     climbServer.getPlayers(roomId)?.forEach((player) => {
       if (player.id == playerId) {
-        let sales = 1000 / data.price;
-        let profit = sales * data.price - data.production * cakePrice;
+        //sales : nb d'articles vendus
+        let sales = 0;
+
+        if (data.price <= cakePrice + 1) sales = 1000;
+        else if (data.price <= cakePrice + 2) sales = 800;
+        else if (data.price <= cakePrice + 3) sales = 600;
+        else if (data.price <= cakePrice + 4) sales = 400;
+        else if (data.price <= cakePrice + 5) sales = 200;
+        else sales = 100;
+
+        if (sales > data.production) sales = data.production;
+
+        let profit =
+          sales * data.price - data.production * cakePrice + Baker.fixedCost;
         player.newDay(
           parseFloat(data.price),
           parseInt(data.production),

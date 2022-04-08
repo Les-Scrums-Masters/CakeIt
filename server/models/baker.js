@@ -4,7 +4,7 @@ class Baker {
   static INITIAL_PRICE = 10.0;
   static INITIAL_VOLUME = 100;
   static INITIAL_MONEY = 4000.0;
-  static FIXED_COST = 2000;
+  static FIXED_COST = 200;
 
   constructor(id, name) {
     this.id = id;
