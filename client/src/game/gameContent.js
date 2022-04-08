@@ -135,7 +135,7 @@ export default function GameContent(props) {
     );
   } else {
     content = (
-      <div className="h-64 grow justify-center text-center">
+      <div className="my-auto h-64 grow justify-center text-center">
         <lottie-player
           src="https://assets6.lottiefiles.com/packages/lf20_Q18RwS.json"
           background="transparent"
@@ -150,14 +150,14 @@ export default function GameContent(props) {
   return (
     <div className="flex h-full w-full flex-col gap-5 rounded-xl border-2 border-success bg-white p-8">
       <h1 className="text-4xl font-bold text-success">
-        {isReport ? "Bilan" : "Vente en cours ..."}
+        {isReport ? "Bilan" : "Ventes en cours ..."}
       </h1>
 
       <div className="grid grid-cols-4 items-center gap-3 text-success">
         {values}
       </div>
 
-      {content}
+      <div className="grid grow">{content}</div>
     </div>
   );
 }
