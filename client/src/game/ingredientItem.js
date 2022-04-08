@@ -14,7 +14,7 @@ export default function IngredientItem(props) {
         <span className="text-xl font-bold text-accent">
           {truncValue + " €"}
         </span>{" "}
-        <EvolutionBadge value={props.evolution} />
+        <EvolutionBadge value={props.evolution} invert={true} />
       </p>
     </div>
   );
