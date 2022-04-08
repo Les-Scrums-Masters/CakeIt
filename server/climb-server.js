@@ -122,24 +122,30 @@ climbServer.getRandomCode = () => {
 climbServer.sellingDay = (data, roomId, playerId) => {
   let room = climbServer.findRoom(roomId);
   let cakePrice = 0;
-  if (room.ingredients != null) {
-    Object.values(room.ingredients).forEach((ingredient) => {
-      cakePrice += ingredient.price.get();
-    });
-    climbServer.getPlayers(roomId)?.forEach((player) => {
-      if (player.id == playerId) {
-        let sales = 1000 / data.price;
-        let profit = sales * data.price - data.production * cakePrice;
-        player.newDay(
-          parseFloat(data.price),
-          parseInt(data.production),
-          sales,
-          profit,
-          player.money.get() + profit
-        );
-      }
-    });
-  }
+  Object.values(room.ingredients).forEach((ingredient) => {
+    cakePrice += ingredient.price.get();
+  });
+  climbServer.getPlayers(roomId)?.forEach((player) => {
+    if (player.id == playerId) {
+      let salesPourcent =
+        (0.6 * data.price.getEvolution + 0.4 * data.price.getEvolution) * 100;
+      let sales = 1000 + salesPourcent;
+      let profit = sales * data.price - data.production * cakePrice;
+      player.newDay(
+        parseFloat(data.price),
+        parseInt(data.production),
+        sales,
+        profit,
+        player.money.get() + profit
+      );
+      console.log(player);
+      console.log(player.price);
+      console.log(player.volume);
+      console.log(player.money);
+      console.log(player.sales);
+      console.log(player.profit);
+    }
+  });
 };
 
 module.exports = climbServer;
