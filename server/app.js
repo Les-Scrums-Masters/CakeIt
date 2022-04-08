@@ -86,9 +86,9 @@ io.on("connection", (socket) => {
     refreshPlayers(roomId);
   });
 
-  socket.on("start_game", (roomId) => {
+  socket.on("start_game", (roomId, probaEvent, nbRounds) => {
     //Condition à faire : Si tout les joueurs sont prêt
-    climbServer.startGame(roomId);
+    climbServer.startGame(roomId, probaEvent, nbRounds);
     //climbServer.pickNews(roomId);
     const room = climbServer.findRoom(roomId);
 
