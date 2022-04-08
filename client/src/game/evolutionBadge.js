@@ -1,5 +1,5 @@
 export default function EvolutionBadge(props) {
-  let isInverted = props.invert ?? false;
+  let isInverted = props.invert || false;
 
   let isSuccess = isInverted ? (props.value ?? 0) < 0 : (props.value ?? 0) > 0;
 
@@ -7,7 +7,7 @@ export default function EvolutionBadge(props) {
 
   let bgColor = "bg" + color;
 
-  let value = props.value ?? 0;
+  let value = props.value || 0;
 
   let truncValue = Number(value).toFixed(2);
 
