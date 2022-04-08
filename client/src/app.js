@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import HomePage from "./home/homePage";
 import RoomLobby from "./lobby/roomLobby";
 import GamePage from "./game/gamePage";
+import EndPage from "./end/endPage";
 import Modal from "./components/modal";
 
 //musique
@@ -15,7 +16,7 @@ import musicSound from "./sounds/lofi.ogg";
 const socket = io.connect("http://192.168.1.82:3001");
 
 function App() {
-  //Possible display : HomePage, RoomLobby, GamePage
+  //Possible display : HomePage, RoomLobby, GamePage, EndPage
   const [display, setDisplay] = useState("HomePage");
   const [room, setRoom] = useState({});
   const [playerId, setPlayerId] = useState(0);
@@ -132,6 +133,15 @@ function App() {
         playerId={playerId}
         showNews={showNewsModal}
         makeDate={makeDate}
+      />
+    );
+  } else if (display === "EndPage") {
+    content = (
+      <EndPage
+        socket={socket}
+        room={room}
+        playerId={playerId}
+        setDisplay={setDisplay}
       />
     );
   } else {
