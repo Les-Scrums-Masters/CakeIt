@@ -72,7 +72,7 @@ function Chart(props) {
           }}
         />
       </VictoryChart>
-      <div className="btn-group">
+      <div className="flex flex-wrap gap-2 2xl:btn-group">
         {Object.keys(names).map((key, index) => {
           let cssclasses =
             selected === key ? "btn btn-success" : "btn btn-accent";
