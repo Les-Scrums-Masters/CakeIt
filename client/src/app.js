@@ -96,12 +96,14 @@ function App() {
       console.log("Room joined as id : " + playerId);
       setDisplay("RoomLobby");
     });
-    socket.on("game_started", () => {
+    socket.on("game_started", (room) => {
       //Il a rejoint une room
+      setRoom(room);
       setDisplay("GamePage");
     });
-    socket.on("end_game", () => {
+    socket.on("end_game", (room) => {
       //Il a rejoint une room
+      setRoom(room);
       setDisplay("EndPage");
     });
   });

@@ -92,7 +92,7 @@ io.on("connection", (socket) => {
     const room = climbServer.findRoom(roomId);
 
     console.log("Launch game : " + roomId);
-    emitRoom(roomId, "game_started", [roomId]);
+    emitRoom(roomId, "game_started", [room]);
     //emitRoom(roomId, "new_news", [room.news]);
     updateIngredients(roomId);
     refreshPlayers(roomId);
@@ -115,7 +115,7 @@ io.on("connection", (socket) => {
         refreshPlayers(roomId);
         sendPlayersInfo(roomId);
         if (room.nbRounds <= room.roundNumber) {
-          emitRoom(roomId, "end_game", []);
+          emitRoom(roomId, "end_game", [room]);
         } else {
           emitRoom(roomId, "next_day", [room.roundNumber]);
           emitRoom(roomId, "end_day", [room.roundNumber]);
