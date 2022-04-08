@@ -46,8 +46,8 @@ Prenez la peau d'un boulanger et gérer au mieux votre production afin de maximi
     </thead>
     <tbody>
         <tr>
-            <td><img target="_blank" alt="Objectif pédagogique" src="./images/gameView.png" /></td>
-            <td><img target="_blank"  alt="Classement"src="./images/endPage.png" /></td>
+            <td><img target="_blank" alt="Objectif pédagogique" src="./images/gameView1.png" /></td>
+            <td><img target="_blank"  alt="Classement"src="./images/endPage1.png" /></td>
         </tr>
     </tbody>
 </table>
