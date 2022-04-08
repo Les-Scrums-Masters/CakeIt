@@ -96,7 +96,10 @@ export default function GameContent(props) {
           />
         </div>
         <div className="flex place-items-end justify-end">
-          <button className="btn btn-success" onClick={ready}>
+          <button
+            className="btn btn-success hover:bg-emerald-500"
+            onClick={ready}
+          >
             Valider
           </button>
         </div>

@@ -1,5 +1,9 @@
 export default function EvolutionBadge(props) {
-  let color = (props.value ?? 0) > 0 ? "-success" : "-error";
+  let isInverted = props.invert ?? false;
+
+  let isSuccess = isInverted ? (props.value ?? 0) < 0 : (props.value ?? 0) > 0;
+
+  let color = isSuccess ? "-success" : "-error";
 
   let bgColor = "bg" + color;
 

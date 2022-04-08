@@ -8,7 +8,7 @@ export default function ValueDisplay(props) {
   return (
     <div className="flex grow flex-col">
       <p>
-        <span className="text-2xl font-semibold">{truncValue + suffix}</span>{" "}
+        <span className="text-xl font-semibold">{truncValue + suffix}</span>{" "}
         <EvolutionBadge value={props.evolution} />
       </p>
       <p className="text-sm leading-4">{props.legend}</p>
