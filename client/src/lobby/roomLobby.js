@@ -62,7 +62,7 @@ export default function RoomLobby(props) {
       </div>
       <LobbyPlayerList players={players} />
       <Slider
-        min={1}
+        min={2}
         max={15}
         step={1}
         value={nbRounds}
