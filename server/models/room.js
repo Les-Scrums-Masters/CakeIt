@@ -72,9 +72,7 @@ class Room {
   }
 
   getNews() {
-    let news = this.remainingNews.pop();
-    this.news.push(news);
-    return news;
+    return this.remainingNews.pop();
   }
 
   getRound() {

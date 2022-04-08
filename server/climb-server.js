@@ -86,7 +86,7 @@ climbServer.pickNews = (roomId) => {
   let room = climbServer.findRoom(roomId);
   if (prob > 1) {
     let news = room.getNews();
-    news.date = room.round;
+    news.date = room.roundNumber;
     room.news.push(news);
 
     room.updateIngredientPrices(news.multipliers);
