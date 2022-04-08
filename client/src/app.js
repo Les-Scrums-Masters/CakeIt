@@ -10,12 +10,13 @@ import MusicSound from "./components/musicSound";
 // Sons
 import useSound from "use-sound";
 import musicSound from "./sounds/lofi.ogg";
+import EndPage from "./end/endPage";
 
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
 
 function App() {
-  //Possible display : HomePage, RoomLobby, GamePage
+  //Possible display : HomePage, RoomLobby, GamePage, EndPage
   const [display, setDisplay] = useState("HomePage");
   const [room, setRoom] = useState({});
   const [playerId, setPlayerId] = useState(0);
@@ -95,9 +96,13 @@ function App() {
       console.log("Room joined as id : " + playerId);
       setDisplay("RoomLobby");
     });
-    socket.on("game_started", (room) => {
+    socket.on("game_started", () => {
       //Il a rejoint une room
       setDisplay("GamePage");
+    });
+    socket.on("end_game", () => {
+      //Il a rejoint une room
+      setDisplay("EndPage");
     });
   });
 
@@ -134,6 +139,8 @@ function App() {
         makeDate={makeDate}
       />
     );
+  } else if (display === "EndPage") {
+    content = <EndPage socket={socket} room={room} playerId={playerId} />;
   } else {
     content = <HomePage socket={socket} />;
     logo = null;
