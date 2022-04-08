@@ -30,7 +30,7 @@ climbServer.findRoom = (roomId) => {
 };
 
 climbServer.setReady = (roomId, playerId) => {
-  climbServer.getPlayers(roomId).forEach((player) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
     if (player.id == playerId) {
       player.setReady(true);
     }
@@ -83,12 +83,22 @@ climbServer.codeExist = (code) => {
 
 climbServer.pickNews = (roomId) => {
   let prob = Math.floor(Math.random() * 100);
+  let room = climbServer.findRoom(roomId);
   if (prob > 1) {
-    let room = climbServer.findRoom(roomId);
-    let number = Math.floor(Math.random() * room.remainingNews.length);
+    let number = Math.floor(Math.random() * room?.remainingNews.length);
     let news = room.getNews(number);
     news.date = room.round;
     room.news.push(news);
+
+    room.updateIngredientPrices(news.multipliers);
+  } else {
+    room.updateIngredientPrices({
+      egg: 1.0,
+      chocolate: 1.0,
+      flour: 1.0,
+      sugar: 1.0,
+      butter: 1.0,
+    });
   }
 };
 
