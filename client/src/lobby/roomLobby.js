@@ -5,7 +5,7 @@ import Slider from "../components/slider";
 export default function RoomLobby(props) {
   let [players, setPlayers] = useState(props.room.players);
 
-  const [probaEvent, setProba] = useState(5);
+  const [probaEvent, setProba] = useState(50);
   const [nbRounds, setRounds] = useState(5);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export default function RoomLobby(props) {
         step={0.1}
         value={probaEvent}
         caption="Probabilité d'un évènement"
-        suffix=" "
+        suffix="%"
         onChange={(v) => setProba(v)}
       />
       {btnStart}
