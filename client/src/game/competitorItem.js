@@ -1,6 +1,7 @@
 import Avatar from "./../components/avatar";
 
 export default function CompetitorItem(props) {
+  console.log(props.price);
   let truncPrice = Number(props.price.toFixed(2));
   let truncMoney = Number(props.money.toFixed(2));
 
@@ -17,10 +18,8 @@ export default function CompetitorItem(props) {
             {props.status}
           </span>
         </p>
-        <p className="text-sm font-light">
-          {"Prix de vente : " + truncPrice} €
-        </p>
-        <p className="text-sm font-light">{"Trésorerie : " + truncMoney} €</p>
+        <p className="text-sm font-light">{"Prix de vente : " + truncPrice}€</p>
+        <p className="text-sm font-light">{"Trésorerie : " + truncMoney}€</p>
       </div>
     </article>
   );
