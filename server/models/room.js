@@ -87,7 +87,6 @@ class Room {
   setProba(probaEvent) {
     this.probaEvent = probaEvent;
   }
-
   startGame() {
     this.roundNumber = 1;
   }

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import HomePage from "./home/homePage";
 import RoomLobby from "./lobby/roomLobby";
 import GamePage from "./game/gamePage";
-import EndPage from "./end/endPage";
 import Modal from "./components/modal";
 
 //musique
@@ -11,6 +10,7 @@ import MusicSound from "./components/musicSound";
 // Sons
 import useSound from "use-sound";
 import musicSound from "./sounds/lofi.ogg";
+import EndPage from "./end/endPage";
 
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
