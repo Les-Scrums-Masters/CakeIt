@@ -10,11 +10,16 @@ export default function EndPage(props) {
   return (
     <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-center justify-center gap-20 align-middle">
       <div className="grid">
-        <p className="text-center text-neutral">Salon</p>
-        <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
+        <h1 className="text-6xl font-bold text-error">Bien joué !</h1>
       </div>
+      {console.log(props.room.players)}
       {props.room.players.forEach((player) => {
-        <PlayerCard player={player} />;
+        {
+          console.log(player);
+        }
+        <h1 className="text-6xl font-bold text-error">{player.name}</h1>;
+
+        //<PlayerCard player={player} />;
       })}
 
       <div className="flex flex-col gap-3">

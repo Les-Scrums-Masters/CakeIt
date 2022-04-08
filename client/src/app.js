@@ -140,7 +140,14 @@ function App() {
       />
     );
   } else if (display === "EndPage") {
-    content = <EndPage socket={socket} room={room} playerId={playerId} />;
+    content = (
+      <EndPage
+        socket={socket}
+        room={room}
+        playerId={playerId}
+        setDisplay={setDisplay}
+      />
+    );
   } else {
     content = <HomePage socket={socket} />;
     logo = null;
