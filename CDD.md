@@ -19,7 +19,8 @@ Comment les mécanismes du marché influent sur les décisions des producteurs f
 
 Les détails de ce que le joueur doit apprendre.
 
-Selon la théorie, sur un marché en CPP, le prix des biens est fixé par un équilibre entre offre et demande. L’offre s’adapte à la demande et vice-versa, et ces derniers peuvent impacter l’évolution du prix et du volume de production.
+Selon la théorie, sur un marché en Concurrence Pur et Parfaite (CPP),
+le prix des biens est fixé par un équilibre entre offre et demande. L’offre s’adapte à la demande et vice-versa, et ces derniers peuvent impacter l’évolution du prix et du volume de production.
 L’équilibre entre l’offre et la demande peut être modifié par des chocs, ce sont des évènements extérieurs qui viennent régulièrement impacter l’offre ou la demande. Ces changements violents ont le pouvoir de créer un bouleversement au plan économique.
 Il y a deux types de conséquences, qui peuvent à la fois être positives ou négatives :
 
@@ -79,6 +80,7 @@ Description des options permettant de paramétrer une partie.
 ## Modèle conceptuel applicatif
 
 Voici notre diagramme de classe décrivant notre jeu :
+![](./diagrammeDeClasse.svg)
 
 ## Description des fonctionnalités
 
@@ -126,3 +128,59 @@ Liste des interactions entre les actions du joueurs et les informations
 - **Augmenter le volume de la production** : Gâteaux en rayon lendemain ++
 
 - **Diminuer le volume de la production** : Gâteaux en rayon lendemain - -
+
+# Scénarios
+
+## Scénario tutorial
+
+Décrire en détail un scénario qui s’appuie sur toutes les fonctionnalités mais sans difficulté pour le joueur.
+
+- Tutorial pour comprendre les mécanismes du marché face aux changement de contexte
+  Voici un exemple :
+  Paramètres :
+- Joueur : [<Nom, Prix Gâteau, * Production, Trésorerie>] ,[Nadège, 10, 1000, 100 000]
+  Concurrent : [<Nom, Prix Gâteau, Trésorerie>]
+  [<Alice,10,1000,100 000>]
+- Nombres de tours : 3
+- Actualités qui créent un choc
+
+### Déroulement gagnant :
+
+- 1.1 Une actualité survient : Hausse du pouvoir d’achat des consommateurs
+- 1.2. Les joueurs analysent les graphiques l’actualité et prennent des décisions.Nadège a choisi d’augmenter sa production et ses prix [<Nadège, 15,1080, 100500>]
+  Alice a baissé sa production <Alice,10,800,99700>
+- 1.3. Nadège va faire le plus de profits car elle va vendre plus que sa concurrente. Car hausse du pouvoir d'achat est un choc de demande positif qui se traduit par une hausse de la production et des prix.
+
+---
+
+- 2.1. Une autre actualité survient : Pénurie
+  2.2. Les concurrents analysent la trésorerie et le nombre de ventes de leurs concurrents. Analyse les graphiques qui affichent le prix des matières premières
+  2.3 Prennent des décisions en ajustant la production et le prix
+
+---
+
+    3. Même chose pour le tour numéro 3
+    Celui qui a le plus augmenté son profit au cours du jeu gagne.
+
+### Déroulement perdant :
+
+Même acheminement pour perdre
+S'il fait moins de profit que son concurrent à chaque partie, le joueur va perdre. A la fin on regarde celui qui a fait le plus de profit du début de la partie à la fin.
+
+### Scénarios complémentaires
+
+Décrire moins précisément d’autres idées de scénarios.
+Si le joueur ne possède aucune notion en économie. Le scénario ne permet pas au joueur d'être à 100% sûr du résultat. S'il ne sait pas la différence entre choc d'offres et choc de demande et il ne saura pas quel action et le plus adapté entre diminuer et augmenter le prix et la production.
+
+### Fonctionnalités additionnelles
+
+Décrire ici les idées de fonctionnalités additionnelles. Cette partie ne doit servir qu’en dernier recours, pour transmettre ce qui n’a pas été inclus dans les fonctionnalités faute de temps.
+
+Permettre aux joueurs de déclencher des chocs par eux-mêmes et ne pas toujours les subir.
+Ajouter la notion de salaires pour les employés des boulangeries.
+
+# Règles de nommages
+
+- fichiers, variables : camelCase, exemple : app.js
+- classes : PascalCase, exemple : App
+- constantes : screaming snake, exemple : MY_URL
