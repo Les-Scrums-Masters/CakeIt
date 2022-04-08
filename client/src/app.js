@@ -68,17 +68,19 @@ function App() {
 
   let showNewsModal = (news) => {
     setModalEmoji(String.fromCodePoint(0x2139));
-    setModalTitle("Nouvelle actualité !");
+    setModalTitle(news?.name);
     setModalContent(
-      <div className="">
-        <p>{makeDate(news.date)}</p>
-        <h3>{news.name}</h3>
-        <p>{news.description}</p>
+      <div className="grid gap-3">
+        <p className="mb-3 italic">{makeDate(news?.date)}</p>
+        <p className="">{news?.description}</p>
       </div>
     );
 
     setButtons(
-      <button onClick={() => setModalOpen(false)} className="btn btn-success">
+      <button
+        onClick={() => setModalOpen(false)}
+        className="btn btn-success btn-block my-3"
+      >
         J'ai compris !
       </button>
     );
