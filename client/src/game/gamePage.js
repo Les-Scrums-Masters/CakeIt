@@ -36,7 +36,6 @@ export default function GamePage(props) {
     props.socket.on("new_news", (newsList) => {
       setNews(newsList);
       setTimeout(() => {
-        console.log(newsList.length);
         props.showNews(newsList[newsList.length - 1]);
       }, 300);
     });
