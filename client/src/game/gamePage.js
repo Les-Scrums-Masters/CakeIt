@@ -18,16 +18,12 @@ export default function GamePage(props) {
   const [players, setPlayers] = useState(null);
 
   const [ingredients, setIngredients] = useState({});
-  const [news, setNews] = useState({});
-
-  const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
-  });
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
-    props.socket.on("next_day", (round) => setRound(round));
+    props.socket.on("next_day", (round) => {
+      setRound(round);
+    });
     props.socket.on("refresh_players", (p) => {
       setPlayers(p);
     });
@@ -39,38 +35,27 @@ export default function GamePage(props) {
     });
     props.socket.on("new_news", (newsList) => {
       setNews(newsList);
+      setTimeout(() => {
+        props.showNews(newsList[newsList.length - 1]);
+      }, 300);
     });
-  }, [props.socket, props.playerId]);
-
-  const getDate = () => {
-    return makeDate(round);
-  };
-
-  const makeDate = (round) => {
-    let increment = round ?? 0;
-
-    let initialDate = Date.now();
-    //let result = new Date(initialDate);
-    //result.setDate(result.getDate() + increment);
-    console.log(initialDate);
-    // FORMATTAGE
-    return dateFormatter.format(initialDate);
-  };
+  }, [props.socket, props.playerId, news, props]);
 
   if (player === undefined || player == null || players == null) {
     return <div className=""></div>;
   } else {
     return (
-      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 p-20 align-middle lg:flex-row">
-        <NewsList
-          socket={props.socket}
-          makeDate={makeDate}
-          showModal={props.showModal}
-          news={news}
-        />
+      <div className="mx-auto grid h-full w-full flex-col items-stretch justify-center gap-5 overflow-auto p-20 align-middle 2xl:flex 2xl:flex-row">
+        <div className="grid">
+          <NewsList
+            socket={props.socket}
+            makeDate={props.makeDate}
+            news={news}
+          />
+        </div>
 
         <div className="flex grow flex-col gap-5">
-          <BakerInfo date={getDate()} player={player} />
+          <BakerInfo date={round} player={player} makeDate={props.makeDate} />
 
           <GameContent
             ingredients={ingredients}

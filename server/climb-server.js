@@ -30,10 +30,16 @@ climbServer.findRoom = (roomId) => {
 };
 
 climbServer.setReady = (roomId, playerId) => {
-  climbServer.getPlayers(roomId).forEach((player) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
     if (player.id == playerId) {
       player.setReady(true);
     }
+  });
+};
+
+climbServer.setAllReady = (roomId, value) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
+    player.setReady(value);
   });
 };
 
@@ -57,10 +63,12 @@ climbServer.joinRoom = (roomId, playerSocket, playerName) => {
   room.addPlayer(playerSocket, playerName);
 };
 
-climbServer.startGame = (roomId) => {
+climbServer.startGame = (roomId, probaEvent, nbRounds) => {
   let room = climbServer.findRoom(roomId);
   if (room?.getPlayers().length >= 1) {
     room.startGame();
+    room.setProba(probaEvent);
+    room.setNbRounds(nbRounds);
     return true;
   }
   return false;
@@ -83,13 +91,23 @@ climbServer.codeExist = (code) => {
 
 climbServer.pickNews = (roomId) => {
   let prob = Math.floor(Math.random() * 100);
-  console.log(prob);
-  if (prob > 1) {
-    let room = climbServer.findRoom(roomId);
-    let number = Math.floor(Math.random() * room.remainingNews.length);
-    let news = room.getNews(number);
+  let room = climbServer.findRoom(roomId);
+  if (prob < room.probaEvent) {
+    let news = room.getNews();
+    news.date = room.roundNumber;
     room.news.push(news);
-    console.log(room);
+
+    room.updateIngredientPrices(news.multipliers);
+    return true;
+  } else {
+    room.updateIngredientPrices({
+      egg: 1.0,
+      chocolate: 1.0,
+      flour: 1.0,
+      sugar: 1.0,
+      butter: 1.0,
+    });
+    return false;
   }
 };
 

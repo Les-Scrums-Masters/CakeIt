@@ -2,6 +2,26 @@ const Baker = require("./baker.js");
 const Ingredient = require("./ingredient.js");
 const News = require("./news.js");
 
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
 class Room {
   constructor(hostSocket, hostName, roomCode) {
     this.players = [new Baker(hostSocket, hostName)];
@@ -19,6 +39,9 @@ class Room {
     };
     this.news = [];
     this.remainingNews = News.loadNews();
+    this.nbRounds = 5;
+    this.probaEvent = 95.5;
+    shuffle(this.remainingNews);
   }
 
   addPlayer(id, name) {
@@ -50,22 +73,20 @@ class Room {
     return null;
   }
 
-  getNews(number) {
-    let newList = [];
-    this.remainingNews.forEach((news, index) => {
-      if (index != number) {
-        newList.push(news);
-      }
-    });
-    let news = this.remainingNews[number % this.remainingNews.length];
-    this.remainingNews = newList;
-    return news;
+  getNews() {
+    return this.remainingNews.pop();
   }
 
   getRound() {
     return this.roundNumber;
   }
 
+  setNbRounds(nbRounds) {
+    this.nbRounds = nbRounds;
+  }
+  setProba(probaEvent) {
+    this.probaEvent = probaEvent;
+  }
   startGame() {
     this.roundNumber = 1;
   }

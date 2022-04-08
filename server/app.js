@@ -78,7 +78,6 @@ io.on("connection", (socket) => {
       console.log(socket.id + " (JOIGNED) now in rooms ", socket.rooms);
       refreshPlayers(roomId);
     }
-    const newroom = climbServer.findRoom(roomId);
   });
 
   socket.on("leave_room", (roomId, playerId) => {
@@ -87,15 +86,14 @@ io.on("connection", (socket) => {
     refreshPlayers(roomId);
   });
 
-  socket.on("start_game", (roomId) => {
+  socket.on("start_game", (roomId, probaEvent, nbRounds) => {
     //Condition à faire : Si tout les joueurs sont prêt
-    climbServer.startGame(roomId);
-    climbServer.pickNews(roomId);
+    climbServer.startGame(roomId, probaEvent, nbRounds);
     const room = climbServer.findRoom(roomId);
 
     console.log("Launch game : " + roomId);
-    emitRoom(roomId, "game_started", [roomId]);
-    emitRoom(roomId, "new_news", [room.news]);
+    emitRoom(roomId, "game_started", [room]);
+    //emitRoom(roomId, "new_news", [room.news]);
     updateIngredients(roomId);
     refreshPlayers(roomId);
     sendPlayersInfo(roomId);
@@ -108,13 +106,27 @@ io.on("connection", (socket) => {
     let room = climbServer.findRoom(roomId);
     room.nextDay();
 
+    console.log(room.roundNumber + " / " + room.nbRounds);
+
     //Si tout les joueurs sont prêt
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
-      emitRoom(roomId, "next_day", [room.roundNumber]);
-      updateIngredients(roomId);
-      refreshPlayers(roomId);
-      sendPlayersInfo(roomId);
+      setTimeout(() => {
+        refreshPlayers(roomId);
+        sendPlayersInfo(roomId);
+        if (room.nbRounds <= room.roundNumber) {
+          emitRoom(roomId, "end_game", [room]);
+        } else {
+          emitRoom(roomId, "next_day", [room.roundNumber]);
+          emitRoom(roomId, "end_day", [room.roundNumber]);
+          let getNews = climbServer.pickNews(roomId);
+          if (getNews) {
+            emitRoom(roomId, "new_news", [room.news]);
+          }
+          updateIngredients(roomId);
+          climbServer.setAllReady(roomId, false);
+        }
+      }, 3000);
     }
   });
 

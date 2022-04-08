@@ -24,7 +24,6 @@ class Baker {
   }
 
   setReady(value) {
-    console.log("SETTTTTTING READY");
     this.ready = value;
   }
 

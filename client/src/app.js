@@ -10,12 +10,13 @@ import MusicSound from "./components/musicSound";
 // Sons
 import useSound from "use-sound";
 import musicSound from "./sounds/lofi.ogg";
+import EndPage from "./end/endPage";
 
 // const socket = io.connect("http://localhost:3001");
 const socket = io.connect("http://192.168.1.82:3001");
 
 function App() {
-  //Possible display : HomePage, RoomLobby, GamePage
+  //Possible display : HomePage, RoomLobby, GamePage, EndPage
   const [display, setDisplay] = useState("HomePage");
   const [room, setRoom] = useState({});
   const [playerId, setPlayerId] = useState(0);
@@ -49,19 +50,38 @@ function App() {
 
   const closeModal = () => setModalOpen(false);
 
+  const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+
+  const makeDate = (round) => {
+    let increment = round ?? 0;
+
+    let initialDate = Date.now();
+    let result = new Date(initialDate);
+    result.setDate(result.getDate() + increment);
+
+    // FORMATTAGE
+    return dateFormatter.format(result);
+  };
+
   let showNewsModal = (news) => {
     setModalEmoji(String.fromCodePoint(0x2139));
-    setModalTitle("Nouvelle actualité !");
+    setModalTitle(news?.name);
     setModalContent(
-      <div className="">
-        <p>{news.date}</p>
-        <h3>{news.name}</h3>
-        <p>{news.description}</p>
+      <div className="grid gap-3">
+        <p className="mb-3 italic">{makeDate(news?.date)}</p>
+        <p className="">{news?.description}</p>
       </div>
     );
 
     setButtons(
-      <button onClick={() => setModalOpen(false)} className="btn btn-success">
+      <button
+        onClick={() => setModalOpen(false)}
+        className="btn btn-success btn-block my-3"
+      >
         J'ai compris !
       </button>
     );
@@ -78,23 +98,28 @@ function App() {
     });
     socket.on("game_started", (room) => {
       //Il a rejoint une room
+      setRoom(room);
       setDisplay("GamePage");
+    });
+    socket.on("end_game", (room) => {
+      //Il a rejoint une room
+      setRoom(room);
+      setDisplay("EndPage");
     });
   });
 
   function back() {
-    console.log(room);
-    console.log(playerId);
     socket.emit("leave_room", room.roomCode, playerId);
     setDisplay("HomePage");
   }
 
   let content;
   let logo = (
-    <button className="btn btn-link capitalize " onClick={back}>
-      <h1 className="absolute left-10 top-5 text-left text-2xl font-bold text-error">
-        Cake It !
-      </h1>
+    <button
+      className="btn btn-link absolute left-10 top-5 capitalize"
+      onClick={back}
+    >
+      <h1 className="text-left text-2xl font-bold text-error">Cake It !</h1>
     </button>
   );
   if (display === "RoomLobby") {
@@ -112,7 +137,17 @@ function App() {
         socket={socket}
         room={room}
         playerId={playerId}
-        showModal={showNewsModal}
+        showNews={showNewsModal}
+        makeDate={makeDate}
+      />
+    );
+  } else if (display === "EndPage") {
+    content = (
+      <EndPage
+        socket={socket}
+        room={room}
+        playerId={playerId}
+        setDisplay={setDisplay}
       />
     );
   } else {

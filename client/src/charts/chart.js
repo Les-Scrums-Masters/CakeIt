@@ -22,23 +22,21 @@ function Chart(props) {
   };
   const [selected, setSelected] = useState(Object.keys(props.ingredients)[0]);
 
-  let max = 0;
-  props.ingredients[selected].prices.values.forEach((element) => {
-    if (element.y > max) max = element.y;
-  });
+  let values = props.ingredients[selected].price.values ?? [];
+  let max = Math.max(...values);
 
   //a refaire ??
   const title = {
     textAnchor: "start",
     verticalAnchor: "end",
     fill: "#36D399",
-    fontFamily: "Lexend Deca",
+    fontFamily: "Lexend",
     fontSize: "22px",
     fontWeight: "bold",
   };
   const labelOne = {
     fill: "#291334",
-    fontFamily: "Lexend Deca",
+    fontFamily: "Lexend",
     fontSize: 12,
     fontStyle: "italic",
   };
@@ -52,7 +50,7 @@ function Chart(props) {
   // };
 
   return (
-    <div className="h-6/12 container mx-auto w-6/12">
+    <div className="h-3/4">
       <VictoryChart height={200} width={800}>
         <VictoryLabel x={20} y={20} style={title} text={names[selected]} />
         <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
@@ -67,19 +65,23 @@ function Chart(props) {
             data: { stroke: "#F87272" },
             parent: { border: "1px solid #ccc" },
           }}
-          data={convertToChart(props.ingredients[selected].prices.values)}
+          data={convertToChart(values)}
           domain={{
-            x: [1, props.ingredients[selected].prices.values.length],
+            x: [1, values.length],
             y: [0, max],
           }}
         />
       </VictoryChart>
-      <div class="btn-group">
-        {Object.keys(names).map((key) => {
+      <div className="btn-group">
+        {Object.keys(names).map((key, index) => {
           let cssclasses =
-            selected === key ? "ingredients btn btn-active" : "ingredients btn";
+            selected === key ? "btn btn-success" : "btn btn-accent";
           return (
-            <button class={cssclasses} onClick={() => setSelected(key)}>
+            <button
+              className={cssclasses}
+              onClick={() => setSelected(key)}
+              key={index}
+            >
               {names[key]}
             </button>
           );
