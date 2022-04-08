@@ -107,21 +107,27 @@ io.on("connection", (socket) => {
     let room = climbServer.findRoom(roomId);
     room.nextDay();
 
+    console.log(room.roundNumber + " / " + room.nbRounds);
+
     //Si tout les joueurs sont prêt
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
-      refreshPlayers(roomId);
-      sendPlayersInfo(roomId);
-      emitRoom(roomId, "next_day", [room.roundNumber]);
-
       setTimeout(() => {
-        emitRoom(roomId, "end_day", [room.roundNumber]);
-        climbServer.pickNews(roomId);
-        console.log(room.news);
-        emitRoom(roomId, "new_news", [room.news]);
-        updateIngredients(roomId);
-        climbServer.setAllReady(roomId, false);
-      }, 3000); //TODO : Animation
+        refreshPlayers(roomId);
+        sendPlayersInfo(roomId);
+        if (room.nbRounds <= room.roundNumber) {
+          emitRoom(roomId, "end_game", [room]);
+        } else {
+          emitRoom(roomId, "next_day", [room.roundNumber]);
+          emitRoom(roomId, "end_day", [room.roundNumber]);
+          let getNews = climbServer.pickNews(roomId);
+          if (getNews) {
+            emitRoom(roomId, "new_news", [room.news]);
+          }
+          updateIngredients(roomId);
+          climbServer.setAllReady(roomId, false);
+        }
+      }, 3000);
     }
   });
 

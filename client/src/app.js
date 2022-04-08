@@ -98,7 +98,13 @@ function App() {
     });
     socket.on("game_started", (room) => {
       //Il a rejoint une room
+      setRoom(room);
       setDisplay("GamePage");
+    });
+    socket.on("end_game", (room) => {
+      //Il a rejoint une room
+      setRoom(room);
+      setDisplay("EndPage");
     });
   });
 

@@ -90,12 +90,13 @@ climbServer.codeExist = (code) => {
 climbServer.pickNews = (roomId) => {
   let prob = Math.floor(Math.random() * 100);
   let room = climbServer.findRoom(roomId);
-  if (prob > 1) {
+  if (prob < room.probaEvent) {
     let news = room.getNews();
     news.date = room.roundNumber;
     room.news.push(news);
 
     room.updateIngredientPrices(news.multipliers);
+    return true;
   } else {
     room.updateIngredientPrices({
       egg: 1.0,
@@ -104,6 +105,7 @@ climbServer.pickNews = (roomId) => {
       sugar: 1.0,
       butter: 1.0,
     });
+    return false;
   }
 };
 
