@@ -19,8 +19,8 @@ export default function CompetitorsList(props) {
               <CompetitorItem
                 name={item.name}
                 status={item.status}
-                price={price + " €"}
-                money={money + " €"}
+                price={price}
+                money={money}
                 key={index}
               />
             );
