@@ -118,6 +118,8 @@ io.on("connection", (socket) => {
       setTimeout(() => {
         emitRoom(roomId, "end_day", [room.roundNumber]);
         climbServer.pickNews(roomId);
+        console.log(room.news);
+        emitRoom(roomId, "new_news", [room.news]);
       }, 3000); //TODO : Animation
     }
   });
