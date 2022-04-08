@@ -6,7 +6,7 @@ export default function BakerInfo(props) {
       <Avatar className="mask mask-circle w-20" />
 
       <div className="flex grow flex-col">
-        <h6 className="font-light">{props.date}</h6>
+        <h6 className="font-light">{props.makeDate(props.date)}</h6>
         <h2 className="text-3xl font-bold">{props.player.name}</h2>
       </div>
 

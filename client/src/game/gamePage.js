@@ -21,7 +21,10 @@ export default function GamePage(props) {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    props.socket.on("next_day", (round) => setRound(round));
+    props.socket.on("next_day", (round) => {
+      console.log("round : " + round);
+      setRound(round);
+    });
     props.socket.on("refresh_players", (p) => {
       setPlayers(p);
     });
@@ -49,7 +52,7 @@ export default function GamePage(props) {
         />
 
         <div className="flex grow flex-col gap-5">
-          <BakerInfo date={props.makeDate(round)} player={player} />
+          <BakerInfo date={round} player={player} makeDate={props.makeDate} />
 
           <GameContent
             ingredients={ingredients}

@@ -63,7 +63,7 @@ function App() {
     result.setDate(result.getDate() + increment);
 
     // FORMATTAGE
-    return dateFormatter.format(initialDate);
+    return dateFormatter.format(result);
   };
 
   let showNewsModal = (news) => {

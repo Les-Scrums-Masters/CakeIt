@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Panel from "../components/panel";
 import NewsItem from "./newsItem";
 
