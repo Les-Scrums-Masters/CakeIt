@@ -113,13 +113,16 @@ io.on("connection", (socket) => {
       setTimeout(() => {
         refreshPlayers(roomId);
         sendPlayersInfo(roomId);
-        emitRoom(roomId, "next_day", [room.roundNumber]);
-        emitRoom(roomId, "end_day", [room.roundNumber]);
-        climbServer.pickNews(roomId);
-        console.log(room.news);
-        emitRoom(roomId, "new_news", [room.news]);
-        updateIngredients(roomId);
-        climbServer.setAllReady(roomId, false);
+        if (room.roundNumber === room.roundMax) {
+        } else {
+          emitRoom(roomId, "next_day", [room.roundNumber]);
+          emitRoom(roomId, "end_day", [room.roundNumber]);
+          climbServer.pickNews(roomId);
+
+          emitRoom(roomId, "new_news", [room.news]);
+          updateIngredients(roomId);
+          climbServer.setAllReady(roomId, false);
+        }
       }, 3000); //TODO : Animation
     }
   });
