@@ -65,7 +65,7 @@ export default function GameContent(props) {
 
   if (isReport) {
     content = (
-      <div className="grid flex-1 grid-cols-3 items-stretch gap-4">
+      <div className="grid w-full grid-cols-3 items-stretch gap-4">
         <div className="col-span-2 row-span-3 h-full">
           {Object.keys(props.ingredients).length === 5 ? (
             <Chart ingredients={props.ingredients} />
@@ -134,7 +134,17 @@ export default function GameContent(props) {
       </div>
     );
   } else {
-    content = "Vente ...";
+    content = (
+      <div className="h-64 grow justify-center text-center">
+        <lottie-player
+          src="https://assets6.lottiefiles.com/packages/lf20_Q18RwS.json"
+          background="transparent"
+          speed="1"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+    );
   }
 
   return (
