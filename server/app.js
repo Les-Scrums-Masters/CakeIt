@@ -89,12 +89,12 @@ io.on("connection", (socket) => {
   socket.on("start_game", (roomId) => {
     //Condition à faire : Si tout les joueurs sont prêt
     climbServer.startGame(roomId);
-    climbServer.pickNews(roomId);
+    //climbServer.pickNews(roomId);
     const room = climbServer.findRoom(roomId);
 
     console.log("Launch game : " + roomId);
     emitRoom(roomId, "game_started", [roomId]);
-    emitRoom(roomId, "new_news", [room.news]);
+    //emitRoom(roomId, "new_news", [room.news]);
     updateIngredients(roomId);
     refreshPlayers(roomId);
     sendPlayersInfo(roomId);
@@ -110,7 +110,6 @@ io.on("connection", (socket) => {
     //Si tout les joueurs sont prêt
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
-      updateIngredients(roomId);
       refreshPlayers(roomId);
       sendPlayersInfo(roomId);
       emitRoom(roomId, "next_day", [room.roundNumber]);
@@ -120,6 +119,8 @@ io.on("connection", (socket) => {
         climbServer.pickNews(roomId);
         console.log(room.news);
         emitRoom(roomId, "new_news", [room.news]);
+        updateIngredients(roomId);
+        climbServer.setAllReady(roomId, false);
       }, 3000); //TODO : Animation
     }
   });
