@@ -3,13 +3,16 @@ export default function EvolutionBadge(props) {
 
   let bgColor = "bg" + color;
 
+  let truncValue = Number(props.value.toFixed(2));
+
   return (
     <span
       className={
-        "ml-1 rounded-lg px-2 py-1 align-text-bottom text-white " + bgColor
+        "ml-1 rounded-lg px-2 py-1 align-text-bottom text-sm text-white " +
+        bgColor
       }
     >
-      {props.value + " %"}
+      {truncValue + " %"}
     </span>
   );
 }
