@@ -9,6 +9,8 @@ Projet : **PEC22 : Producteurs et consommateurs : les mécanismes du marché fac
 | Franck GUTMANN   |
 | Clément NOGUEIRA |
 
+- URL GIT : https://git.unistra.fr/les-scrums-masters/pec22-t4-a
+
 ## Description des objectifs pédagogiques du jeu
 
 ### Objectif pédagogique général
