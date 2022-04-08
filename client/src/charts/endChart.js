@@ -72,7 +72,7 @@ function EndChart(props) {
       <div className="btn-group">
         {props.players.map((player, index) => {
           let cssclasses =
-            selected === index ? "btn btn-accent" : "btn btn-success ";
+            selected === index ? "btn btn-success" : "btn btn-accent ";
           return (
             <button
               className={cssclasses}

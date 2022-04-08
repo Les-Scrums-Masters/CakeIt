@@ -54,7 +54,7 @@ export default function RoomLobby(props) {
       </button>
     );
     slides = (
-      <div>
+      <div className="grid">
         <Slider
           min={2}
           max={15}
@@ -78,7 +78,7 @@ export default function RoomLobby(props) {
   }
 
   return (
-    <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-center justify-center gap-20 align-middle">
+    <div className="container mx-auto flex h-full w-full flex-col items-center justify-center gap-5 overflow-auto p-5 align-middle xl:gap-20 xl:p-20">
       <div className="grid">
         <p className="text-center text-neutral">Salon</p>
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>

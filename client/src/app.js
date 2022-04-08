@@ -12,9 +12,9 @@ import useSound from "use-sound";
 import musicSound from "./sounds/lofi.ogg";
 import EndPage from "./end/endPage";
 
-const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("http://localhost:3001");
 // const socket = io.connect("http://192.168.1.82:3001");
-//const socket = io.connect("http://cake-it-t4.herokuapp.com");
+const socket = io.connect("http://cake-it-t4.herokuapp.com");
 
 function App() {
   //Possible display : HomePage, RoomLobby, GamePage, EndPage
@@ -75,6 +75,45 @@ function App() {
       <div className="grid gap-3">
         <p className="mb-3 italic">{makeDate(news?.date)}</p>
         <p className="">{news?.description}</p>
+      </div>
+    );
+
+    setButtons(
+      <button
+        onClick={() => setModalOpen(false)}
+        className="btn btn-success btn-block my-3"
+      >
+        J'ai compris !
+      </button>
+    );
+    setModalOpen(true);
+  };
+
+  let openTutorial = () => {
+    setModalEmoji(String.fromCodePoint(0x2139));
+    setModalTitle("Tutoriel");
+    setModalContent(
+      <div className="grid gap-3">
+        <p>
+          Entrez dans la peau d’un boulanger et gérez au mieux votre boulangerie
+          afin de faire un maximum de profit.
+          <br />
+          <br />
+          Tout d’abord, créez une partie, entrez votre nom, et partagez le code
+          de la partie avec vos amis afin qu'ils deviennent vos concurrents.
+          <br />
+          <br />
+          Vous avez la possibilité de régler le nombre de tours et le taux de
+          chance d'apparition d'un événement chaque jour. <br />
+          <br />
+          Vous pouvez voir les informations liées à votre production. Certains
+          jours, des actualités surviennent et tous les jours vous avez le choix
+          de modifier le prix et la quantité de production pour le lendemain.
+          <br />
+          <br />
+          Afin d’ajuster votre production, vous pouvez vous appuyer sur les
+          données des concurrents et sur les ventes de la veille.
+        </p>
       </div>
     );
 
@@ -152,7 +191,7 @@ function App() {
       />
     );
   } else {
-    content = <HomePage socket={socket} />;
+    content = <HomePage socket={socket} openTutorial={openTutorial} />;
     logo = null;
   }
 

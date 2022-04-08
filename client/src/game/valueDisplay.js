@@ -3,7 +3,9 @@ import EvolutionBadge from "./evolutionBadge";
 export default function ValueDisplay(props) {
   let suffix = props.suffix ?? "";
 
-  let truncValue = Number(props.value).toFixed(2);
+  let value = props.value ?? 0;
+
+  let truncValue = Number(value).toFixed(2);
 
   return (
     <div className="flex grow flex-col">

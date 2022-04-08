@@ -13,7 +13,12 @@ export default function HomePage(props) {
 
       <JoinForm socket={props.socket} />
 
-      <button className="btn btn-outline btn-secondary">Tutoriel</button>
+      <button
+        className="btn btn-outline btn-secondary"
+        onClick={props.openTutorial}
+      >
+        Tutoriel
+      </button>
     </div>
   );
 }
