@@ -80,8 +80,7 @@ Description des options permettant de paramétrer une partie.
 ## Modèle conceptuel applicatif
 
 Voici notre diagramme de classe décrivant notre jeu :
-
-[Diagramme de classe](./diagrammeDeClasse.svg)
+![](./diagrammeDeClasse.svg)
 
 ## Description des fonctionnalités
 
