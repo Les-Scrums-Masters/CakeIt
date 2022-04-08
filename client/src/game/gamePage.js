@@ -18,7 +18,7 @@ export default function GamePage(props) {
   const [players, setPlayers] = useState(null);
 
   const [ingredients, setIngredients] = useState({});
-  const [news, setNews] = useState({});
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
     props.socket.on("next_day", (round) => {
@@ -34,10 +34,13 @@ export default function GamePage(props) {
       setIngredients(data);
     });
     props.socket.on("new_news", (newsList) => {
-      console.log(newsList);
       setNews(newsList);
+      setTimeout(() => {
+        console.log(newsList.length);
+        props.showNews(newsList[newsList.length - 1]);
+      }, 300);
     });
-  }, [props.socket, props.playerId]);
+  }, [props.socket, props.playerId, news, props]);
 
   if (player === undefined || player == null || players == null) {
     return <div className=""></div>;
@@ -48,7 +51,6 @@ export default function GamePage(props) {
           <NewsList
             socket={props.socket}
             makeDate={props.makeDate}
-            showModal={props.showModal}
             news={news}
           />
         </div>
