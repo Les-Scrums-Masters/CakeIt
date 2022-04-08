@@ -2,7 +2,7 @@ import Avatar from "./../components/avatar";
 
 export default function BakerInfo(props) {
   let truncValue = Number(
-    props.player.money.values[props.player.money.values.length - 1].toFixed(2)
+    props.player.money.values[props.player.money.values.length - 1]?.toFixed(2)
   );
 
   return (
