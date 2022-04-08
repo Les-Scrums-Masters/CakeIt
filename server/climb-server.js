@@ -37,6 +37,12 @@ climbServer.setReady = (roomId, playerId) => {
   });
 };
 
+climbServer.setAllReady = (roomId, value) => {
+  climbServer.getPlayers(roomId)?.forEach((player) => {
+    player.setReady(value);
+  });
+};
+
 climbServer.allReady = (roomId) => {
   let count = 0;
   climbServer.getPlayers(roomId)?.forEach((player) => {
