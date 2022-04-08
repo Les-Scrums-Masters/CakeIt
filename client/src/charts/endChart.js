@@ -51,7 +51,7 @@ function EndChart(props) {
           style={title}
           text={props.players[selected].name}
         />
-        <VictoryLabel x={20} y={33} style={labelOne} text={"Prix (en €)"} />
+        <VictoryLabel x={20} y={33} style={labelOne} text={"Trésorerie"} />
         <VictoryLabel
           x={500}
           y={185}
