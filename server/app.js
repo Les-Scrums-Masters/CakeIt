@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const climbServer = require("./climb-server");
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 //const index = require("./routes/index");
 
 const app = express();
@@ -15,8 +15,11 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: `http://localhost:3000`,
-    method: ["GET", "POST"],
+    origins: "*:*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["content-type"],
+    pingTimeout: 7000,
+    pingInterval: 3000,
   },
 });
 
