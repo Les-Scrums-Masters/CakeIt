@@ -108,10 +108,11 @@ function App() {
 
   let content;
   let logo = (
-    <button className="btn btn-link capitalize " onClick={back}>
-      <h1 className="absolute left-10 top-5 text-left text-2xl font-bold text-error">
-        Cake It !
-      </h1>
+    <button
+      className="btn btn-link absolute left-10 top-5 capitalize"
+      onClick={back}
+    >
+      <h1 className="text-left text-2xl font-bold text-error">Cake It !</h1>
     </button>
   );
   if (display === "RoomLobby") {
