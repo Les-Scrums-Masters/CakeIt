@@ -2,8 +2,8 @@ import Avatar from "./../components/avatar";
 
 export default function CompetitorItem(props) {
   console.log(props.price);
-  let truncPrice = Number(props.price.toFixed(2));
-  let truncMoney = Number(props.money.toFixed(2));
+  let truncPrice = Number(props.price?.toFixed(2));
+  let truncMoney = Number(props.money?.toFixed(2));
 
   return (
     <article className="align-center flex flex-row items-center gap-3 px-5 pt-4 pb-2">
