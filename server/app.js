@@ -120,6 +120,7 @@ io.on("connection", (socket) => {
         console.log(room.news);
         emitRoom(roomId, "new_news", [room.news]);
         updateIngredients(roomId);
+        climbServer.setAllReady(roomId, false);
       }, 3000); //TODO : Animation
     }
   });
