@@ -5,7 +5,7 @@ export default function Panel(props) {
   return (
     <article
       className={
-        "flex flex-col w-full rounded-lg border-2 bg-white lg:w-80 " +
+        "flex w-full flex-col rounded-lg border-2 bg-white 2xl:w-80 " +
         borderColor
       }
     >

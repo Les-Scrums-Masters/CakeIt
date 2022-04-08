@@ -65,7 +65,7 @@ export default function GameContent(props) {
 
   if (isReport) {
     content = (
-      <div className="divide grid flex-1 grid-cols-3 items-stretch gap-4 divide-x">
+      <div className="grid w-full grid-cols-3 items-stretch gap-4">
         <div className="col-span-2 row-span-3 h-full">
           {Object.keys(props.ingredients).length === 5 ? (
             <Chart ingredients={props.ingredients} />
@@ -73,8 +73,8 @@ export default function GameContent(props) {
             ""
           )}
         </div>
-        <div className="row-span-2 flex flex-col pl-3 align-middle">
-          <h3 className="text-2xl font-bold text-success">
+        <div className="row-span-2 flex flex-col place-self-stretch rounded-xl border-2 border-success py-5 px-5 align-middle">
+          <h3 className="text-xl font-bold text-success">
             Ajustez votre production
           </h3>
 
@@ -113,7 +113,7 @@ export default function GameContent(props) {
     if (profit.length > 0) lastProfit = profit[profit.length - 1];
 
     values.push(
-      <div className="rounded-xl bg-success p-3 text-white" key="sales">
+      <div className="rounded-xl bg-success py-3 px-5 text-white" key="sales">
         <ValueDisplay
           value={lastSales}
           legend="gateaux vendus"
@@ -124,7 +124,7 @@ export default function GameContent(props) {
     );
 
     values.push(
-      <div className="rounded-xl bg-success p-3 text-white" key="profit">
+      <div className="rounded-xl bg-success py-3 px-5 text-white" key="profit">
         <ValueDisplay
           value={lastProfit}
           legend="profit"
@@ -134,20 +134,30 @@ export default function GameContent(props) {
       </div>
     );
   } else {
-    content = "Vente ...";
+    content = (
+      <div className="my-auto h-64 grow justify-center text-center">
+        <lottie-player
+          src="https://assets6.lottiefiles.com/packages/lf20_Q18RwS.json"
+          background="transparent"
+          speed="1"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+    );
   }
 
   return (
     <div className="flex h-full w-full flex-col gap-5 rounded-xl border-2 border-success bg-white p-8">
       <h1 className="text-4xl font-bold text-success">
-        {isReport ? "Bilan" : "Vente en cours ..."}
+        {isReport ? "Bilan" : "Ventes en cours ..."}
       </h1>
 
       <div className="grid grid-cols-4 items-center gap-3 text-success">
         {values}
       </div>
 
-      {content}
+      <div className="grid grow">{content}</div>
     </div>
   );
 }

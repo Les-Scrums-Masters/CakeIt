@@ -22,7 +22,6 @@ export default function GamePage(props) {
 
   useEffect(() => {
     props.socket.on("next_day", (round) => {
-      console.log("round : " + round);
       setRound(round);
     });
     props.socket.on("refresh_players", (p) => {
@@ -35,6 +34,7 @@ export default function GamePage(props) {
       setIngredients(data);
     });
     props.socket.on("new_news", (newsList) => {
+      console.log(newsList);
       setNews(newsList);
     });
   }, [props.socket, props.playerId]);
@@ -43,13 +43,15 @@ export default function GamePage(props) {
     return <div className=""></div>;
   } else {
     return (
-      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-5 p-20 align-middle lg:flex-row">
-        <NewsList
-          socket={props.socket}
-          makeDate={props.makeDate}
-          showModal={props.showModal}
-          news={news}
-        />
+      <div className="mx-auto grid h-full w-full flex-col items-stretch justify-center gap-5 overflow-auto p-20 align-middle 2xl:flex 2xl:flex-row">
+        <div className="grid">
+          <NewsList
+            socket={props.socket}
+            makeDate={props.makeDate}
+            showModal={props.showModal}
+            news={news}
+          />
+        </div>
 
         <div className="flex grow flex-col gap-5">
           <BakerInfo date={round} player={player} makeDate={props.makeDate} />

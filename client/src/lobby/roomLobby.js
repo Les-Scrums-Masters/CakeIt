@@ -14,6 +14,10 @@ export default function RoomLobby(props) {
       props.setDisplay("GamePage");
     });
 
+    return () => {
+      props.socket.removeAllListeners();
+    };
+
     // setNewPlayer(false);
   }, [props.socket, players, props]);
 
