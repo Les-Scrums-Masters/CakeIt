@@ -13,7 +13,7 @@ export default function EvolutionBadge(props) {
 
   if (truncValue > 0) truncValue = "+ " + truncValue;
 
-  if (truncValue === 0) {
+  if (truncValue === "0.00") {
     return "";
   } else {
     return (
