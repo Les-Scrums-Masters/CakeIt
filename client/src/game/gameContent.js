@@ -65,15 +65,15 @@ export default function GameContent(props) {
 
   if (isReport) {
     content = (
-      <div className="grid w-full grid-cols-3 items-stretch gap-4">
-        <div className="col-span-2 row-span-3 h-full">
+      <div className="grid w-full grid-cols-1 items-stretch gap-4 2xl:grid-cols-3">
+        <div className="h-full 2xl:col-span-2 2xl:row-span-3">
           {Object.keys(props.ingredients).length === 5 ? (
             <Chart ingredients={props.ingredients} />
           ) : (
             ""
           )}
         </div>
-        <div className="row-span-2 flex flex-col place-self-stretch rounded-xl border-2 border-success py-5 px-5 align-middle">
+        <div className="flex flex-col place-self-stretch rounded-xl border-2 border-success py-5 px-5 align-middle 2xl:row-span-2">
           <h3 className="text-xl font-bold text-success">
             Ajustez votre production
           </h3>
