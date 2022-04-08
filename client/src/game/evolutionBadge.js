@@ -7,7 +7,7 @@ export default function EvolutionBadge(props) {
 
   let bgColor = "bg" + color;
 
-  let truncValue = Number(props.value.toFixed(2));
+  let truncValue = Number(props.value?.toFixed(2));
 
   if (truncValue > 0) truncValue = "+ " + truncValue;
 
