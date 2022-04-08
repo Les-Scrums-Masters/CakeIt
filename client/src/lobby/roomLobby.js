@@ -41,7 +41,7 @@ export default function RoomLobby(props) {
 
   let btnStart = null;
   let sliders = null;
-  if (props.room.players[0].id === props.playerId) {
+  if (props.room.players && props.room.players[0].id === props.playerId) {
     btnStart = (
       <button className="btn btn-success" onClick={startGame}>
         Commencer la partie
