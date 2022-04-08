@@ -1,9 +1,9 @@
 import EvolutionBadge from "./evolutionBadge";
 
 export default function ValueDisplay(props) {
-  let suffix = props.suffix ?? "";
+  let suffix = props.suffix || "";
 
-  let value = props.value ?? 0;
+  let value = props.value || 0;
 
   let truncValue = Number(value).toFixed(2);
 
