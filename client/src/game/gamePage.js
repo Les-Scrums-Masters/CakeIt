@@ -34,7 +34,6 @@ export default function GamePage(props) {
       setIngredients(data);
     });
     props.socket.on("new_news", (newsList) => {
-      console.log(newsList);
       setNews(newsList);
     });
   }, [props.socket, props.playerId]);
