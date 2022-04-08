@@ -110,10 +110,15 @@ io.on("connection", (socket) => {
     //Si tout les joueurs sont prêt
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
-      emitRoom(roomId, "next_day", [room.roundNumber]);
       updateIngredients(roomId);
       refreshPlayers(roomId);
       sendPlayersInfo(roomId);
+      emitRoom(roomId, "next_day", [room.roundNumber]);
+
+      setTimeout(() => {
+        emitRoom(roomId, "end_day", [room.roundNumber]);
+        climbServer.pickNews(roomId);
+      }, 2000); //TODO : Animation
     }
   });
 
