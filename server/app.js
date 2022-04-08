@@ -78,7 +78,6 @@ io.on("connection", (socket) => {
       console.log(socket.id + " (JOIGNED) now in rooms ", socket.rooms);
       refreshPlayers(roomId);
     }
-    const newroom = climbServer.findRoom(roomId);
   });
 
   socket.on("leave_room", (roomId, playerId) => {
