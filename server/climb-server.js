@@ -1,5 +1,6 @@
 const Room = require("./models/room.js");
 const Ingredient = require("./models/ingredient.js");
+const Baker = require("./models/baker.js");
 
 const climbServer = { rooms: [] };
 
