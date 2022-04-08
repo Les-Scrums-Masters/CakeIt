@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PlayerCard from "./playerCard";
+import EndPlayerList from "./endPlayerList";
 
 export default function EndPage(props) {
   function back() {
@@ -13,14 +13,7 @@ export default function EndPage(props) {
         <h1 className="text-6xl font-bold text-error">Bien joué !</h1>
       </div>
       {console.log(props.room.players)}
-      {props.room.players.forEach((player) => {
-        {
-          console.log(player);
-        }
-        <h1 className="text-6xl font-bold text-error">{player.name}</h1>;
-
-        //<PlayerCard player={player} />;
-      })}
+      <EndPlayerList players={props.room.players} />
 
       <div className="flex flex-col gap-3">
         <button className="btn btn-link" onClick={back}>
