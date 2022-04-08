@@ -22,7 +22,6 @@ export default function GamePage(props) {
 
   useEffect(() => {
     props.socket.on("next_day", (round) => {
-      console.log("round : " + round);
       setRound(round);
     });
     props.socket.on("refresh_players", (p) => {
@@ -35,6 +34,7 @@ export default function GamePage(props) {
       setIngredients(data);
     });
     props.socket.on("new_news", (newsList) => {
+      console.log(newsList);
       setNews(newsList);
     });
   }, [props.socket, props.playerId]);
