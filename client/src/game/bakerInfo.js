@@ -7,7 +7,7 @@ export default function BakerInfo(props) {
 
   return (
     <article className="align-center flex flex-row items-center gap-3 rounded-xl bg-success p-8 text-white">
-      <Avatar className="mask mask-circle w-20" />
+      <Avatar className="mask mask-circle w-14 2xl:w-20" />
 
       <div className="flex grow flex-col">
         <h6 className="font-light">{props.makeDate(props.date)}</h6>
