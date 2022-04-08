@@ -63,10 +63,12 @@ climbServer.joinRoom = (roomId, playerSocket, playerName) => {
   room.addPlayer(playerSocket, playerName);
 };
 
-climbServer.startGame = (roomId) => {
+climbServer.startGame = (roomId, probaEvent, nbRounds) => {
   let room = climbServer.findRoom(roomId);
   if (room?.getPlayers().length >= 1) {
     room.startGame();
+    room.setProba(probaEvent);
+    room.setNbRounds(nbRounds);
     return true;
   }
   return false;
