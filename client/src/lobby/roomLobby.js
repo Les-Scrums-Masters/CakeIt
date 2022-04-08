@@ -55,30 +55,32 @@ export default function RoomLobby(props) {
   }
 
   return (
-    <div className="bg-grey justify container mx-auto flex h-full w-full flex-col items-center justify-center gap-20 align-middle">
+    <div className="container mx-auto flex h-full w-full flex-col items-center justify-center gap-5 overflow-auto p-5 align-middle xl:gap-20 xl:p-20">
       <div className="grid">
         <p className="text-center text-neutral">Salon</p>
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
       </div>
       <LobbyPlayerList players={players} />
-      <Slider
-        min={1}
-        max={15}
-        step={1}
-        value={nbRounds}
-        caption="Nombre de rounds"
-        suffix=""
-        onChange={(v) => setRounds(v)}
-      />
-      <Slider
-        min={0}
-        max={100}
-        step={0.1}
-        value={probaEvent}
-        caption="Probabilité d'un évènement"
-        suffix="%"
-        onChange={(v) => setProba(v)}
-      />
+      <div className="grid">
+        <Slider
+          min={1}
+          max={15}
+          step={1}
+          value={nbRounds}
+          caption="Nombre de rounds"
+          suffix=""
+          onChange={(v) => setRounds(v)}
+        />
+        <Slider
+          min={0}
+          max={100}
+          step={0.1}
+          value={probaEvent}
+          caption="Probabilité d'un évènement"
+          suffix="%"
+          onChange={(v) => setProba(v)}
+        />
+      </div>
       {btnStart}
       <div className="flex flex-col gap-3">
         <button className="btn btn-link" onClick={back}>

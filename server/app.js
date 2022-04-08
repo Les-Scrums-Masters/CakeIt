@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const climbServer = require("./climb-server");
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 300;
 //const index = require("./routes/index");
 
 const app = express();

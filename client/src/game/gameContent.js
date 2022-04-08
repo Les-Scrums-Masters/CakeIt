@@ -156,7 +156,7 @@ export default function GameContent(props) {
         {isReport ? "Bilan" : "Ventes en cours ..."}
       </h1>
 
-      <div className="grid grid-cols-4 items-center gap-3 text-success">
+      <div className="grid grid-cols-2 items-center gap-3 text-success 2xl:grid-cols-4">
         {values}
       </div>
 
