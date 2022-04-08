@@ -20,6 +20,7 @@ export default function GameContent(props) {
       production: production,
     };
     props.socket.emit("end_day", data, props.roomCode, props.player);
+    setIsReport(false);
   };
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function GameContent(props) {
   });
 
   let volumes = props.player.volume.values;
-  let prices = props.player.volume.values;
+  let prices = props.player.price.values;
 
   let lastVolume = 0;
   let lastPrice = 0;
