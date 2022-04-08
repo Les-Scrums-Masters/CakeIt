@@ -72,12 +72,16 @@ function Chart(props) {
           }}
         />
       </VictoryChart>
-      <div class="btn-group">
-        {Object.keys(names).map((key) => {
+      <div className="btn-group">
+        {Object.keys(names).map((key, index) => {
           let cssclasses =
             selected === key ? "btn btn-success" : "btn btn-accent";
           return (
-            <button class={cssclasses} onClick={() => setSelected(key)}>
+            <button
+              className={cssclasses}
+              onClick={() => setSelected(key)}
+              key={index}
+            >
               {names[key]}
             </button>
           );
