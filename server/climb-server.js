@@ -85,8 +85,7 @@ climbServer.pickNews = (roomId) => {
   let prob = Math.floor(Math.random() * 100);
   let room = climbServer.findRoom(roomId);
   if (prob > 1) {
-    let number = Math.floor(Math.random() * room?.remainingNews.length);
-    let news = room.getNews(number);
+    let news = room.getNews();
     news.date = room.round;
     room.news.push(news);
 
