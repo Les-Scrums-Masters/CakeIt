@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
 import LobbyPlayerList from "./playerList";
+<<<<<<< HEAD
 import Slider from "../components/slider.js";
+=======
+import Slider from "../components/slider";
+>>>>>>> 050d5a76e831652fe2df2dcd766d9bb503bf9763
 
 export default function RoomLobby(props) {
   let [players, setPlayers] = useState(props.room.players);
+  const [probaEvent, setProba] = useState(50);
+  const [nbRounds, setRounds] = useState(5);
+
   const [probaEvent, setProba] = useState(50);
   const [nbRounds, setRounds] = useState(5);
 
@@ -28,7 +35,12 @@ export default function RoomLobby(props) {
     //if (props.room.players.length >= 2) {
     if (props.room.players.length >= 1) {
       console.log("starting : " + props.room.roomCode);
-      props.socket.emit("start_game", props.room.roomCode);
+      props.socket.emit(
+        "start_game",
+        props.room.roomCode,
+        probaEvent,
+        nbRounds
+      );
     } else {
       //avert : pas assez de joueur
     }
@@ -79,7 +91,28 @@ export default function RoomLobby(props) {
         <h1 className="text-6xl font-bold text-error">{props.room.roomCode}</h1>
       </div>
       <LobbyPlayerList players={players} />
+<<<<<<< HEAD
       {sliders}
+=======
+      <Slider
+        min={1}
+        max={15}
+        step={1}
+        value={nbRounds}
+        caption="Nombre de rounds"
+        suffix=""
+        onChange={(v) => setRounds(v)}
+      />
+      <Slider
+        min={0}
+        max={100}
+        step={0.1}
+        value={probaEvent}
+        caption="Probabilité d'un évènement"
+        suffix="%"
+        onChange={(v) => setProba(v)}
+      />
+>>>>>>> 050d5a76e831652fe2df2dcd766d9bb503bf9763
       {btnStart}
       <div className="flex flex-col gap-3">
         <button className="btn btn-link" onClick={back}>

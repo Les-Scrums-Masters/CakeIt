@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import EndPlayerList from "./endPlayerList";
+<<<<<<< HEAD
 import EndChart from "../charts/endChart.js";
+=======
+>>>>>>> 050d5a76e831652fe2df2dcd766d9bb503bf9763
 
 export default function EndPage(props) {
   function back() {
@@ -15,7 +18,11 @@ export default function EndPage(props) {
       </div>
       {console.log(props.room.players)}
       <EndPlayerList players={props.room.players} />
+<<<<<<< HEAD
       <EndChart players={props.room.players} />
+=======
+
+>>>>>>> 050d5a76e831652fe2df2dcd766d9bb503bf9763
       <div className="flex flex-col gap-3">
         <button className="btn btn-link" onClick={back}>
           Retour au menu principal
