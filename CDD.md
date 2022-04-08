@@ -19,7 +19,8 @@ Comment les mécanismes du marché influent sur les décisions des producteurs f
 
 Les détails de ce que le joueur doit apprendre.
 
-Selon la théorie, sur un marché en CPP, le prix des biens est fixé par un équilibre entre offre et demande. L’offre s’adapte à la demande et vice-versa, et ces derniers peuvent impacter l’évolution du prix et du volume de production.
+Selon la théorie, sur un marché en Concurrence Pur et Parfaite (CPP),
+le prix des biens est fixé par un équilibre entre offre et demande. L’offre s’adapte à la demande et vice-versa, et ces derniers peuvent impacter l’évolution du prix et du volume de production.
 L’équilibre entre l’offre et la demande peut être modifié par des chocs, ce sont des évènements extérieurs qui viennent régulièrement impacter l’offre ou la demande. Ces changements violents ont le pouvoir de créer un bouleversement au plan économique.
 Il y a deux types de conséquences, qui peuvent à la fois être positives ou négatives :
 
@@ -80,6 +81,8 @@ Description des options permettant de paramétrer une partie.
 
 Voici notre diagramme de classe décrivant notre jeu :
 
+[Diagramme de classe](./diagrammeDeClasse.svg)
+
 ## Description des fonctionnalités
 
 ### Actions du joueur
@@ -126,3 +129,9 @@ Liste des interactions entre les actions du joueurs et les informations
 - **Augmenter le volume de la production** : Gâteaux en rayon lendemain ++
 
 - **Diminuer le volume de la production** : Gâteaux en rayon lendemain - -
+
+# Règles de nommages
+
+- fichiers, variables : camelCase, exemple : app.js
+- classes : PascalCase, exemple : App
+- constantes : screaming snake, exemple : MY_URL
