@@ -113,7 +113,6 @@ io.on("connection", (socket) => {
     climbServer.setReady(roomId, player.id);
     climbServer.sellingDay(data, roomId, player.id);
     let room = climbServer.findRoom(roomId);
-    room.nextDay();
 
     console.log(room.roundNumber + " / " + room.nbRounds);
 
@@ -121,6 +120,7 @@ io.on("connection", (socket) => {
     let allReady = climbServer.allReady(roomId);
     if (allReady) {
       setTimeout(() => {
+        room.nextDay();
         refreshPlayers(roomId);
         sendPlayersInfo(roomId);
         if (room.nbRounds <= room.roundNumber) {
