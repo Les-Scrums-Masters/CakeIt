@@ -26,21 +26,37 @@ Les étapes du projet tuteuré T2 sont les suivantes :
   - [ ] Au moins cinq propositions d'améliorations pertinente sont faites.
   - [x] Au moins cinq propositions d'améliorations sont faites.
   - [ ] Moins de cinq propositions d'améliorations sont faites.
-- Grille d'évaluation T4 / critères
-  - [x] Tous les critères sont remplis avec pertinence et font l'objet d'une justifications concrète.
-  - [ ] Certain critères ont été remplis un peu à l'arrache.
-  - [ ] Des critères n'ont pas été remplis
 - Implication
   - [ ] L'implication T2 été vraiment été cruciale dans le processus du T4.
   - [x] L'implication T2 a permis d'améliorer le T4.
   - [ ] Il y a eu un défaut d'implication T2.
 
-### Résultat T2
+## Grille d'évaluation T2 (à remplir par l'enseignant)
 
-- Total d'item « Excellent » (2 point) : 3
-- Total d'item « Satisfaisant » (1 point) : 2
-- Total d'item « Insatisfaisant » (0 point) : 0
-- Total des points (sur 10) : 8
+- Objectivation des justifications
+    - [ ] Les justifications sont toutes objectivées.
+    - [x] Les justifications sont globalement objectivées.
+    - [ ] Les justifications ne sont pas objectivées. 
+-  Mesures des justifications
+    - [ ] Les justifications s'appuient sur des mesures concrètes et contextulisées.
+    - [ ] Les justifications s'appuient sur des mesures concrètes.
+    - [x] Les justifications ne s'appuient pas sur des mesures.
+- Concision des justifications
+    - [ ] Les justifications sont concis, sans phrase vide, ni paraphrase, ni répétition.
+    - [x] Les justifications sont sans phrase vide, ni paraphrase, ni répétition.
+    - [ ] Les justifications contiennent au moins une phrase vide, une paraphrase ou une répétition. 
+- Pertinence des évaluations
+    - [ ] Les évaluations sont globalement pertinentes.
+    - [x] Les évaluations sont globalement approximatives.
+    - [ ] Des évaluations sont objectivement fausses.
+
+
+### Résultat T2
+- Total d'item « Excellent » (2 point) : 
+- Total d'item « Satisfaisant » (1 point) : 
+- Total d'item « Insatisfaisant » (0 point) :
+- Total des points (sur 16) : 9
+
 
 # Propositions d'amélioration du jeu
 
