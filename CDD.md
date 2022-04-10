@@ -10,6 +10,8 @@ Projet : **PEC22 : Producteurs et consommateurs : les mécanismes du marché fac
 | Clément NOGUEIRA |
 
 - URL GIT : https://git.unistra.fr/les-scrums-masters/pec22-t4-a
+- URL Cahier des charges version google doc : https://docs.google.com/document/d/1XzKFFJWGTYIfo0v8qdau2wIX_IKBXGIUGRrV3Ha9yFI/
+- Jeu en ligne : http://cakeit.franck-g.fr/
 
 ## Description des objectifs pédagogiques du jeu
 
@@ -52,17 +54,18 @@ Il y a deux types de conséquences, qui peuvent à la fois être positives ou n�
 ## Description du jeu
 
 **Type de jeu** : Gestion
-Incarnation du joueur : Un boulanger
+
+**Incarnation du joueur** : Un boulanger/Grand producteur de g$ateau aux chocolats
 
 **Déroulement d’une partie**
 
 Description du déroulement d’une partie : début, déroulement et fin
 
-Nous avons créé un jeu multijoueur. Les joueurs incarnent des boulangeries en concurrence. Les boulangeries ne vendent qu’un seul produit : des gâteaux aux chocolats.
+Nous avons créé un jeu multijoueur. Les joueurs incarnent des boulangeries en concurrence. Les boulangeries ne vendent qu’un seul produit : des gâteaux aux chocolats. Un gâteau est composé d'une unité d'ingrédients.
 Les habitants de ce monde merveilleux ne peuvent pas vivre bien longtemps sans gâteaux aux chocolats.
 
 Pour chaque tour, le joueur peut modifier le prix et le volume de production.
-La seule information qu’ils peuvent connaître de leur concurrent est le prix à laquelle ils commercialisent leurs gâteaux. Les jours se déroulent, et les ventes se font toutes seules …
+La seule information qu’ils peuvent connaître de leur concurrent est le prix à laquelle ils commercialisent leurs gâteaux. Les jours se déroulent, et les ventes se font toutes seules.
 
 Chaque matin, les boulangers peuvent consulter leurs résultats et peuvent adapter leurs paramètres s'ils le souhaitent. Et certains jours, une ou plusieurs actualités surviennent.
 A ce moment-là, les boulangeries mettent en pause leur production et analysent les évolutions du prix des matières premières, ou un changement de la demande des consommateurs. Et d’après ces paramètres, les différentes boulangeries adaptent ou non leur prix et leurs volumes de production. Les joueurs ont un temps limité pour effectuer des changements s’ils le souhaitent. Un tour dure 1 seul jour. Le jeu se termine au bout de 15 tours. Et le boulanger ayant le plus grand profit gagne le jeu.
@@ -75,6 +78,7 @@ Description des options permettant de paramétrer une partie.
 - **Nom du joueur**
 - **Numéro du salon** s’il souhaite jouer à plusieurs
 - **Nombre de tours** : 10 tours de jeu avec 1 tour correspondant à 1 jour
+- **Pourcentage d'événement**
 
 - **Prix initial des matières premières**
 - **Prix initial et volume de vente initial**
@@ -115,13 +119,23 @@ Liste des informations présentées au joueurs.
   - **Gâteaux en rayon** : nombre de gâteau en rayon
   - **Prix de vente du gâteau** : prix du gâteau
   - **Gâteaux vendus** : nombre de gâteau vendus
-- **Graphiques** : graphiques montrant l’évolution des prix des matières premières (Chocolat, Farine, Beurre, Sucre et Oeufs) en fonction du temps
+- **Graphiques** : graphiques montrant l’évolution des prix des matières premières (Chocolat, Farine, Beurre, Sucre et Oeufs) en fonction du temps. Attention un gâteau est composé d'une unité d'ingrédients.
+
+#### Exemples d’événements :
+
+- Un plan de relance économique est en marche.
+- Un nouveau confinement ?
+- Le spectre de la sécheresse plane déjà
+- Bricomarché cherche 1000 salariés
+- Nouvelle journée de grève dans les transports !
 
 ### Moteur interne
 
 Liste des interactions entre les actions du joueurs et les informations
 
 #### Gestion des tours
+
+Pendant le tour actuel, le joueur prend les décisions pour le tour suivant.
 
 - **Augmenter le prix des gâteaux** : Prix de ventes lendemain ++
 
@@ -156,30 +170,34 @@ Décrire en détail un scénario qui s’appuie sur toutes les fonctionnalités 
 ---
 
 - 2.1. Une autre actualité survient : Pénurie
-  2.2. Les concurrents analysent la trésorerie et le nombre de ventes de leurs concurrents. Analyse les graphiques qui affichent le prix des matières premières
-  2.3 Prennent des décisions en ajustant la production et le prix
+- 2.2. Les concurrents analysent la trésorerie et le nombre de ventes de leurs concurrents. Analyse les graphiques qui affichent le prix des matières premières
+- 2.3 Prennent des décisions en ajustant la production et le prix
 
 ---
 
-    3. Même chose pour le tour numéro 3
-    Celui qui a le plus augmenté son profit au cours du jeu gagne.
+- 3. Même chose pour le tour numéro 3
+     Celui qui a le plus augmenté son profit au cours du jeu gagne.
 
 ### Déroulement perdant :
 
-Même acheminement pour perdre
-S'il fait moins de profit que son concurrent à chaque partie, le joueur va perdre. A la fin on regarde celui qui a fait le plus de profit du début de la partie à la fin.
+Même acheminement pour perdre :
+S'il fait moins de profit que son concurrent à chaque partie, le joueur va perdre. A la fin on regarde celui qui a fait le moins de profit du début de la partie à la fin.
 
 ### Scénarios complémentaires
 
 Décrire moins précisément d’autres idées de scénarios.
-Si le joueur ne possède aucune notion en économie. Le scénario ne permet pas au joueur d'être à 100% sûr du résultat. S'il ne sait pas la différence entre choc d'offres et choc de demande et il ne saura pas quel action et le plus adapté entre diminuer et augmenter le prix et la production.
+
+- Si le joueur ne possède aucune notion en économie. Le scénario ne permet pas au joueur d'être à 100% sûr du résultat. S'il ne sait pas la différence entre choc d'offres et choc de demande et il ne saura pas quel action et le plus adapté entre diminuer et augmenter le prix et la production.
 
 ### Fonctionnalités additionnelles
 
 Décrire ici les idées de fonctionnalités additionnelles. Cette partie ne doit servir qu’en dernier recours, pour transmettre ce qui n’a pas été inclus dans les fonctionnalités faute de temps.
 
-Permettre aux joueurs de déclencher des chocs par eux-mêmes et ne pas toujours les subir.
-Ajouter la notion de salaires pour les employés des boulangeries.
+- Permettre aux joueurs de déclencher des chocs par eux-mêmes et ne pas toujours les subir.
+- Ajouter la notion de salaires pour les employés des boulangeries.
+- Ajouter la notion de coup invariable exemple avec le loyer
+- Implémenter un compteur qui indique les joueurs n'ayant pas encore validé leur tour.
+- Ajouter un classement prenant en compte les autres parties
 
 # Règles de nommages
 
