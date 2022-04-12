@@ -1,4 +1,6 @@
-## URL du jeu : http://cakeit.franck-g.fr/
+
+
+# 💻 Site en ligne à cette adresse : **http://cakeit.franck-g.fr/**
 
 # PEC22-T3-A : Les Scrums Master
 
@@ -57,11 +59,10 @@ Prenez la peau d'une grande boulangerie qui commercialisent des gâteaux aux cho
 # ℹ Informations
 
 [Cliquez ici pour accéder au cahier des charges](./CDD.md)
+
 [Cliquez ici pour accéder au cahier des charges version modifiable](https://docs.google.com/document/d/1XzKFFJWGTYIfo0v8qdau2wIX_IKBXGIUGRrV3Ha9yFI/edit#heading=h.lgvm4rpyhbpq)
 
-# 💻 Site en ligne
 
-Nous avons mis le jeu en ligne à cette adresse : http://cakeit.franck-g.fr/
 
 # 🛠️ Procédure d'installation
 
