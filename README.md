@@ -1,13 +1,15 @@
+## URL du jeu : http://cakeit.franck-g.fr/
+
 # PEC22-T3-A : Les Scrums Master
 
 - **Thème** : Microéconomie
 - **Durée du développement** : 3 jours
 - **Nom du jeu** : Cake it !
-- **Langage utilisé** : React
+- **Langage utilisé** : React.js & Node.js
 
 # 📃 Présentation du projet :
 
-Notre projet tutoré consiste à concevoir un jeu sérieux scientifique bien défni sur un sujet donné en groupe de 4 personnes. Notre sujet ici les mécanismes du marché face aux changements de contexte. Nous avons donc conçu un jeu, qui s'appelle Cake it, qui permet de montrer aux joueurs comment les mécanismes du marché influent sur les décisions des producteurs face aux circonstances extérieures.
+Notre projet tutoré consiste à concevoir un jeu sérieux scientifique bien défni sur un sujet donné en groupe de 4 personnes. Notre sujet ici les mécanismes du marché face aux changements de contexte. Nous avons donc conçu un jeu, qui s'appelle **Cake it**, qui permet de montrer aux joueurs comment les mécanismes du marché influent sur les décisions des producteurs face aux circonstances extérieures.
 
 Prenez la peau d'une grande boulangerie qui commercialisent des gâteaux aux chocolats et gérer au mieux votre production afin de maximiser votre profit !
 
@@ -97,8 +99,7 @@ Au sein des dossiers `/pec22-t4-a/client` et `/pec22-t4-a/server`, exécuter la 
 npm install
 ```
 
-## Démarrer le serveur Node.js
-
+## Démarrer le client 
 Au sein du dossier `/pec22-t4-a/client`, exécuter la commande
 
 ```
