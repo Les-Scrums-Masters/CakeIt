@@ -22,7 +22,7 @@ export default function CompetitorItem(props) {
             {props.player.name + " "}
           </span>
           {props.player.ready ? (
-            <span class="ml-1 rounded-md bg-green-300 px-2 py-1 text-xs font-light uppercase text-green-700">
+            <span className="ml-1 rounded-md bg-green-300 px-2 py-1 text-xs font-light uppercase text-green-700">
               PRÊT
             </span>
           ) : (

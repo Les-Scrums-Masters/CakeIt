@@ -136,6 +136,7 @@ io.on("connection", (socket) => {
           }
           updateIngredients(roomId);
           climbServer.setAllReady(roomId, false);
+          refreshPlayers(roomId);
         }
       }, 3000);
     }
