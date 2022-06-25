@@ -114,6 +114,8 @@ io.on("connection", (socket) => {
     climbServer.sellingDay(data, roomId, player.id);
     let room = climbServer.findRoom(roomId);
 
+    refreshPlayers(roomId);
+
     console.log(room.roundNumber + " / " + room.nbRounds);
 
     //Si tout les joueurs sont prêt
@@ -134,6 +136,7 @@ io.on("connection", (socket) => {
           }
           updateIngredients(roomId);
           climbServer.setAllReady(roomId, false);
+          refreshPlayers(roomId);
         }
       }, 3000);
     }
