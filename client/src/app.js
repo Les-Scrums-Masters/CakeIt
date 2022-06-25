@@ -69,7 +69,7 @@ function App() {
   };
 
   let showNewsModal = (news) => {
-    setModalEmoji(String.fromCodePoint(0x2139));
+    setModalEmoji(String.fromCodePoint(0x1f4f0));
     setModalTitle(news?.name);
     setModalContent(
       <div className="grid gap-3">

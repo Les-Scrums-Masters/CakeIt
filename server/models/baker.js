@@ -1,6 +1,6 @@
-const HistoryValue = require("./historyValue.js");
+import HistoryValue from "./historyValue.js";
 
-class Baker {
+export default class Baker {
   static INITIAL_PRICE = 10.0;
   static INITIAL_VOLUME = 100;
   static INITIAL_MONEY = 4000.0;
@@ -44,4 +44,3 @@ class Baker {
   }
 }
 
-module.exports = Baker;

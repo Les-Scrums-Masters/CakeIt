@@ -1,12 +1,7 @@
-const HistoryValue = require("./historyValue.js");
+import HistoryValue from "./historyValue.js";
 
-class Ingredient {
-  static INITIAL_PRICE_EGG = 1.0;
-  static INITIAL_PRICE_CHOCOLATE = 2.0;
-  static INITIAL_PRICE_SUGAR = 0.5;
-  static INITIAL_PRICE_BUTTER = 1.0;
-  static INITIAL_PRICE_FLOUR = 0.7;
 
+export default class Ingredient {
   constructor(name, price) {
     this.name = name;
     this.price = new HistoryValue(price);
@@ -25,4 +20,3 @@ class Ingredient {
   }
 }
 
-module.exports = Ingredient;

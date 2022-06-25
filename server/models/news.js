@@ -1,6 +1,6 @@
-const myJson = require("./news.json");
+import { NEWS } from '../config.js'
 
-class News {
+export default class News {
   constructor(name, description, multipliers) {
     this.name = name;
     this.description = description;
@@ -10,7 +10,7 @@ class News {
 
   static loadNews() {
     let list = [];
-    myJson.forEach((news) => {
+    NEWS.forEach((news) => {
       list.push(new News(news.name, news.descriptions, news.multipliers));
     });
     return list;
@@ -29,4 +29,3 @@ class News {
   }
 }
 
-module.exports = News;
