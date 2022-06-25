@@ -1,8 +1,8 @@
-const Room = require("./models/room.js");
-const Ingredient = require("./models/ingredient.js");
-const Baker = require("./models/baker.js");
+import Room from './models/room.js'
+import Ingredient from './models/ingredient.js'
+import Baker from './models/baker.js'
 
-const climbServer = { rooms: [] };
+let climbServer = { rooms: [] };
 
 climbServer.createGame = (hostSocket, hostParticipant) => {
   // Create a new game instance
@@ -122,7 +122,7 @@ climbServer.pickNews = (roomId) => {
 };
 
 climbServer.getRandomCode = () => {
-  code = 1000 + Math.floor(Math.random() * 8999);
+  let code = 1000 + Math.floor(Math.random() * 8999);
   while (climbServer.codeExist(code)) {
     code = climbServer.getRandomCode();
   }
@@ -170,10 +170,12 @@ climbServer.sellingDay = (data, roomId, playerId) => {
   }
 };
 
-module.exports = climbServer;
 
 climbServer.getPlayers = (roomId) => {
   let room = climbServer.findRoom(roomId);
   room?.players.forEach((player) => player.generateEvolution());
   return room?.players;
 };
+
+export default climbServer
+

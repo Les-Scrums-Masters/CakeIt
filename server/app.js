@@ -1,9 +1,9 @@
-const express = require("express");
-const http = require("http");
-const { Server } = require("socket.io");
-const cors = require("cors");
+import express from 'express'
+import http from 'http'
+import { Server } from 'socket.io'
+import cors from 'cors'
+import climbServer from './climb-server.js'
 
-const climbServer = require("./climb-server");
 
 const port = process.env.PORT || 3001;
 //const index = require("./routes/index");

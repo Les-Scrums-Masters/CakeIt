@@ -1,4 +1,4 @@
-[
+export default news = [
   {
     "name": "Un plan de relance économique est en marche.",
     "descriptions": "En effet, suite à de nombreux évènements,le gouvernement a décidé d'injecter, pour relancer l'économie du pays, 100 milliards d'euros dans de nombreux domaines tel que l'écologie, la compétitivité et la cohésion.",

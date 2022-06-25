@@ -9,10 +9,9 @@ export default function IngredientList(props) {
       <div className="flex flex-col gap-3 divide-y-2 divide-accent">
         {Object.keys(ingredients).map((key, index) => {
           let ingredient = ingredients[key];
-
           let price = ingredient.price.values;
 
-          let latestPrice = 0;
+          let latestPrice = 0.00;
           if (price.length > 0) latestPrice = price[price.length - 1];
 
           return (

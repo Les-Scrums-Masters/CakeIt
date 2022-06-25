@@ -1,4 +1,4 @@
-class HistoryValue {
+export default class HistoryValue {
   values = [];
 
   constructor(initialValue) {
@@ -19,6 +19,7 @@ class HistoryValue {
 
   getEvolution() {
     if (this.values.length > 2) {
+
       let actual = this.get();
       let old = this.getAtIndex(this.values.length - 2);
       return ((actual - old) * 100) / old;
@@ -32,4 +33,3 @@ class HistoryValue {
   }
 }
 
-module.exports = HistoryValue;

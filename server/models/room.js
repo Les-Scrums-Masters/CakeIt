@@ -1,6 +1,7 @@
-const Baker = require("./baker.js");
-const Ingredient = require("./ingredient.js");
-const News = require("./news.js");
+import Baker from './baker.js';
+import Ingredient from './ingredient.js';
+import News from './news.js';
+import { INITIAL_PRICES } from '../config.js'
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -22,20 +23,20 @@ function shuffle(array) {
   return array;
 }
 
-class Room {
+export default class Room {
   constructor(hostSocket, hostName, roomCode) {
     this.players = [new Baker(hostSocket, hostName)];
     this.roomCode = roomCode;
     this.roundNumber = 1;
     this.ingredients = {
-      egg: new Ingredient("egg", Ingredient.INITIAL_PRICE_EGG),
+      egg: new Ingredient("egg", INITIAL_PRICES.egg),
       chocolate: new Ingredient(
         "chocolate",
-        Ingredient.INITIAL_PRICE_CHOCOLATE
+        INITIAL_PRICES.chocolate
       ),
-      sugar: new Ingredient("sugar", Ingredient.INITIAL_PRICE_SUGAR),
-      butter: new Ingredient("butter", Ingredient.INITIAL_PRICE_BUTTER),
-      flour: new Ingredient("flour", Ingredient.INITIAL_PRICE_FLOUR),
+      sugar: new Ingredient("sugar", INITIAL_PRICES.sugar),
+      butter: new Ingredient("butter", INITIAL_PRICES.butter),
+      flour: new Ingredient("flour", INITIAL_PRICES.flour),
     };
     this.news = [];
     this.remainingNews = News.loadNews();
@@ -110,4 +111,3 @@ class Room {
   }
 }
 
-module.exports = Room;

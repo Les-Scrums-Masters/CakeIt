@@ -12,9 +12,9 @@ import useSound from "use-sound";
 import musicSound from "./sounds/lofi.ogg";
 import EndPage from "./end/endPage";
 
-// const socket = io.connect("http://localhost:3001");
+const socket = io.connect("http://localhost:3001");
 // const socket = io.connect("http://192.168.1.82:3001");
-const socket = io.connect("http://cake-it-t4.herokuapp.com");
+// const socket = io.connect("http://cake-it-t4.herokuapp.com");
 
 function App() {
   //Possible display : HomePage, RoomLobby, GamePage, EndPage
