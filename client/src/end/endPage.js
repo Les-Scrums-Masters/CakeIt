@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import EndPlayerList from "./endPlayerList";
 import EndChart from "../charts/endChart";
 
