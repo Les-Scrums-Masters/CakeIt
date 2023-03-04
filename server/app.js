@@ -6,7 +6,6 @@ import climbServer from './climb-server.js'
 
 
 const port = process.env.PORT || 3001;
-//const index = require("./routes/index");
 
 const app = express();
 app.use(cors());
@@ -148,5 +147,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(port, () => {
-  console.log(`Listening on http://localhost:${port}/`);
+  console.log(`Listening on port ${port}`);
 });

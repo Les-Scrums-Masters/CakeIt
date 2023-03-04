@@ -1,5 +1,4 @@
 import Room from './models/room.js'
-import Ingredient from './models/ingredient.js'
 import Baker from './models/baker.js'
 
 let climbServer = { rooms: [] };

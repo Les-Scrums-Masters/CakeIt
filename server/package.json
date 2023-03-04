@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "server",
+  "name": "cakeit-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
