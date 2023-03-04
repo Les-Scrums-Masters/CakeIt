@@ -12,7 +12,7 @@ import useSound from "use-sound";
 import musicSound from "./sounds/lofi.ogg";
 import EndPage from "./end/endPage";
 
-const socket = io.connect(REACT_APP_API_ADDRESS);
+const socket = io.connect(process.env.REACT_APP_API_ADDRESS);
 
 function App() {
   //Possible display : HomePage, RoomLobby, GamePage, EndPage

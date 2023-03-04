@@ -1,20 +1,16 @@
 {
-  "name": "pec22",
+  "name": "cakeit",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.5.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
     "daisyui": "^2.13.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "socket.io-client": "^4.4.1",
     "use-sound": "^4.0.1",
-    "victory": "^36.3.1",
-    "web-vitals": "^2.1.4"
+    "victory": "^36.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,8 +20,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
