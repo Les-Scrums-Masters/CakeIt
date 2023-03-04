@@ -1,6 +1,5 @@
 
-
-# 💻 Site en ligne à cette adresse : **http://cakeit.franck-g.fr/**
+[> Jouer en ligne 🕹️](https://cakeit.franck-g.fr/)
 
 # PEC22-T3-A : Les Scrums Master
 
@@ -9,11 +8,10 @@
 - **Nom du jeu** : Cake it !
 - **Langage utilisé** : React.js & Node.js
 
-# 📃 Présentation du projet :
+## 📃 Présentation du projet 
 
-Notre projet tutoré consiste à concevoir un jeu sérieux scientifique bien défni sur un sujet donné en groupe de 4 personnes. Notre sujet ici les mécanismes du marché face aux changements de contexte. Nous avons donc conçu un jeu, qui s'appelle **Cake it**, qui permet de montrer aux joueurs comment les mécanismes du marché influent sur les décisions des producteurs face aux circonstances extérieures.
-
-Prenez la peau d'une grande boulangerie qui commercialisent des gâteaux aux chocolats et gérer au mieux votre production afin de maximiser votre profit !
+**Cake It** est un jeu sérieux montrant comment les mécanismes du marché face aux changements de contextes influent sur les décisions des producteurs.
+Entrez dans la peau d'une grande boulangerie qui commercialise des gâteaux aux chocolats et affrontez vos concurrents en gérant au mieux votre production afin de maximiser votre profit !
 
 ## **📷 Galerie**
 
@@ -56,7 +54,7 @@ Prenez la peau d'une grande boulangerie qui commercialisent des gâteaux aux cho
     </tbody>
 </table>
 
-# ℹ Informations
+## ℹ Informations
 
 [Cliquez ici pour accéder au cahier des charges](./CDD.md)
 
@@ -64,19 +62,19 @@ Prenez la peau d'une grande boulangerie qui commercialisent des gâteaux aux cho
 
 
 
-# 🛠️ Procédure d'installation
+## 🛠️ Procédure d'installation
 
-## Prérequis
+### Prérequis
 
 - Installer [Node.js](https://nodejs.org/en/download/)
 - Installer [git](https://git-scm.com/downloads) pour pouvoir cloner le projet
 
-## Clôner le projet
+### Clôner le projet
 
-Se rendre dans le dossier où vous voulez clôner le projet
+Se rendre dans le dossier où vous souhaitez clôner le projet
 
 ```bash
-cd /home/.../dossierOuJeSouhaiteCloner
+cd <chemin>
 ```
 
 Avec une clé SSH
@@ -92,7 +90,7 @@ git clone
 https://git.unistra.fr/les-scrums-masters/pec22-t4-a.git
 ```
 
-## Installer les dépendances Node.js
+### Installer les dépendances npm
 
 Au sein des dossiers `/pec22-t4-a/client` et `/pec22-t4-a/server`, exécuter la commande
 
